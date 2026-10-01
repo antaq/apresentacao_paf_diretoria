@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Grupo de risco — força de trabalho e equalização</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>:root { --tz-base: 1.251; }
+
+body { margin:0; padding:0; overflow:hidden; font-family:'Open Sans',sans-serif; }
+.slide { width:100vw; height:100vh; position:relative; display:flex; flex-direction:column; overflow:hidden; background:#ffffff; }
+.font-montserrat { font-family:'Montserrat',sans-serif; }
+.text-brand { color:#003366; }
+.bg-brand { background-color:#003366; }
+.text-accent { color:#0066CC; }
+.bg-accent { background-color:#0066CC; }
+.header-bar { height:10px; background:#003366; width:100%; }
+.secondary-bar { height:4px; background:#0066CC; width:100%; }
+
+.stat-card {
+  background: linear-gradient(135deg, #003366, #004d99);
+  border-radius: 16px;
+  padding: 20px 18px;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+.stat-card::after {
+  content: '';
+  position: absolute; top: -30px; right: -30px;
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+}
+.stat-num {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: calc(48px * var(--tz));
+  line-height: 1;
+}
+.card {
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 14px 20px;
+  background: #F8FAFC;
+  border-radius: 14px;
+  border-left: 5px solid #0066CC;
+}
+.card-green  { background: linear-gradient(135deg,#F0FDF4,#DCFCE7); border-left-color:#22C55E; }
+.card-amber  { background: linear-gradient(135deg,#FFFBEB,#FEF3C7); border-left-color:#F59E0B; }
+.card-red    { background: linear-gradient(135deg,#FEF2F2,#FEE2E2); border-left-color:#EF4444; }
+.ico {
+  width:50px; height:50px; border-radius:12px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+}
+/* As colunas dos slides de duas metades centram o proprio conteudo: a folga
+   vertical fica dividida em cima e embaixo, em vez de sobrar toda no rodape.
+   O contêiner de conteudo quase sempre E o proprio grid (`class="flex-1 ...
+   grid"`), e nao um grid dentro dele — por isso os dois seletores. */
+.slide > .flex-1 > .flex.flex-col,
+.slide > .flex-1 > .grid > .flex.flex-col { justify-content:center; }
+
+table.tbl { width:100%; border-collapse:collapse; }
+table.tbl th {
+  background:#F1F5F9; color:#475569; text-align:left;
+  font-family:'Montserrat',sans-serif; font-weight:700;
+  text-transform:uppercase; letter-spacing:0.06em;
+  padding:10px 14px; font-size:calc(15px * var(--tz));
+}
+table.tbl td { padding:11px 14px; border-top:1px solid #E2E8F0; color:#334155; font-size:calc(18px * var(--tz)); }
+table.tbl tr:nth-child(even) td { background:#FAFBFC; }
+.num { text-align:right; font-variant-numeric:tabular-nums; }
+table.tbl th.num { text-align:right; }
+.pill {
+  display:inline-block; padding:3px 12px; border-radius:999px;
+  font-family:'Montserrat',sans-serif; font-weight:700;
+  font-size:calc(14px * var(--tz)); letter-spacing:0.04em;
+}
+.pill-a { background:#DCFCE7; color:#166534; }
+.pill-b { background:#DBEAFE; color:#1E40AF; }
+.pill-c { background:#FEE2E2; color:#991B1B; }
+.pill-gold { background:#FEF3C7; color:#92400E; }
+.formula {
+  background:#0F172A; color:#E2E8F0; border-radius:14px;
+  padding:18px 24px; font-family:'Courier New',monospace;
+  font-size:calc(20px * var(--tz)); letter-spacing:0.02em;
+}
+.destaque {
+  background: linear-gradient(135deg,#003366,#0066CC);
+  color:#fff; border-radius:16px; padding:16px 24px;
+}
+.legenda { color:#64748B; font-size:calc(15px * var(--tz)); line-height:1.5; }
+.novo-tag {
+  display:inline-flex; align-items:center; gap:7px;
+  background:#FFD700; color:#003366; border-radius:999px;
+  padding:3px 14px; font-family:'Montserrat',sans-serif;
+  font-weight:900; font-size:calc(13px * var(--tz));
+  letter-spacing:0.1em; text-transform:uppercase;
+}
+
+/* Respiro vertical entre os cards.
+   Os utilitarios gap-* do Tailwind valem para as duas direcoes, e mexer no
+   `gap` cheio estreitaria as colunas dos grids de duas metades. Por isso aqui
+   so o `row-gap` e reescrito: um card fica mais longe do card de baixo, e a
+   largura das colunas continua exatamente a mesma. Esta folha vem depois do
+   CDN no <head>, entao vence no desempate por ordem. */
+.gap-2 { row-gap:18px; }
+.gap-3 { row-gap:30px; }
+.gap-4 { row-gap:32px; }
+.gap-5 { row-gap:34px; }
+.gap-6 { row-gap:34px; }
+.gap-8 { row-gap:38px; }
+
+.bloco-tag {
+  display:inline-flex; align-items:center; gap:8px;
+  border-radius:999px; padding:4px 16px; font-family:'Montserrat',sans-serif;
+  font-weight:900; font-size:calc(13px * var(--tz)); letter-spacing:0.08em; text-transform:uppercase;
+}
+.bt-risco { background:#FEE2E2; color:#991B1B; }
+.bt-tema  { background:#DBEAFE; color:#1E3A8A; }
+.bt-geral { background:#FEF3C7; color:#92400E; }
+.fonte { color:#94A3B8; font-size:calc(13px * var(--tz)); line-height:1.4; }
+.titulo-sec { font-family:'Montserrat',sans-serif; font-weight:700; color:#003366; font-size:calc(21px * var(--tz)); }
+.sub-sec { color:#64748B; font-size:calc(15px * var(--tz)); }
+.num-badge {
+  width:38px; height:38px; border-radius:50%; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  background:#003366; color:#fff; font-family:'Montserrat',sans-serif; font-weight:900;
+  font-size:calc(17px * var(--tz));
+}
+.card p { margin:0; }
+.card-t { font-family:'Montserrat',sans-serif; font-weight:700; color:#003366; font-size:calc(19px * var(--tz)); }
+.card-d { color:#475569; font-size:calc(16px * var(--tz)); line-height:1.45; margin-top:3px !important; }
+
+/* Barras: trilho cinza, segmentos com 2px de folga entre si e rótulo direto. */
+.bar-row { display:grid; grid-template-columns: var(--rot, 300px) 1fr; align-items:center; gap:14px; }
+.bar-rot { color:#334155; font-size:calc(17px * var(--tz)); line-height:1.25; text-align:right; }
+.bar-rot strong { color:#003366; }
+.bar-trk { display:flex; gap:2px; height:42px; }
+.seg {
+  height:100%; display:flex; align-items:center; justify-content:center;
+  font-family:'Montserrat',sans-serif; font-weight:700; font-size:calc(17px * var(--tz));
+  color:#fff; min-width:0; overflow:hidden; white-space:nowrap;
+}
+.seg:first-child { border-radius:4px 0 0 4px; }
+.seg:last-child  { border-radius:0 4px 4px 0; }
+.seg:only-child  { border-radius:4px; }
+.leg-row { display:flex; flex-wrap:wrap; gap:22px; color:#475569; font-size:calc(16px * var(--tz)); }
+.leg-row span { display:inline-flex; align-items:center; gap:7px; }
+.leg-row i.sw { width:18px; height:18px; border-radius:3px; display:inline-block; }
+/* Título com tamanho fixo em todos os slides: não acompanha o fator de texto,
+   para que títulos longos não quebrem linha quando o corpo cresce. */
+.slide p.text-5xl { font-size:54px !important; line-height:1.1 !important; }
+
+.oc-row { display:grid; grid-template-columns:230px 1fr 170px; align-items:center; gap:14px; }
+.oc-rot { color:#334155; font-size:calc(18px * var(--tz)); }
+.oc-rot strong { color:#003366; }
+.oc-trk { position:relative; height:36px; background:#F1F5F9; border-radius:4px; }
+.oc-bar { position:absolute; left:0; top:0; height:36px; border-radius:0 4px 4px 0; }
+.oc-lim { position:absolute; left:25%; top:-4px; bottom:-4px; width:3px; background:#003366; z-index:2; }
+.oc-val { font-family:'Montserrat',sans-serif; font-size:calc(20px * var(--tz)); color:#003366; }
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="header-bar"></div>
+  <div class="secondary-bar"></div>
+
+  <div class="px-16 pt-6 pb-2">
+    <div class="flex items-center gap-3">
+      <div style="width:5px;height:44px;" class="bg-accent"></div>
+      <div>
+        <p class="font-montserrat font-bold text-gray-400 text-lg uppercase tracking-widest">Força de trabalho · equalização entre unidades</p>
+        <p class="text-5xl font-montserrat font-bold text-brand uppercase tracking-tight">O plano cabe em quem o executa?</p>
+      </div>
+      <div class="ml-auto flex items-center gap-3">
+        <span class="bloco-tag bt-risco"><i class="fas fa-gauge-high"></i> Bloco 1 · Grupo de risco</span>
+        <img src="assets/logo-antaq-azul.png" alt="ANTAQ" style="height:32px;">
+        <p class="font-montserrat font-bold text-gray-400 text-sm tracking-widest">SFC · GPF</p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="flex-1 px-16 pb-2 grid grid-cols-12 gap-6">
+    <div class="col-span-7 flex flex-col gap-3">
+      <div class="formula" style="text-align:center; line-height:1.6;">
+        ocupação = horas que o plano exige &divide; envelope do PAF<br/>
+        <span style="color:#94A3B8; font-size:calc(16px * var(--tz));">envelope = 35% das horas líquidas do PGD (Hefesto), igual para toda unidade · inclui os 20 do CNU</span>
+      </div>
+      <div class="destaque">
+        <p class="font-montserrat font-bold" style="font-size:calc(22px * var(--tz));">Cabe na Agência, mas não cabe onde a carga está.</p>
+        <p class="text-blue-100 text-lg mt-1"><strong>45.880 h</strong> contra um envelope de <strong>55.560 h</strong>: 83% no agregado nacional.
+        Pela jurisdição, porém, quatro unidades passam do limite.</p>
+      </div>
+      <div>
+        <p class="titulo-sec">Ocupação antes e depois da equalização</p>
+        <div class="leg-row mt-1">
+          <span><i class="sw" style="background:#B91C1C; opacity:0.28;"></i>pela jurisdição</span>
+          <span><i class="sw" style="background:#0066CC;"></i>após a equalização aprovada</span>
+          <span><i class="sw" style="background:#003366; width:3px;"></i>limite de 100%</span>
+        </div>
+      </div>
+      
+      <div class="oc-row">
+        <div class="oc-rot"><strong>URESN · Santana</strong></div>
+        <div class="oc-trk">
+          <div class="oc-lim"></div>
+          <div class="oc-bar" style="width:98.8%; background:#B91C1C; opacity:0.28;"></div>
+          <div class="oc-bar" style="width:24.0%; background:#0066CC; top:9px; height:18px;"></div>
+        </div>
+        <div class="oc-val"><span style="color:#B91C1C;">395%</span> &rarr; <strong>96%</strong></div>
+      </div>
+      
+      <div class="oc-row">
+        <div class="oc-rot"><strong>GREBL · Belém</strong></div>
+        <div class="oc-trk">
+          <div class="oc-lim"></div>
+          <div class="oc-bar" style="width:36.5%; background:#B91C1C; opacity:0.28;"></div>
+          <div class="oc-bar" style="width:25.0%; background:#0066CC; top:9px; height:18px;"></div>
+        </div>
+        <div class="oc-val"><span style="color:#B91C1C;">146%</span> &rarr; <strong>100%</strong></div>
+      </div>
+      
+      <div class="oc-row">
+        <div class="oc-rot"><strong>GREMN · Manaus</strong></div>
+        <div class="oc-trk">
+          <div class="oc-lim"></div>
+          <div class="oc-bar" style="width:30.8%; background:#C2410C; opacity:0.28;"></div>
+          <div class="oc-bar" style="width:25.0%; background:#0066CC; top:9px; height:18px;"></div>
+        </div>
+        <div class="oc-val"><span style="color:#C2410C;">123%</span> &rarr; <strong>100%</strong></div>
+      </div>
+      
+      <div class="oc-row">
+        <div class="oc-rot"><strong>UREPL</strong></div>
+        <div class="oc-trk">
+          <div class="oc-lim"></div>
+          <div class="oc-bar" style="width:26.2%; background:#C2410C; opacity:0.28;"></div>
+          <div class="oc-bar" style="width:22.8%; background:#0066CC; top:9px; height:18px;"></div>
+        </div>
+        <div class="oc-val"><span style="color:#C2410C;">105%</span> &rarr; <strong>91%</strong></div>
+      </div>
+      <p class="legenda">Demais 10 unidades: de 23% a 88% antes; receptoras ficam entre 55% e 88% depois. Nenhuma receptora passa de 90%.</p>
+    </div>
+
+    <div class="col-span-5 flex flex-col gap-3">
+      <div class="grid grid-cols-3 gap-3">
+        <div class="stat-card"><p class="stat-num">30</p><p class="text-blue-200 text-sm font-semibold mt-2">movimentos<br/>(9.531 h)</p></div>
+        <div class="stat-card"><p class="stat-num">8</p><p class="text-blue-200 text-sm font-semibold mt-2">transferências<br/>(765 h)</p></div>
+        <div class="stat-card"><p class="stat-num">22</p><p class="text-blue-200 text-sm font-semibold mt-2">missões de apoio<br/>(7 campo · 15 remotas)</p></div>
+      </div>
+      <div class="card">
+        <div class="ico" style="background:#DBEAFE;"><i class="fas fa-route text-accent text-2xl"></i></div>
+        <div><p class="card-t">Oiapoque: uma ida só</p>
+        <p class="card-d">56 travessias sob jurisdição de Santana: a <strong>URESL</strong> faz a vistoria e a <strong>GREST</strong> as fases de
+        escritório (NT 2/2024 — só a Fase 2 exige ir ao local).</p></div>
+      </div>
+      <div class="card">
+        <div class="ico" style="background:#DBEAFE;"><i class="fas fa-landmark text-accent text-2xl"></i></div>
+        <div><p class="card-t">A jurisdição não muda</p>
+        <p class="card-d">A equalização diz quem <strong>executa</strong> no ciclo, não quem <strong>responde</strong>. A regra propõe; cada movimento é aprovado com autor e fundamento.
+        Os 30 foram aprovados em 29/09.</p></div>
+      </div>
+      <div class="card card-amber">
+        <div class="ico" style="background:#FDE68A;"><i class="fas fa-users text-yellow-700 text-2xl"></i></div>
+        <div><p class="card-t">O limite é de lotação no Norte</p>
+        <p class="card-d">GREBL e GREMN ficam exatamente em 100%. A cobertura do Grupo B (52 de 1.408, <strong>3,7%</strong>) só cresce com reforço nessas unidades.</p></div>
+      </div>
+    </div>
+  </div>
+  <p class="fonte px-16 pb-1">Protocolos IPR-DIMENSIONA-V1 e IPR-EQUALIZA-V1. Fonte: minuta da NT de Metodologia do PAF 2027 (rodada de validação de 29/09/2026), itens 6 a 8 e Quadros 5 e 6.</p>
+
+
+  <div class="px-16 pb-4 flex justify-between items-center border-t border-gray-100 pt-3 mx-8">
+    <p class="text-gray-400 text-sm">PAF 2027 — Apresentação ao Diretor-Geral · SFC/GPF/ANTAQ</p>
+    <p class="text-gray-300 text-sm font-mono">6 / 17</p>
+  </div>
+</div>
+<script src="zoom.js"></script>
+<script>document.addEventListener("keydown",function(e){if(["ArrowRight","ArrowLeft","PageDown","PageUp","Home","End"," ","f","F"].indexOf(e.key)!==-1){e.preventDefault();window.parent.postMessage({type:"slide-nav",key:e.key},"*");}});</script>
+</body>
+</html>

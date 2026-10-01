@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Grupo de risco — IPR 2.0</title>
+<title>Grupo de risco — do risco à ação fiscal</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-<style>:root { --tz-base: 1.35; }
+<style>:root { --tz-base: 1.305; }
 
 body { margin:0; padding:0; overflow:hidden; font-family:'Open Sans',sans-serif; }
 .slide { width:100vw; height:100vh; position:relative; display:flex; flex-direction:column; overflow:hidden; background:#ffffff; }
@@ -156,12 +156,19 @@ table.tbl th.num { text-align:right; }
    para que títulos longos não quebrem linha quando o corpo cresce. */
 .slide p.text-5xl { font-size:54px !important; line-height:1.1 !important; }
 
-.ind { background:#F8FAFC; border-top:5px solid #0066CC; border-radius:12px; padding:18px 18px; display:flex; flex-direction:column; justify-content:center; gap:10px; }
-.ind p { margin:0; color:#475569; font-size:calc(17.5px * var(--tz)); line-height:1.45; }
-.ind p.ind-t { font-family:'Montserrat',sans-serif; font-weight:700; color:#003366; font-size:calc(20px * var(--tz)); }
-.ind-h { display:flex; justify-content:space-between; align-items:baseline; }
-.ind-s { font-family:'Montserrat',sans-serif; font-weight:900; color:#0066CC; font-size:calc(32px * var(--tz)); }
-.ind-p { color:#94A3B8; font-size:calc(13px * var(--tz)); font-weight:600; text-transform:uppercase; letter-spacing:0.06em; }
+.cc { display:flex; flex-direction:column; flex:1; }
+.cc-plot { position:relative; flex:1; min-height:calc(240px * var(--tz)); display:grid; grid-template-columns:repeat(8,1fr); column-gap:16px; align-items:stretch; border-bottom:2px solid #94A3B8; padding:0 6px; }
+.cc-grid { position:absolute; left:0; right:0; border-top:1px dashed #E2E8F0; }
+.cc-col { position:relative; z-index:1; }
+.cc-v { position:absolute; left:-8px; right:-8px; text-align:center; font-family:'Montserrat',sans-serif; font-weight:900; color:#0F172A; font-size:calc(22px * var(--tz)); line-height:1; }
+.cc-b { position:absolute; left:0; right:0; bottom:0; border-radius:6px 6px 0 0; }
+.cc-x { display:grid; grid-template-columns:repeat(8,1fr); column-gap:16px; padding:8px 6px 0; }
+.cc-x div { text-align:center; line-height:1.2; }
+.cc-x b { display:block; font-family:'Montserrat',sans-serif; font-weight:900; color:#003366; font-size:calc(19px * var(--tz)); }
+.cc-x span { color:#64748B; font-size:calc(13.5px * var(--tz)); }
+.cc-g { display:grid; grid-template-columns:repeat(8,1fr); column-gap:16px; padding:10px 6px 0; }
+.cc-g div { border-top:4px solid; padding-top:6px; text-align:center; color:#475569; font-size:calc(15px * var(--tz)); line-height:1.3; }
+.cc-g strong { color:#003366; font-family:'Montserrat',sans-serif; }
 </style>
 </head>
 <body>
@@ -173,8 +180,8 @@ table.tbl th.num { text-align:right; }
     <div class="flex items-center gap-3">
       <div style="width:5px;height:44px;" class="bg-accent"></div>
       <div>
-        <p class="font-montserrat font-bold text-gray-400 text-lg uppercase tracking-widest">IPR 2.0 · NT 11, 12, 19 e 20/2026</p>
-        <p class="text-5xl font-montserrat font-bold text-brand uppercase tracking-tight">O que a nota passou a enxergar</p>
+        <p class="font-montserrat font-bold text-gray-400 text-lg uppercase tracking-widest">Fiscalização Responsiva · PPF 2025-2028</p>
+        <p class="text-5xl font-montserrat font-bold text-brand uppercase tracking-tight">Do risco à ação fiscal</p>
       </div>
       <div class="ml-auto flex items-center gap-3">
         <span class="bloco-tag bt-risco"><i class="fas fa-gauge-high"></i> Bloco 1 · Grupo de risco</span>
@@ -185,61 +192,60 @@ table.tbl th.num { text-align:right; }
   </div>
 
 
-  <div class="flex-1 px-16 pb-2 flex flex-col gap-4">
-    <div class="grid grid-cols-12 gap-6">
-      <div class="col-span-7 card card-red" style="align-items:center;">
-        <div class="ico" style="background:#FECACA;"><i class="fas fa-eye-slash text-red-700 text-2xl"></i></div>
-        <div>
-          <p class="card-t">O defeito que motivou a revisão</p>
-          <p class="card-d">Os seis indicadores da NT 9/2021 dependem de fiscalização anterior. Quem nunca foi fiscalizado
-          marcava zero em tudo e caía em A1: <strong>quanto menos a Agência olhava, mais segura a outorga parecia.</strong></p>
+  <div class="flex-1 px-16 pb-2 grid grid-cols-12 gap-6">
+    <div class="col-span-5 flex flex-col gap-3">
+      <div class="destaque">
+        <p class="font-montserrat font-bold" style="font-size:calc(24px * var(--tz));">Índice de Perfil de Risco (IPR)</p>
+        <p class="text-blue-100 text-lg mt-1">Cada outorga recebe uma <strong>nota de 0 a 100</strong> e uma
+        <strong>faixa de A1 a C4</strong>. A intensidade da ação fiscal é proporcional ao risco — é o modelo
+        de Fiscalização Responsiva do PPF 2025-2028.</p>
+      </div>
+      <div class="card">
+        <div class="ico" style="background:#DBEAFE;"><i class="fas fa-file-signature text-accent text-2xl"></i></div>
+        <div><p class="card-t">A unidade é a outorga, não a empresa</p>
+        <p class="card-d">Uma EBN com quatro linhas de travessia tem quatro IPRs: o risco de uma travessia no
+        Oiapoque não é o de outra em Manaus.</p></div>
+      </div>
+      <div class="card">
+        <div class="ico" style="background:#DBEAFE;"><i class="fas fa-scale-balanced text-accent text-2xl"></i></div>
+        <div><p class="card-t">A nota mistura duas coisas</p>
+        <p class="card-d"><strong>O que a empresa já fez</strong> (autuações, reincidência, NoCI descumprida, denúncias
+        que viraram sanção) e <strong>o que ela é</strong> (risco da atividade, porte, acesso, maturidade e há quanto
+        tempo ninguém a visita).</p></div>
+      </div>
+      <div class="card card-amber">
+        <div class="ico" style="background:#FDE68A;"><i class="fas fa-user-check text-yellow-700 text-2xl"></i></div>
+        <div><p class="card-t">O índice prioriza; a chefia decide</p>
+        <p class="card-d">O IPR indica a ordem, sem substituir o juízo técnico: toda inclusão ou exclusão fora da regra
+        fica registrada, com autor e fundamento.</p></div>
+      </div>
+    </div>
+
+    <div class="col-span-7 flex flex-col gap-3">
+      <div>
+        <p class="titulo-sec">Outorgas por faixa e a solução fiscal de cada uma</p>
+        <p class="sub-sec">2.426 outorgas ativas no ciclo 2027 (2.466 do universo, menos 40 com CNPJ baixado ou suspenso)</p>
+      </div>
+      
+      <div class="cc">
+        <div class="cc-plot"><div class="cc-grid" style="bottom:25.0%;"></div><div class="cc-grid" style="bottom:50.0%;"></div><div class="cc-grid" style="bottom:75.0%;"></div><div class="cc-col" title="A1: 272 outorgas"><div class="cc-b" style="height:27.20%;background:#4ADE80;"></div><div class="cc-v" style="bottom:calc(27.20% + 8px);">272</div></div><div class="cc-col" title="A2: 159 outorgas"><div class="cc-b" style="height:15.90%;background:#16A34A;"></div><div class="cc-v" style="bottom:calc(15.90% + 8px);">159</div></div><div class="cc-col" title="B1: 906 outorgas"><div class="cc-b" style="height:90.60%;background:#60A5FA;"></div><div class="cc-v" style="bottom:calc(90.60% + 8px);">906</div></div><div class="cc-col" title="B2: 502 outorgas"><div class="cc-b" style="height:50.20%;background:#1D4ED8;"></div><div class="cc-v" style="bottom:calc(50.20% + 8px);">502</div></div><div class="cc-col" title="C1: 286 outorgas"><div class="cc-b" style="height:28.60%;background:#F87171;"></div><div class="cc-v" style="bottom:calc(28.60% + 8px);">286</div></div><div class="cc-col" title="C2: 194 outorgas"><div class="cc-b" style="height:19.40%;background:#EF4444;"></div><div class="cc-v" style="bottom:calc(19.40% + 8px);">194</div></div><div class="cc-col" title="C3: 77 outorgas"><div class="cc-b" style="height:7.70%;background:#B91C1C;"></div><div class="cc-v" style="bottom:calc(7.70% + 8px);">77</div></div><div class="cc-col" title="C4: 30 outorgas"><div class="cc-b" style="height:3.00%;background:#7F1D1D;"></div><div class="cc-v" style="bottom:calc(3.00% + 8px);">30</div></div></div>
+        <div class="cc-x"><div><b>A1</b><span>monitoramento</span></div><div><b>A2</b><span>monitoramento</span></div><div><b>B1</b><span>documental</span></div><div><b>B2</b><span>à distância</span></div><div><b>C1</b><span>programada</span></div><div><b>C2</b><span>sem aviso</span></div><div><b>C3</b><span>intensiva</span></div><div><b>C4</b><span>intervenção</span></div></div>
+        <div class="cc-g">
+          <div style="grid-column:span 2; border-color:#16A34A;"><strong>Grupo A</strong> · menor risco<br/>monitoramento e <strong>sorteio auditável</strong> · 431</div>
+          <div style="grid-column:span 2; border-color:#1D4ED8;"><strong>Grupo B</strong> · intermediário<br/>ação <strong>remota</strong> · 1.408</div>
+          <div style="grid-column:span 4; border-color:#B91C1C;"><strong>Grupo C</strong> · maior risco<br/>ação <strong>presencial</strong>, até intervenção técnica com possível cautelar · 587</div>
         </div>
       </div>
-      <div class="col-span-5 grid grid-cols-2 gap-3">
-        <div class="stat-card"><p class="stat-num">595</p><p class="text-blue-200 text-sm font-semibold mt-2">outorgas nunca<br/>fiscalizadas</p></div>
-        <div class="stat-card"><p class="stat-num">38%</p><p class="text-blue-200 text-sm font-semibold mt-2">do universo sem visita<br/>há mais de 5 anos ou nunca</p></div>
-      </div>
-    </div>
-
-    <div class="flex-1 grid grid-cols-5 gap-3">
-      <div class="ind">
-        <div class="ind-h"><span class="ind-s">ICF</span><span class="ind-p">peso 3</span></div>
-        <p class="ind-t">Há quanto tempo ninguém olha</p>
-        <p>Nota sobe com o tempo desde a última fiscalização; nunca visitada leva a máxima. Fiscalizou, a nota zera e a outorga dá lugar a outra.</p>
-      </div>
-      <div class="ind">
-        <div class="ind-h"><span class="ind-s">IVO</span><span class="ind-p">peso 2</span></div>
-        <p class="ind-t">O porte da operação</p>
-        <p>Volume comparado com pares da mesma categoria. Só pesa quando ninguém está olhando: IVO efetivo = IVO &times; ICF.</p>
-      </div>
-      <div class="ind">
-        <div class="ind-h"><span class="ind-s">ICD</span><span class="ind-p">peso 1</span></div>
-        <p class="ind-t">Custo de chegar lá</p>
-        <p>Desde setembro, mede a <strong>via real</strong> usada nas viagens da Agência (viatura, barco ou avião), não a linha reta.</p>
-      </div>
-      <div class="ind">
-        <div class="ind-h"><span class="ind-s">IMA</span><span class="ind-p">peso 1</span></div>
-        <p class="ind-t">Quem opera</p>
-        <p>Idade do CNPJ e porte: empresa jovem e pequena tende a ter menos estrutura de conformidade. Priorização, não punição.</p>
-      </div>
-      <div class="ind" style="border-top-color:#D97706;">
-        <div class="ind-h"><span class="ind-s" style="color:#B45309;">F_IRA</span><span class="ind-p">piso</span></div>
-        <p class="ind-t">O risco da atividade</p>
-        <p>Atividade perigosa tem nota mínima: uma travessia nunca fiscalizada <strong>jamais cai em A1</strong>.</p>
-      </div>
-    </div>
-
-    <div class="formula" style="text-align:center; line-height:1.7;">
-      IPR = MAIOR( nota comportamental e de exposição ponderada <span style="color:#94A3B8;">(&Sigma; pesos = 21)</span> , piso da atividade )<br/>
-      <span style="color:#94A3B8; font-size:calc(16px * var(--tz));">Faixas A1..C4 recalibradas ao universo real (nota máxima 54,79) e à capacidade de fiscalizar · réguas versionadas em tabela</span>
+      <p class="legenda">A correspondência faixa &rarr; solução fiscal é parametrizada e versionada, não fixada em programa.
+      A navegação marítima é documental em qualquer faixa (61 outorgas do Grupo C).</p>
     </div>
   </div>
-  <p class="fonte px-16 pb-1">Números do universo do ciclo 2027 (2.466 outorgas), painel IPR-PAF em 01/10/2026. Fonte: NT 11/2026 e 12/2026, revisadas pelas NT 19/2026 e 20/2026; minuta da NT de Metodologia do PAF 2027 (rodada de validação de 29/09/2026), item 2.</p>
+  <p class="fonte px-16 pb-1">Fonte: minuta da NT de Metodologia do PAF 2027 (rodada de validação de 29/09/2026), Quadro 2.</p>
 
 
   <div class="px-16 pb-4 flex justify-between items-center border-t border-gray-100 pt-3 mx-8">
     <p class="text-gray-400 text-sm">PAF 2027 — Apresentação ao Diretor-Geral · SFC · GRAT, GPF e GCOR · ANTAQ</p>
-    <p class="text-gray-300 text-sm font-mono">4 / 17</p>
+    <p class="text-gray-300 text-sm font-mono">4 / 19</p>
   </div>
 </div>
 <script src="zoom.js"></script>

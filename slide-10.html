@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Temáticas — confronto com os instrumentos</title>
+<title>Temáticas — contexto e premissa</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-<style>:root { --tz-base: 1.449; }
+<style>:root { --tz-base: 1.332; }
 
 body { margin:0; padding:0; overflow:hidden; font-family:'Open Sans',sans-serif; }
 .slide { width:100vw; height:100vh; position:relative; display:flex; flex-direction:column; overflow:hidden; background:#ffffff; }
@@ -155,12 +155,6 @@ table.tbl th.num { text-align:right; }
 /* Título com tamanho fixo em todos os slides: não acompanha o fator de texto,
    para que títulos longos não quebrem linha quando o corpo cresce. */
 .slide p.text-5xl { font-size:54px !important; line-height:1.1 !important; }
-
-.descob { background:#FFFBEB; border:1px solid #FDE68A; border-radius:16px; padding:18px 22px; }
-.descob p { margin:0; }
-.descob ul { margin:0; padding:0; list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:8px 18px; }
-.descob li { color:#334155; font-size:calc(16px * var(--tz)); padding-left:20px; position:relative; line-height:1.35; }
-.descob li::before { content:''; position:absolute; left:2px; top:calc(8px * var(--tz)); width:9px; height:9px; border-radius:2px; background:#D97706; }
 </style>
 </head>
 <body>
@@ -172,8 +166,8 @@ table.tbl th.num { text-align:right; }
     <div class="flex items-center gap-3">
       <div style="width:5px;height:44px;" class="bg-accent"></div>
       <div>
-        <p class="font-montserrat font-bold text-gray-400 text-lg uppercase tracking-widest">Resultados · NT nº 27/2026/GPF/SFC, itens 5.2 a 5.5</p>
-        <p class="text-5xl font-montserrat font-bold text-brand uppercase tracking-tight">Quem já alcança as 99 demandas</p>
+        <p class="font-montserrat font-bold text-gray-400 text-lg uppercase tracking-widest">Fiscalizações temáticas · NT nº 27/2026/GPF/SFC</p>
+        <p class="text-5xl font-montserrat font-bold text-brand uppercase tracking-tight">Por que e com que acervo</p>
       </div>
       <div class="ml-auto flex items-center gap-3">
         <span class="bloco-tag bt-tema"><i class="fas fa-layer-group"></i> Bloco 2 · Temáticas</span>
@@ -184,65 +178,69 @@ table.tbl th.num { text-align:right; }
   </div>
 
 
-  <div class="flex-1 px-16 pb-2 grid grid-cols-12 gap-8">
-    <div class="col-span-7 flex flex-col justify-center gap-5" style="--rot:250px;">
-      <div>
-        <p class="titulo-sec">Alcance de cada instrumento sobre as 99 demandas</p>
-        <p class="sub-sec">número de demandas por grau de alcance</p>
-      </div>
-      <div class="leg-row">
-        <span><i class="sw" style="background:#003366;"></i>Integral</span>
-        <span><i class="sw" style="background:#2F6FB3;"></i>Parcial</span>
-        <span><i class="sw" style="background:#8DB8E6;"></i>Indireta</span>
-        <span><i class="sw" style="background:#CBD5E1;"></i>Sem aderência</span>
-      </div>
-      <div class="bar-row"><div class="bar-rot"><strong>Agenda Regulatória</strong><br/>2025-2028</div><div class="bar-trk"><div class="seg" style="width:42.42%;background:#003366;color:#fff;" title="42">42</div><div class="seg" style="width:27.27%;background:#2F6FB3;color:#fff;" title="27">27</div><div class="seg" style="width:7.07%;background:#8DB8E6;color:#003366;" title="7">7</div><div class="seg" style="width:23.23%;background:#CBD5E1;color:#334155;" title="23">23</div></div></div>
-      <div class="bar-row"><div class="bar-rot"><strong>Agenda de Estudos</strong><br/>2025/2028</div><div class="bar-trk"><div class="seg" style="width:28.28%;background:#003366;color:#fff;" title="28">28</div><div class="seg" style="width:45.45%;background:#2F6FB3;color:#fff;" title="45">45</div><div class="seg" style="width:7.07%;background:#8DB8E6;color:#003366;" title="7">7</div><div class="seg" style="width:19.19%;background:#CBD5E1;color:#334155;" title="19">19</div></div></div>
-      <div class="bar-row"><div class="bar-rot"><strong>Fiscalizações temáticas</strong><br/>PAF 2026</div><div class="bar-trk"><div class="seg" style="width:43.43%;background:#003366;color:#fff;" title="43">43</div><div class="seg" style="width:32.32%;background:#2F6FB3;color:#fff;" title="32">32</div><div class="seg" style="width:24.24%;background:#CBD5E1;color:#334155;" title="24">24</div></div></div>
-      <div class="grid grid-cols-2 gap-4 mt-2">
-        <div class="card">
-          <div class="ico" style="background:#DBEAFE;"><i class="fas fa-book text-accent text-2xl"></i></div>
-          <div><p class="card-t">Agenda Regulatória</p>
-          <p class="card-d">Tema 2.6 é o principal de 5 blocos (31 demandas). Os temas 1.1 a 1.4, de
-          Navegação Interior, não foram alcançados.</p></div>
+  <div class="flex-1 px-16 pb-2 grid grid-cols-12 gap-6">
+    <div class="col-span-6 flex flex-col gap-3">
+      <p class="titulo-sec">Origem da demanda</p>
+      <div class="card">
+        <div class="num-badge">1</div>
+        <div>
+          <p class="card-t">Deliberação-DG nº 96/2025</p>
+          <p class="card-d">Referendada pelo Acórdão nº 41-2026-ANTAQ: discutir previamente a proposta
+          do PAF com as unidades finalísticas e as Diretorias, para captar temáticas ainda não mapeadas.</p>
         </div>
-        <div class="card">
-          <div class="ico" style="background:#DBEAFE;"><i class="fas fa-flask text-accent text-2xl"></i></div>
-          <div><p class="card-t">Agenda de Estudos</p>
-          <p class="card-d">24 dos 27 estudos alcançados; ficam sem demanda P11, P16 e P20
-          (navegação interior e passageiros).</p></div>
+      </div>
+      <div class="card">
+        <div class="num-badge">2</div>
+        <div>
+          <p class="card-t">Ofício Circular nº 2/2026/SFC/ANTAQ</p>
+          <p class="card-d">Consulta à SRG, à SESGI, à SOG e à SEPH sobre fiscalizações temáticas
+          relevantes, com prazo encerrado em <strong>17/08/2026</strong>.</p>
+        </div>
+      </div>
+      <div class="card card-amber">
+        <div class="num-badge" style="background:#B45309;">3</div>
+        <div>
+          <p class="card-t">O limite da consulta interna</p>
+          <p class="card-d">As fontes da Agência registram o que já chegou a ela. O problema que
+          <strong>não gera autuação nem manifestação</strong> fica invisível ao planejamento — daí a
+          avaliação das contribuições externas.</p>
         </div>
       </div>
     </div>
 
-    <div class="col-span-5 flex flex-col justify-center gap-4">
-      <div class="destaque flex items-center gap-5">
-        <p class="font-montserrat font-black" style="font-size:calc(60px * var(--tz)); line-height:1;">70</p>
-        <p class="text-blue-100 text-xl">demandas, em 11 blocos, são alcançadas <strong>pelos três instrumentos</strong> ao mesmo tempo</p>
+    <div class="col-span-6 flex flex-col gap-3">
+      <p class="titulo-sec">O acervo já existia: revisão da Agenda Regulatória 2025-2028</p>
+      <div class="grid grid-cols-4 gap-3">
+        <div class="stat-card"><p class="stat-num">99</p><p class="text-blue-200 text-sm font-semibold mt-2">contribuições validadas<br/>(17/04 a 05/06/2026)</p></div>
+        <div class="stat-card"><p class="stat-num">90</p><p class="text-blue-200 text-sm font-semibold mt-2">do público externo,<br/>em 65 formulários</p></div>
+        <div class="stat-card"><p class="stat-num">8</p><p class="text-blue-200 text-sm font-semibold mt-2">de unidades internas<br/>(3 da SFC)</p></div>
+        <div class="stat-card"><p class="stat-num">1</p><p class="text-blue-200 text-sm font-semibold mt-2">do Poder Concedente<br/>(MPor)</p></div>
       </div>
-      <div class="descob">
-        <div class="flex items-center gap-4 mb-3">
-          <p class="font-montserrat font-black text-brand" style="font-size:calc(48px * var(--tz)); line-height:1;">14</p>
-          <p class="card-t">demandas, em 6 blocos,<br/>sem cobertura em nenhum instrumento</p>
+      <div class="destaque">
+        <p class="font-montserrat font-bold" style="font-size:calc(21px * var(--tz));">Tomada de Subsídios dispensada neste ciclo</p>
+        <p class="text-blue-100 text-lg mt-1">
+          <strong>Mesmo universo de respondentes</strong> que uma consulta própria buscaria (Res. ANTAQ nº 40/2021, art. 2º);
+          <strong>volume e aderência</strong> — 4 eixos, 25 subgrupos, gargalos concretos da operação;
+          e o <strong>custo</strong> de repetir: fadiga de participação, sobreposição com o ciclo regulatório
+          e prazo da DC em 31/10/2026. O acervo foi examinado <strong>na íntegra</strong>, sem recorte prévio.
+        </p>
+      </div>
+      <div class="card card-green">
+        <div class="ico" style="background:#BBF7D0;"><i class="fas fa-calendar-plus text-green-700 text-2xl"></i></div>
+        <div>
+          <p class="card-t">Para os próximos ciclos</p>
+          <p class="card-d">Consulta externa no calendário regular do PAF, aberta no 1º semestre e articulada
+          com a SRG, gestora da participação social no ciclo regulatório.</p>
         </div>
-        <ul>
-          <li>Inovação e cibersegurança</li>
-          <li>Avaliação de resultado regulatório</li>
-          <li>Terminais de passageiros e biometria</li>
-          <li>Resíduos de embarcações</li>
-          <li>Modelo de fiscalização e supervisão regulatória</li>
-          <li>Padronização e compartilhamento de dados marítimos</li>
-        </ul>
-        <p class="legenda mt-3">Esses blocos descobertos orientam o critério de <strong>complementaridade</strong> na escolha das novas temáticas.</p>
       </div>
     </div>
   </div>
-  <p class="fonte px-16 pb-1">Fonte: NT nº 27/2026/GPF/SFC, itens 5.2 a 5.5.</p>
+  <p class="fonte px-16 pb-1">Relatório Técnico nº 4/2026/CGGR/SRG · Processo nº 50300.009940/2026-03. Fonte: NT nº 27/2026/GPF/SFC, itens 2 e 3.</p>
 
 
   <div class="px-16 pb-4 flex justify-between items-center border-t border-gray-100 pt-3 mx-8">
     <p class="text-gray-400 text-sm">PAF 2027 — Apresentação ao Diretor-Geral · SFC · GRAT, GPF e GCOR · ANTAQ</p>
-    <p class="text-gray-300 text-sm font-mono">10 / 17</p>
+    <p class="text-gray-300 text-sm font-mono">10 / 19</p>
   </div>
 </div>
 <script src="zoom.js"></script>

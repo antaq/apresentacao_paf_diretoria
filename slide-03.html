@@ -3,252 +3,90 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Grupo de risco — do risco à ação fiscal</title>
+<title>Bloco 1 — Fiscalizações do grupo de risco</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-<style>:root { --tz-base: 1.305; }
-
+<style>
 body { margin:0; padding:0; overflow:hidden; font-family:'Open Sans',sans-serif; }
-.slide { width:100vw; height:100vh; position:relative; display:flex; flex-direction:column; overflow:hidden; background:#ffffff; }
+.slide { width:100vw; height:100vh; position:relative; display:flex; flex-direction:column; overflow:hidden;
+  background:linear-gradient(135deg, #002244 0%, #003366 50%, #004488 100%); color:white; }
 .font-montserrat { font-family:'Montserrat',sans-serif; }
-.text-brand { color:#003366; }
-.bg-brand { background-color:#003366; }
-.text-accent { color:#0066CC; }
-.bg-accent { background-color:#0066CC; }
-.header-bar { height:10px; background:#003366; width:100%; }
-.secondary-bar { height:4px; background:#0066CC; width:100%; }
-
-.stat-card {
-  background: linear-gradient(135deg, #003366, #004d99);
-  border-radius: 16px;
-  padding: 20px 18px;
-  text-align: center;
-  color: white;
-  position: relative;
-  overflow: hidden;
-}
-.stat-card::after {
-  content: '';
-  position: absolute; top: -30px; right: -30px;
-  width: 80px; height: 80px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.06);
-}
-.stat-num {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 900;
-  font-size: calc(48px * var(--tz));
-  line-height: 1;
-}
-.card {
-  display: flex; align-items: flex-start; gap: 16px;
-  padding: 14px 20px;
-  background: #F8FAFC;
-  border-radius: 14px;
-  border-left: 5px solid #0066CC;
-}
-.card-green  { background: linear-gradient(135deg,#F0FDF4,#DCFCE7); border-left-color:#22C55E; }
-.card-amber  { background: linear-gradient(135deg,#FFFBEB,#FEF3C7); border-left-color:#F59E0B; }
-.card-red    { background: linear-gradient(135deg,#FEF2F2,#FEE2E2); border-left-color:#EF4444; }
-.ico {
-  width:50px; height:50px; border-radius:12px; flex-shrink:0;
-  display:flex; align-items:center; justify-content:center;
-}
-/* As colunas dos slides de duas metades centram o proprio conteudo: a folga
-   vertical fica dividida em cima e embaixo, em vez de sobrar toda no rodape.
-   O contêiner de conteudo quase sempre E o proprio grid (`class="flex-1 ...
-   grid"`), e nao um grid dentro dele — por isso os dois seletores. */
-.slide > .flex-1 > .flex.flex-col,
-.slide > .flex-1 > .grid > .flex.flex-col { justify-content:center; }
-
-table.tbl { width:100%; border-collapse:collapse; }
-table.tbl th {
-  background:#F1F5F9; color:#475569; text-align:left;
-  font-family:'Montserrat',sans-serif; font-weight:700;
-  text-transform:uppercase; letter-spacing:0.06em;
-  padding:10px 14px; font-size:calc(15px * var(--tz));
-}
-table.tbl td { padding:11px 14px; border-top:1px solid #E2E8F0; color:#334155; font-size:calc(18px * var(--tz)); }
-table.tbl tr:nth-child(even) td { background:#FAFBFC; }
-.num { text-align:right; font-variant-numeric:tabular-nums; }
-table.tbl th.num { text-align:right; }
-.pill {
-  display:inline-block; padding:3px 12px; border-radius:999px;
-  font-family:'Montserrat',sans-serif; font-weight:700;
-  font-size:calc(14px * var(--tz)); letter-spacing:0.04em;
-}
-.pill-a { background:#DCFCE7; color:#166534; }
-.pill-b { background:#DBEAFE; color:#1E40AF; }
-.pill-c { background:#FEE2E2; color:#991B1B; }
-.pill-gold { background:#FEF3C7; color:#92400E; }
-.formula {
-  background:#0F172A; color:#E2E8F0; border-radius:14px;
-  padding:18px 24px; font-family:'Courier New',monospace;
-  font-size:calc(20px * var(--tz)); letter-spacing:0.02em;
-}
-.destaque {
-  background: linear-gradient(135deg,#003366,#0066CC);
-  color:#fff; border-radius:16px; padding:16px 24px;
-}
-.legenda { color:#64748B; font-size:calc(15px * var(--tz)); line-height:1.5; }
-.novo-tag {
-  display:inline-flex; align-items:center; gap:7px;
-  background:#FFD700; color:#003366; border-radius:999px;
-  padding:3px 14px; font-family:'Montserrat',sans-serif;
-  font-weight:900; font-size:calc(13px * var(--tz));
-  letter-spacing:0.1em; text-transform:uppercase;
-}
-
-/* Respiro vertical entre os cards.
-   Os utilitarios gap-* do Tailwind valem para as duas direcoes, e mexer no
-   `gap` cheio estreitaria as colunas dos grids de duas metades. Por isso aqui
-   so o `row-gap` e reescrito: um card fica mais longe do card de baixo, e a
-   largura das colunas continua exatamente a mesma. Esta folha vem depois do
-   CDN no <head>, entao vence no desempate por ordem. */
-.gap-2 { row-gap:18px; }
-.gap-3 { row-gap:30px; }
-.gap-4 { row-gap:32px; }
-.gap-5 { row-gap:34px; }
-.gap-6 { row-gap:34px; }
-.gap-8 { row-gap:38px; }
-
-.bloco-tag {
-  display:inline-flex; align-items:center; gap:8px;
-  border-radius:999px; padding:4px 16px; font-family:'Montserrat',sans-serif;
-  font-weight:900; font-size:calc(13px * var(--tz)); letter-spacing:0.08em; text-transform:uppercase;
-}
-.bt-risco { background:#FEE2E2; color:#991B1B; }
-.bt-tema  { background:#DBEAFE; color:#1E3A8A; }
-.bt-geral { background:#FEF3C7; color:#92400E; }
-.fonte { color:#94A3B8; font-size:calc(13px * var(--tz)); line-height:1.4; }
-.titulo-sec { font-family:'Montserrat',sans-serif; font-weight:700; color:#003366; font-size:calc(21px * var(--tz)); }
-.sub-sec { color:#64748B; font-size:calc(15px * var(--tz)); }
-.num-badge {
-  width:38px; height:38px; border-radius:50%; flex-shrink:0;
-  display:flex; align-items:center; justify-content:center;
-  background:#003366; color:#fff; font-family:'Montserrat',sans-serif; font-weight:900;
-  font-size:calc(17px * var(--tz));
-}
-.card p { margin:0; }
-.card-t { font-family:'Montserrat',sans-serif; font-weight:700; color:#003366; font-size:calc(19px * var(--tz)); }
-.card-d { color:#475569; font-size:calc(16px * var(--tz)); line-height:1.45; margin-top:3px !important; }
-
-/* Barras: trilho cinza, segmentos com 2px de folga entre si e rótulo direto. */
-.bar-row { display:grid; grid-template-columns: var(--rot, 300px) 1fr; align-items:center; gap:14px; }
-.bar-rot { color:#334155; font-size:calc(17px * var(--tz)); line-height:1.25; text-align:right; }
-.bar-rot strong { color:#003366; }
-.bar-trk { display:flex; gap:2px; height:42px; }
-.seg {
-  height:100%; display:flex; align-items:center; justify-content:center;
-  font-family:'Montserrat',sans-serif; font-weight:700; font-size:calc(17px * var(--tz));
-  color:#fff; min-width:0; overflow:hidden; white-space:nowrap;
-}
-.seg:first-child { border-radius:4px 0 0 4px; }
-.seg:last-child  { border-radius:0 4px 4px 0; }
-.seg:only-child  { border-radius:4px; }
-.leg-row { display:flex; flex-wrap:wrap; gap:22px; color:#475569; font-size:calc(16px * var(--tz)); }
-.leg-row span { display:inline-flex; align-items:center; gap:7px; }
-.leg-row i.sw { width:18px; height:18px; border-radius:3px; display:inline-block; }
-/* Título com tamanho fixo em todos os slides: não acompanha o fator de texto,
-   para que títulos longos não quebrem linha quando o corpo cresce. */
-.slide p.text-5xl { font-size:54px !important; line-height:1.1 !important; }
-
-.cc { display:flex; flex-direction:column; flex:1; }
-.cc-plot { position:relative; flex:1; min-height:calc(240px * var(--tz)); display:grid; grid-template-columns:repeat(8,1fr); column-gap:16px; align-items:stretch; border-bottom:2px solid #94A3B8; padding:0 6px; }
-.cc-grid { position:absolute; left:0; right:0; border-top:1px dashed #E2E8F0; }
-.cc-col { position:relative; z-index:1; }
-.cc-v { position:absolute; left:-8px; right:-8px; text-align:center; font-family:'Montserrat',sans-serif; font-weight:900; color:#0F172A; font-size:calc(22px * var(--tz)); line-height:1; }
-.cc-b { position:absolute; left:0; right:0; bottom:0; border-radius:6px 6px 0 0; }
-.cc-x { display:grid; grid-template-columns:repeat(8,1fr); column-gap:16px; padding:8px 6px 0; }
-.cc-x div { text-align:center; line-height:1.2; }
-.cc-x b { display:block; font-family:'Montserrat',sans-serif; font-weight:900; color:#003366; font-size:calc(19px * var(--tz)); }
-.cc-x span { color:#64748B; font-size:calc(13.5px * var(--tz)); }
-.cc-g { display:grid; grid-template-columns:repeat(8,1fr); column-gap:16px; padding:10px 6px 0; }
-.cc-g div { border-top:4px solid; padding-top:6px; text-align:center; color:#475569; font-size:calc(15px * var(--tz)); line-height:1.3; }
-.cc-g strong { color:#003366; font-family:'Montserrat',sans-serif; }
+.accent-left-gold { position:absolute; left:0; top:0; width:12px; height:100%; background:#FFD700; z-index:20; }
+.accent-left-blue { position:absolute; left:12px; top:0; width:4px; height:100%; background:#0066CC; z-index:20; }
+.shape-circle { position:absolute; border-radius:50%; z-index:0; }
+.shape-1 { width:620px; height:620px; top:-180px; right:-160px; border:60px solid rgba(255,255,255,0.03); }
+.shape-2 { width:420px; height:420px; bottom:-140px; right:18%; border:40px solid rgba(255,255,255,0.03); }
+.bg-pattern { background-image:radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px); background-size:22px 22px; }
+.module-num { font-family:'Montserrat',sans-serif; font-weight:900; line-height:0.9; font-size:188px;
+  letter-spacing:-4px; color:#FFD700; text-shadow:0 8px 24px rgba(0,0,0,0.35); }
+.seal { display:inline-flex; align-items:center; gap:16px;
+  background:linear-gradient(90deg, rgba(255,215,0,0.16) 0%, rgba(255,215,0,0.04) 100%);
+  border:2px solid rgba(255,215,0,0.55); border-radius:999px; padding:16px 34px; }
+.chip { display:flex; align-items:center; gap:18px; background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.14); border-radius:16px; padding:22px 22px; }
+.chip-icon { width:64px; height:64px; border-radius:14px; flex-shrink:0; display:flex; align-items:center;
+  justify-content:center; font-size:28px; background:rgba(0,102,204,0.30); color:#7CC0FF; }
+.chip-text { font-family:'Montserrat',sans-serif; font-weight:600; color:#FFFFFF; font-size:22px; line-height:1.25; margin:0; }
 </style>
 </head>
 <body>
 <div class="slide">
-  <div class="header-bar"></div>
-  <div class="secondary-bar"></div>
+  <div class="accent-left-gold"></div>
+  <div class="accent-left-blue"></div>
+  <div class="shape-circle shape-1"></div>
+  <div class="shape-circle shape-2"></div>
+  <div class="absolute inset-0 bg-pattern"></div>
+  <img src="assets/logo-antaq-branca.png" alt="" class="absolute"
+       style="top:42%; left:66%; width:48vw; max-width:720px; transform:translate(-50%,-50%); opacity:0.05; z-index:0; pointer-events:none;"/>
+  <div class="absolute text-white z-0"
+       style="bottom:-60px; right:-40px; font-size:500px; line-height:0; opacity:0.05; transform:translate(8%,8%);">
+    <i class="fas fa-gauge-high"></i>
+  </div>
 
-  <div class="px-16 pt-6 pb-2">
-    <div class="flex items-center gap-3">
-      <div style="width:5px;height:44px;" class="bg-accent"></div>
-      <div>
-        <p class="font-montserrat font-bold text-gray-400 text-lg uppercase tracking-widest">Fiscalização Responsiva · PPF 2025-2028</p>
-        <p class="text-5xl font-montserrat font-bold text-brand uppercase tracking-tight">Do risco à ação fiscal</p>
-      </div>
-      <div class="ml-auto flex items-center gap-3">
-        <span class="bloco-tag bt-risco"><i class="fas fa-gauge-high"></i> Bloco 1 · Grupo de risco</span>
-        <img src="assets/logo-antaq-azul.png" alt="ANTAQ" style="height:32px;">
-        <p class="font-montserrat font-bold text-gray-400 tracking-wider" style="font-size:12px; line-height:1.35;">SFC<br/>GRAT · GPF · GCOR</p>
-      </div>
+  <div class="absolute z-10 flex items-center gap-4" style="top:56px; left:96px;">
+    <img src="assets/logo-antaq-branca.png" alt="Logo ANTAQ" style="height:52px; width:auto;"/>
+    <div style="border-left:1px solid rgba(255,255,255,0.20); padding-left:18px;">
+      <p class="font-montserrat font-bold uppercase" style="font-size:18px; letter-spacing:.18em; color:#BFDBFE;">PAF 2027 · Apresentação ao Diretor-Geral</p>
+      <p class="font-montserrat font-semibold uppercase" style="font-size:17px; letter-spacing:.12em; color:#93C5FD; opacity:.85;">SFC · GRAT · GPF · GCOR</p>
     </div>
   </div>
 
-
-  <div class="flex-1 px-16 pb-2 grid grid-cols-12 gap-6">
-    <div class="col-span-5 flex flex-col gap-3">
-      <div class="destaque">
-        <p class="font-montserrat font-bold" style="font-size:calc(24px * var(--tz));">Índice de Perfil de Risco (IPR)</p>
-        <p class="text-blue-100 text-lg mt-1">Cada outorga recebe uma <strong>nota de 0 a 100</strong> e uma
-        <strong>faixa de A1 a C4</strong>. A intensidade da ação fiscal é proporcional ao risco — é o modelo
-        de Fiscalização Responsiva do PPF 2025-2028.</p>
-      </div>
-      <div class="card">
-        <div class="ico" style="background:#DBEAFE;"><i class="fas fa-file-signature text-accent text-2xl"></i></div>
-        <div><p class="card-t">A unidade é a outorga, não a empresa</p>
-        <p class="card-d">Uma EBN com quatro linhas de travessia tem quatro IPRs: o risco de uma travessia no
-        Oiapoque não é o de outra em Manaus.</p></div>
-      </div>
-      <div class="card">
-        <div class="ico" style="background:#DBEAFE;"><i class="fas fa-scale-balanced text-accent text-2xl"></i></div>
-        <div><p class="card-t">A nota mistura duas coisas</p>
-        <p class="card-d"><strong>O que a empresa já fez</strong> (autuações, reincidência, NoCI descumprida, denúncias
-        que viraram sanção) e <strong>o que ela é</strong> (risco da atividade, porte, acesso, maturidade e há quanto
-        tempo ninguém a visita).</p></div>
-      </div>
-      <div class="card card-amber">
-        <div class="ico" style="background:#FDE68A;"><i class="fas fa-user-check text-yellow-700 text-2xl"></i></div>
-        <div><p class="card-t">O índice prioriza; a chefia decide</p>
-        <p class="card-d">O IPR indica a ordem, sem substituir o juízo técnico: toda inclusão ou exclusão fora da regra
-        fica registrada, com autor e fundamento.</p></div>
+  <div class="relative z-10 flex-1 flex flex-col justify-center"
+       style="padding-left:96px; padding-right:80px; padding-top:96px; padding-bottom:24px;">
+    <div class="flex items-center gap-4" style="margin-bottom:26px;">
+      <div style="width:72px; height:4px; background-color:#FFD700;"></div>
+      <p class="font-montserrat font-semibold uppercase" style="font-size:22px; letter-spacing:.3em; color:#BFDBFE;">Bloco</p>
+    </div>
+    <div class="flex items-end" style="gap:40px; margin-bottom:46px;">
+      <span class="module-num">01</span>
+      <div style="border-left:5px solid rgba(255,215,0,0.55); padding-left:36px; padding-bottom:10px;">
+        <h1 class="font-montserrat font-black text-white" style="font-size:80px; line-height:1.06; letter-spacing:-1.5px;">Fiscalizações do grupo de risco</h1>
+        <p class="font-montserrat" style="font-size:30px; font-weight:400; line-height:1.4; color:#DBEAFE; max-width:1300px; margin-top:16px;">Quem fiscalizar, e com que intensidade: a nota de risco de cada outorga define a ação, e o plano precisa caber na equipe e no orçamento.</p>
       </div>
     </div>
-
-    <div class="col-span-7 flex flex-col gap-3">
-      <div>
-        <p class="titulo-sec">Outorgas por faixa e a solução fiscal de cada uma</p>
-        <p class="sub-sec">2.426 outorgas ativas no ciclo 2027 (2.466 do universo, menos 40 com CNPJ baixado ou suspenso)</p>
-      </div>
-      
-      <div class="cc">
-        <div class="cc-plot"><div class="cc-grid" style="bottom:25.0%;"></div><div class="cc-grid" style="bottom:50.0%;"></div><div class="cc-grid" style="bottom:75.0%;"></div><div class="cc-col" title="A1: 272 outorgas"><div class="cc-b" style="height:27.20%;background:#4ADE80;"></div><div class="cc-v" style="bottom:calc(27.20% + 8px);">272</div></div><div class="cc-col" title="A2: 159 outorgas"><div class="cc-b" style="height:15.90%;background:#16A34A;"></div><div class="cc-v" style="bottom:calc(15.90% + 8px);">159</div></div><div class="cc-col" title="B1: 906 outorgas"><div class="cc-b" style="height:90.60%;background:#60A5FA;"></div><div class="cc-v" style="bottom:calc(90.60% + 8px);">906</div></div><div class="cc-col" title="B2: 502 outorgas"><div class="cc-b" style="height:50.20%;background:#1D4ED8;"></div><div class="cc-v" style="bottom:calc(50.20% + 8px);">502</div></div><div class="cc-col" title="C1: 286 outorgas"><div class="cc-b" style="height:28.60%;background:#F87171;"></div><div class="cc-v" style="bottom:calc(28.60% + 8px);">286</div></div><div class="cc-col" title="C2: 194 outorgas"><div class="cc-b" style="height:19.40%;background:#EF4444;"></div><div class="cc-v" style="bottom:calc(19.40% + 8px);">194</div></div><div class="cc-col" title="C3: 77 outorgas"><div class="cc-b" style="height:7.70%;background:#B91C1C;"></div><div class="cc-v" style="bottom:calc(7.70% + 8px);">77</div></div><div class="cc-col" title="C4: 30 outorgas"><div class="cc-b" style="height:3.00%;background:#7F1D1D;"></div><div class="cc-v" style="bottom:calc(3.00% + 8px);">30</div></div></div>
-        <div class="cc-x"><div><b>A1</b><span>monitoramento</span></div><div><b>A2</b><span>monitoramento</span></div><div><b>B1</b><span>documental</span></div><div><b>B2</b><span>à distância</span></div><div><b>C1</b><span>programada</span></div><div><b>C2</b><span>sem aviso</span></div><div><b>C3</b><span>intensiva</span></div><div><b>C4</b><span>intervenção</span></div></div>
-        <div class="cc-g">
-          <div style="grid-column:span 2; border-color:#16A34A;"><strong>Grupo A</strong> · menor risco<br/>monitoramento e <strong>sorteio auditável</strong> · 431</div>
-          <div style="grid-column:span 2; border-color:#1D4ED8;"><strong>Grupo B</strong> · intermediário<br/>ação <strong>remota</strong> · 1.408</div>
-          <div style="grid-column:span 4; border-color:#B91C1C;"><strong>Grupo C</strong> · maior risco<br/>ação <strong>presencial</strong>, até intervenção técnica com possível cautelar · 587</div>
-        </div>
-      </div>
-      <p class="legenda">A correspondência faixa &rarr; solução fiscal é parametrizada e versionada, não fixada em programa.
-      A navegação marítima é documental em qualquer faixa (61 outorgas do Grupo C).</p>
+    <div class="grid grid-cols-5" style="gap:20px; max-width:1640px;">
+      <div class="chip"><div class="chip-icon"><i class="fas fa-stairs"></i></div><p class="chip-text">Do risco à ação fiscal</p></div>
+      <div class="chip"><div class="chip-icon"><i class="fas fa-eye"></i></div><p class="chip-text">IPR 2.0: o que mudou</p></div>
+      <div class="chip"><div class="chip-icon"><i class="fas fa-list-check"></i></div><p class="chip-text">O que entra no PAF 2027</p></div>
+      <div class="chip"><div class="chip-icon"><i class="fas fa-users"></i></div><p class="chip-text">Força de trabalho</p></div>
+      <div class="chip"><div class="chip-icon"><i class="fas fa-plane"></i></div><p class="chip-text">Custo de deslocamento</p></div>
+    </div>
+    <div style="margin-top:44px;">
+      <span class="seal">
+        <i class="fas fa-file-lines" style="color:#FFD700; font-size:28px;"></i>
+        <span class="font-montserrat" style="font-size:26px; font-weight:700; color:#fff;">Minuta da NT de Metodologia do PAF 2027 · IPR 2.0</span>
+      </span>
     </div>
   </div>
-  <p class="fonte px-16 pb-1">Fonte: minuta da NT de Metodologia do PAF 2027 (rodada de validação de 29/09/2026), Quadro 2.</p>
 
-
-  <div class="px-16 pb-4 flex justify-between items-center border-t border-gray-100 pt-3 mx-8">
-    <p class="text-gray-400 text-sm">PAF 2027 — Apresentação ao Diretor-Geral · SFC · GRAT, GPF e GCOR · ANTAQ</p>
-    <p class="text-gray-300 text-sm font-mono">3 / 17</p>
+  <div class="relative z-10 flex justify-between items-end" style="padding:0 96px 32px;">
+    <p class="font-montserrat" style="font-size:18px; color:#BFDBFE; opacity:.75;">PAF 2027 — Apresentação ao Diretor-Geral · SFC · GRAT, GPF e GCOR · ANTAQ</p>
+    <p class="font-mono" style="font-size:18px; color:#BFDBFE; opacity:.75;">3 / 19</p>
   </div>
 </div>
-<script src="zoom.js"></script>
 <script>document.addEventListener("keydown",function(e){if(["ArrowRight","ArrowLeft","PageDown","PageUp","Home","End"," ","f","F"].indexOf(e.key)!==-1){e.preventDefault();window.parent.postMessage({type:"slide-nav",key:e.key},"*");}});</script>
 </body>
 </html>

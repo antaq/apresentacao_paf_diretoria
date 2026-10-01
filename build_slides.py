@@ -18,7 +18,7 @@ Para regerar: python3 build_slides.py
 from pathlib import Path
 
 DST = Path(__file__).resolve().parent
-TOTAL = 17
+TOTAL = 19
 RODAPE = "PAF 2027 — Apresentação ao Diretor-Geral · SFC · GRAT, GPF e GCOR · ANTAQ"
 # Fator global de texto. Cada slide declara o `base` em que foi fechado; este
 # fator multiplica todos eles de uma vez. Em 0.90 o texto do corpo encolhe 10%,
@@ -1451,6 +1451,144 @@ slide(
 )
 
 SLIDES.append(dict(n=17, raw=True))
+
+# Os slides acima levam o número em que foram escritos; a posição final no deck abre
+# espaço para as duas divisórias de bloco (3 e 9). A capa (1) e o encerramento (19) são
+# escritos à mão.
+POSICAO = {2: 2, **{n: n + 1 for n in range(3, 8)}, **{n: n + 2 for n in range(8, 17)}}
+for s in SLIDES:
+    if not s.get("raw"):
+        s["n"] = POSICAO[s["n"]]
+
+
+# ---------------------------------------------------------------------------
+# Divisórias de bloco — espelham IA-Dia-a-Dia-SFC/slide-04.html (KIT, seção 7.1)
+# ---------------------------------------------------------------------------
+DIVISOR = """<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>{title}</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+body {{ margin:0; padding:0; overflow:hidden; font-family:'Open Sans',sans-serif; }}
+.slide {{ width:100vw; height:100vh; position:relative; display:flex; flex-direction:column; overflow:hidden;
+  background:linear-gradient(135deg, #002244 0%, #003366 50%, #004488 100%); color:white; }}
+.font-montserrat {{ font-family:'Montserrat',sans-serif; }}
+.accent-left-gold {{ position:absolute; left:0; top:0; width:12px; height:100%; background:#FFD700; z-index:20; }}
+.accent-left-blue {{ position:absolute; left:12px; top:0; width:4px; height:100%; background:#0066CC; z-index:20; }}
+.shape-circle {{ position:absolute; border-radius:50%; z-index:0; }}
+.shape-1 {{ width:620px; height:620px; top:-180px; right:-160px; border:60px solid rgba(255,255,255,0.03); }}
+.shape-2 {{ width:420px; height:420px; bottom:-140px; right:18%; border:40px solid rgba(255,255,255,0.03); }}
+.bg-pattern {{ background-image:radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px); background-size:22px 22px; }}
+.module-num {{ font-family:'Montserrat',sans-serif; font-weight:900; line-height:0.9; font-size:188px;
+  letter-spacing:-4px; color:#FFD700; text-shadow:0 8px 24px rgba(0,0,0,0.35); }}
+.seal {{ display:inline-flex; align-items:center; gap:16px;
+  background:linear-gradient(90deg, rgba(255,215,0,0.16) 0%, rgba(255,215,0,0.04) 100%);
+  border:2px solid rgba(255,215,0,0.55); border-radius:999px; padding:16px 34px; }}
+.chip {{ display:flex; align-items:center; gap:18px; background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.14); border-radius:16px; padding:22px 22px; }}
+.chip-icon {{ width:64px; height:64px; border-radius:14px; flex-shrink:0; display:flex; align-items:center;
+  justify-content:center; font-size:28px; background:rgba(0,102,204,0.30); color:#7CC0FF; }}
+.chip-text {{ font-family:'Montserrat',sans-serif; font-weight:600; color:#FFFFFF; font-size:22px; line-height:1.25; margin:0; }}
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="accent-left-gold"></div>
+  <div class="accent-left-blue"></div>
+  <div class="shape-circle shape-1"></div>
+  <div class="shape-circle shape-2"></div>
+  <div class="absolute inset-0 bg-pattern"></div>
+  <img src="assets/logo-antaq-branca.png" alt="" class="absolute"
+       style="top:42%; left:66%; width:48vw; max-width:720px; transform:translate(-50%,-50%); opacity:0.05; z-index:0; pointer-events:none;"/>
+  <div class="absolute text-white z-0"
+       style="bottom:-60px; right:-40px; font-size:500px; line-height:0; opacity:0.05; transform:translate(8%,8%);">
+    <i class="fas {icone}"></i>
+  </div>
+
+  <div class="absolute z-10 flex items-center gap-4" style="top:56px; left:96px;">
+    <img src="assets/logo-antaq-branca.png" alt="Logo ANTAQ" style="height:52px; width:auto;"/>
+    <div style="border-left:1px solid rgba(255,255,255,0.20); padding-left:18px;">
+      <p class="font-montserrat font-bold uppercase" style="font-size:18px; letter-spacing:.18em; color:#BFDBFE;">PAF 2027 · Apresentação ao Diretor-Geral</p>
+      <p class="font-montserrat font-semibold uppercase" style="font-size:17px; letter-spacing:.12em; color:#93C5FD; opacity:.85;">SFC · GRAT · GPF · GCOR</p>
+    </div>
+  </div>
+
+  <div class="relative z-10 flex-1 flex flex-col justify-center"
+       style="padding-left:96px; padding-right:80px; padding-top:96px; padding-bottom:24px;">
+    <div class="flex items-center gap-4" style="margin-bottom:26px;">
+      <div style="width:72px; height:4px; background-color:#FFD700;"></div>
+      <p class="font-montserrat font-semibold uppercase" style="font-size:22px; letter-spacing:.3em; color:#BFDBFE;">Bloco</p>
+    </div>
+    <div class="flex items-end" style="gap:40px; margin-bottom:46px;">
+      <span class="module-num">{num}</span>
+      <div style="border-left:5px solid rgba(255,215,0,0.55); padding-left:36px; padding-bottom:10px;">
+        <h1 class="font-montserrat font-black text-white" style="font-size:80px; line-height:1.06; letter-spacing:-1.5px;">{titulo}</h1>
+        <p class="font-montserrat" style="font-size:30px; font-weight:400; line-height:1.4; color:#DBEAFE; max-width:1300px; margin-top:16px;">{resumo}</p>
+      </div>
+    </div>
+    <div class="grid grid-cols-{ncol}" style="gap:20px; max-width:1640px;">
+{chips}
+    </div>
+    <div style="margin-top:44px;">
+      <span class="seal">
+        <i class="fas fa-file-lines" style="color:#FFD700; font-size:28px;"></i>
+        <span class="font-montserrat" style="font-size:26px; font-weight:700; color:#fff;">{base_doc}</span>
+      </span>
+    </div>
+  </div>
+
+  <div class="relative z-10 flex justify-between items-end" style="padding:0 96px 32px;">
+    <p class="font-montserrat" style="font-size:18px; color:#BFDBFE; opacity:.75;">{rodape}</p>
+    <p class="font-mono" style="font-size:18px; color:#BFDBFE; opacity:.75;">{n} / {total}</p>
+  </div>
+</div>
+<script>document.addEventListener("keydown",function(e){{if(["ArrowRight","ArrowLeft","PageDown","PageUp","Home","End"," ","f","F"].indexOf(e.key)!==-1){{e.preventDefault();window.parent.postMessage({{type:"slide-nav",key:e.key}},"*");}}}});</script>
+</body>
+</html>
+"""
+
+
+def divisor(n, num, titulo, resumo, icone, chips, base_doc):
+    html_chips = "\n".join(
+        f'      <div class="chip"><div class="chip-icon"><i class="fas {ic}"></i></div>'
+        f'<p class="chip-text">{tx}</p></div>'
+        for ic, tx in chips
+    )
+    (DST / f"slide-{n:02d}.html").write_text(DIVISOR.format(
+        title=f"Bloco {int(num)} — {titulo}", num=num, titulo=titulo, resumo=resumo,
+        icone=icone, chips=html_chips, ncol=len(chips), base_doc=base_doc,
+        rodape=RODAPE, n=n, total=TOTAL,
+    ), encoding="utf-8")
+    print(f"slide-{n:02d}.html (divisória)")
+
+
+divisor(
+    3, "01", "Fiscalizações do grupo de risco",
+    "Quem fiscalizar, e com que intensidade: a nota de risco de cada outorga define a ação, "
+    "e o plano precisa caber na equipe e no orçamento.",
+    "fa-gauge-high",
+    [("fa-stairs", "Do risco à ação fiscal"), ("fa-eye", "IPR 2.0: o que mudou"),
+     ("fa-list-check", "O que entra no PAF 2027"), ("fa-users", "Força de trabalho"),
+     ("fa-plane", "Custo de deslocamento")],
+    "Minuta da NT de Metodologia do PAF 2027 · IPR 2.0",
+)
+divisor(
+    9, "02", "Fiscalizações temáticas",
+    "Que problema do setor examinar a fundo: das 99 contribuições da revisão da Agenda "
+    "Regulatória às sete temáticas de 2027.",
+    "fa-layer-group",
+    [("fa-inbox", "99 demandas externas"), ("fa-check-double", "O que já está coberto"),
+     ("fa-arrows-rotate", "Manter quatro, substituir três"), ("fa-building-columns", "APs e convênios"),
+     ("fa-list-ol", "Candidatos às três vagas")],
+    "Nota Técnica nº 27/2026/GPF/SFC · SEI 3024667",
+)
 
 
 def render(s):

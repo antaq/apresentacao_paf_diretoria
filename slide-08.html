@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Temáticas — contexto e premissa</title>
+<title>Grupo de risco — custo de deslocamento</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-<style>:root { --tz-base: 1.332; }
+<style>:root { --tz-base: 1.134; }
 
 body { margin:0; padding:0; overflow:hidden; font-family:'Open Sans',sans-serif; }
 .slide { width:100vw; height:100vh; position:relative; display:flex; flex-direction:column; overflow:hidden; background:#ffffff; }
@@ -155,6 +155,35 @@ table.tbl th.num { text-align:right; }
 /* Título com tamanho fixo em todos os slides: não acompanha o fator de texto,
    para que títulos longos não quebrem linha quando o corpo cresce. */
 .slide p.text-5xl { font-size:54px !important; line-height:1.1 !important; }
+
+.passo { display:flex; align-items:center; gap:18px; background:#F8FAFC; border-radius:12px; padding:12px 18px; }
+.passo b { min-width:84px; text-align:center; font-family:'Montserrat',sans-serif; font-weight:900; color:#0066CC; font-size:calc(30px * var(--tz)); }
+.passo span { color:#475569; font-size:calc(16px * var(--tz)); line-height:1.4; }
+.passo strong { color:#003366; }
+.cc { display:flex; flex-direction:column; flex:1; }
+.cc-plot { position:relative; flex:1; min-height:calc(200px * var(--tz)); display:grid; grid-template-columns:repeat(8,1fr); column-gap:18px; align-items:stretch; border-bottom:2px solid #94A3B8; padding:0 6px; }
+.cc-grid { position:absolute; left:0; right:0; border-top:1px dashed #E2E8F0; }
+.cc-grid span { position:absolute; left:-2px; top:-18px; color:#94A3B8; font-size:12px; }
+.cc-col { position:relative; z-index:1; }
+.cc-v { position:absolute; left:-8px; right:-8px; text-align:center; font-family:'Montserrat',sans-serif; font-weight:700; color:#0F172A; font-size:calc(16px * var(--tz)); line-height:1; }
+.dl-stack { display:flex; flex-direction:column; gap:2px; overflow:hidden; }
+.dl-stack div:last-child { flex:none; }
+.dl-pct { display:grid; grid-template-columns:repeat(8,1fr); column-gap:18px; padding:6px 6px 0; position:relative; }
+.dl-pct p { position:absolute; left:0; top:6px; margin:0; width:130px; color:#64748B; font-size:calc(13px * var(--tz)); line-height:1.2; }
+.s7 .cc-plot, .s7 .cc-x, .s7 .dl-pct { padding-left:136px; }
+.s7 .cc-grid, .s7 .dl-paf { left:130px; }
+.s7 .cc-grid span { left:-46px; top:-8px; }
+.dl-pr { display:contents; }
+.dl-pr div { text-align:center; font-family:'Montserrat',sans-serif; font-weight:700; color:#5B9BD5; font-size:calc(15px * var(--tz)); }
+.dl-pr.dl-f div { color:#003366; }
+.cc-b { position:absolute; left:0; right:0; bottom:0; border-radius:6px 6px 0 0; }
+.cc-x { display:grid; grid-template-columns:repeat(8,1fr); column-gap:18px; padding:8px 6px 0; }
+.cc-x div { text-align:center; line-height:1.15; }
+.cc-x b { display:block; font-family:'Montserrat',sans-serif; font-weight:700; color:#003366; font-size:calc(17px * var(--tz)); }
+.cc-x span { color:#64748B; font-size:calc(13px * var(--tz)); }
+.dl-paf { position:absolute; left:0; right:0; border-top:3px dashed #B45309; z-index:2; }
+.slide .stat-num.sn-m { font-size:calc(40px * var(--tz)); }
+.passo, .col-span-5 > .card { flex:1; }
 </style>
 </head>
 <body>
@@ -166,11 +195,11 @@ table.tbl th.num { text-align:right; }
     <div class="flex items-center gap-3">
       <div style="width:5px;height:44px;" class="bg-accent"></div>
       <div>
-        <p class="font-montserrat font-bold text-gray-400 text-lg uppercase tracking-widest">Fiscalizações temáticas · NT nº 27/2026/GPF/SFC</p>
-        <p class="text-5xl font-montserrat font-bold text-brand uppercase tracking-tight">Por que e com que acervo</p>
+        <p class="font-montserrat font-bold text-gray-400 text-lg uppercase tracking-widest">Deslocamento · protocolo IPR-DESLOCA-V1</p>
+        <p class="text-5xl font-montserrat font-bold text-brand uppercase tracking-tight">Quanto custa ir a campo</p>
       </div>
       <div class="ml-auto flex items-center gap-3">
-        <span class="bloco-tag bt-tema"><i class="fas fa-layer-group"></i> Bloco 2 · Temáticas</span>
+        <span class="bloco-tag bt-risco"><i class="fas fa-gauge-high"></i> Bloco 1 · Grupo de risco</span>
         <img src="assets/logo-antaq-azul.png" alt="ANTAQ" style="height:32px;">
         <p class="font-montserrat font-bold text-gray-400 tracking-wider" style="font-size:12px; line-height:1.35;">SFC<br/>GRAT · GPF · GCOR</p>
       </div>
@@ -179,68 +208,57 @@ table.tbl th.num { text-align:right; }
 
 
   <div class="flex-1 px-16 pb-2 grid grid-cols-12 gap-6">
-    <div class="col-span-6 flex flex-col gap-3">
-      <p class="titulo-sec">Origem da demanda</p>
-      <div class="card">
-        <div class="num-badge">1</div>
-        <div>
-          <p class="card-t">Deliberação-DG nº 96/2025</p>
-          <p class="card-d">Referendada pelo Acórdão nº 41-2026-ANTAQ: discutir previamente a proposta
-          do PAF com as unidades finalísticas e as Diretorias, para captar temáticas ainda não mapeadas.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="num-badge">2</div>
-        <div>
-          <p class="card-t">Ofício Circular nº 2/2026/SFC/ANTAQ</p>
-          <p class="card-d">Consulta à SRG, à SESGI, à SOG e à SEPH sobre fiscalizações temáticas
-          relevantes, com prazo encerrado em <strong>17/08/2026</strong>.</p>
-        </div>
-      </div>
+    <div class="col-span-5 flex flex-col gap-3">
+      <p class="titulo-sec">Como o custo foi estimado</p>
+      <div class="passo"><b>501</b><span><strong>fiscalizações presenciais</strong>: o Grupo C sem a navegação marítima,
+        que é documental (481), mais as &asymp;20 esperadas do sorteio do Grupo A.</span></div>
+      <div class="passo"><b>160</b><span><strong>viagens</strong>: tudo o que uma unidade fiscaliza na mesma cidade vira uma só viagem.
+        <strong>52</strong> ficam a até 120 km e vão de viatura, sem passagem.</span></div>
+      <div class="passo"><b>108</b><span><strong>viagens pagas</strong>: dias e passagens pelo histórico real da ANTAQ no mesmo trajeto
+        (Portal da Transparência, 2019-2026, passagens corrigidas pelo IPCA), diária do Decreto 5.992/2006 e equipe de 2 fiscais.</span></div>
       <div class="card card-amber">
-        <div class="num-badge" style="background:#B45309;">3</div>
-        <div>
-          <p class="card-t">O limite da consulta interna</p>
-          <p class="card-d">As fontes da Agência registram o que já chegou a ela. O problema que
-          <strong>não gera autuação nem manifestação</strong> fica invisível ao planejamento — daí a
-          avaliação das contribuições externas.</p>
-        </div>
+        <div class="ico" style="background:#FDE68A;"><i class="fas fa-circle-info text-yellow-700 text-2xl"></i></div>
+        <div><p class="card-t">A confiança do número fica à vista</p>
+        <p class="card-d">36 viagens têm histórico do próprio trajeto; 72 usam a média da UF ou a média nacional por distância.
+        Cada viagem guarda a origem da estimativa.</p></div>
       </div>
     </div>
 
-    <div class="col-span-6 flex flex-col gap-3">
-      <p class="titulo-sec">O acervo já existia: revisão da Agenda Regulatória 2025-2028</p>
-      <div class="grid grid-cols-4 gap-3">
-        <div class="stat-card"><p class="stat-num">99</p><p class="text-blue-200 text-sm font-semibold mt-2">contribuições validadas<br/>(17/04 a 05/06/2026)</p></div>
-        <div class="stat-card"><p class="stat-num">90</p><p class="text-blue-200 text-sm font-semibold mt-2">do público externo,<br/>em 65 formulários</p></div>
-        <div class="stat-card"><p class="stat-num">8</p><p class="text-blue-200 text-sm font-semibold mt-2">de unidades internas<br/>(3 da SFC)</p></div>
-        <div class="stat-card"><p class="stat-num">1</p><p class="text-blue-200 text-sm font-semibold mt-2">do Poder Concedente<br/>(MPor)</p></div>
+    <div class="col-span-7 flex flex-col gap-3">
+      <div class="grid grid-cols-3 gap-3">
+        <div class="stat-card"><p class="stat-num sn-m">R$ 218,5 mil</p><p class="text-blue-200 text-base font-semibold mt-2">custo estimado do PAF presencial<br/>(diárias 129,6 + passagens 68,4)</p></div>
+        <div class="stat-card"><p class="stat-num sn-m">R$ 436</p><p class="text-blue-200 text-base font-semibold mt-2">por fiscalização<br/>presencial</p></div>
+        <div class="stat-card"><p class="stat-num sn-m">50%</p><p class="text-blue-200 text-base font-semibold mt-2">do que a SFC gastou em viagens<br/>de fiscalização em 2025</p></div>
       </div>
-      <div class="destaque">
-        <p class="font-montserrat font-bold" style="font-size:calc(21px * var(--tz));">Tomada de Subsídios dispensada neste ciclo</p>
-        <p class="text-blue-100 text-lg mt-1">
-          <strong>Mesmo universo de respondentes</strong> que uma consulta própria buscaria (Res. ANTAQ nº 40/2021, art. 2º);
-          <strong>volume e aderência</strong> — 4 eixos, 25 subgrupos, gargalos concretos da operação;
-          e o <strong>custo</strong> de repetir: fadiga de participação, sobreposição com o ciclo regulatório
-          e prazo da DC em 31/10/2026. O acervo foi examinado <strong>na íntegra</strong>, sem recorte prévio.
-        </p>
+      <div>
+        <p class="titulo-sec">Quanto a ANTAQ gasta com viagens, e quanto disso é fiscalização <span class="text-gray-400">· R$ mil</span></p>
+        <p class="sub-sec">diárias, passagens e outros gastos das viagens realizadas · total da ANTAQ no topo de cada coluna</p>
       </div>
-      <div class="card card-green">
-        <div class="ico" style="background:#BBF7D0;"><i class="fas fa-calendar-plus text-green-700 text-2xl"></i></div>
-        <div>
-          <p class="card-t">Para os próximos ciclos</p>
-          <p class="card-d">Consulta externa no calendário regular do PAF, aberta no 1º semestre e articulada
-          com a SRG, gestora da participação social no ciclo regulatório.</p>
+      
+      <div class="cc s7">
+        <div class="leg-row" style="margin-bottom:10px;">
+          <span><i class="sw" style="background:#003366;"></i>fiscalização (SFC)</span>
+          <span><i class="sw" style="background:#5B9BD5;"></i>demais viagens da SFC</span>
+          <span><i class="sw" style="background:#CBD5E1;"></i>demais áreas da ANTAQ</span>
+          <span><i class="sw" style="background:none; border-top:3px dashed #B45309; height:0; width:28px; border-radius:0;"></i><strong style="color:#92400E;">PAF 2027: R$ 218,5 mil</strong></span>
         </div>
+        <div class="cc-plot"><div class="cc-grid" style="bottom:22.7%;"><span>1 mi</span></div><div class="cc-grid" style="bottom:45.5%;"><span>2 mi</span></div><div class="cc-grid" style="bottom:68.2%;"><span>3 mi</span></div><div class="cc-grid" style="bottom:90.9%;"><span>4 mi</span></div><div class="cc-col" title="2019: ANTAQ R$ 2090 mil · SFC R$ 1205 mil · fiscalização R$ 262 mil"><div class="cc-b dl-stack" style="height:47.50%;"><div style="height:42.34%;background:#CBD5E1;"></div><div style="height:45.12%;background:#5B9BD5;"></div><div style="height:12.54%;background:#003366;"></div></div><div class="cc-v" style="bottom:calc(47.50% + 6px);">2.090</div></div><div class="cc-col" title="2020: ANTAQ R$ 504 mil · SFC R$ 346 mil · fiscalização R$ 194 mil"><div class="cc-b dl-stack" style="height:11.45%;"><div style="height:31.35%;background:#CBD5E1;"></div><div style="height:30.16%;background:#5B9BD5;"></div><div style="height:38.49%;background:#003366;"></div></div><div class="cc-v" style="bottom:calc(11.45% + 6px);">504</div></div><div class="cc-col" title="2021: ANTAQ R$ 1014 mil · SFC R$ 719 mil · fiscalização R$ 421 mil"><div class="cc-b dl-stack" style="height:23.05%;"><div style="height:29.09%;background:#CBD5E1;"></div><div style="height:29.39%;background:#5B9BD5;"></div><div style="height:41.52%;background:#003366;"></div></div><div class="cc-v" style="bottom:calc(23.05% + 6px);">1.014</div></div><div class="cc-col" title="2022: ANTAQ R$ 2737 mil · SFC R$ 1245 mil · fiscalização R$ 594 mil"><div class="cc-b dl-stack" style="height:62.20%;"><div style="height:54.51%;background:#CBD5E1;"></div><div style="height:23.79%;background:#5B9BD5;"></div><div style="height:21.70%;background:#003366;"></div></div><div class="cc-v" style="bottom:calc(62.20% + 6px);">2.737</div></div><div class="cc-col" title="2023: ANTAQ R$ 4033 mil · SFC R$ 1735 mil · fiscalização R$ 797 mil"><div class="cc-b dl-stack" style="height:91.66%;"><div style="height:56.98%;background:#CBD5E1;"></div><div style="height:23.26%;background:#5B9BD5;"></div><div style="height:19.76%;background:#003366;"></div></div><div class="cc-v" style="bottom:calc(91.66% + 6px);">4.033</div></div><div class="cc-col" title="2024: ANTAQ R$ 3241 mil · SFC R$ 1424 mil · fiscalização R$ 585 mil"><div class="cc-b dl-stack" style="height:73.66%;"><div style="height:56.06%;background:#CBD5E1;"></div><div style="height:25.89%;background:#5B9BD5;"></div><div style="height:18.05%;background:#003366;"></div></div><div class="cc-v" style="bottom:calc(73.66% + 6px);">3.241</div></div><div class="cc-col" title="2025: ANTAQ R$ 2568 mil · SFC R$ 980 mil · fiscalização R$ 435 mil"><div class="cc-b dl-stack" style="height:58.36%;"><div style="height:61.84%;background:#CBD5E1;"></div><div style="height:21.22%;background:#5B9BD5;"></div><div style="height:16.94%;background:#003366;"></div></div><div class="cc-v" style="bottom:calc(58.36% + 6px);">2.568</div></div><div class="cc-col" title="2026: ANTAQ R$ 1186 mil · SFC R$ 521 mil · fiscalização R$ 160 mil"><div class="cc-b dl-stack" style="height:26.95%;opacity:0.55;"><div style="height:56.07%;background:#CBD5E1;"></div><div style="height:30.44%;background:#5B9BD5;"></div><div style="height:13.49%;background:#003366;"></div></div><div class="cc-v" style="bottom:calc(26.95% + 6px);">1.186</div></div><div class="dl-paf" style="bottom:4.97%;"></div></div>
+        <div class="cc-x"><div><b>2019</b></div><div><b>2020</b></div><div><b>2021</b></div><div><b>2022</b></div><div><b>2023</b></div><div><b>2024</b></div><div><b>2025</b></div><div><b>2026</b><span>parcial</span></div></div>
+        <div class="dl-pct"><p>% da SFC</p><div class="dl-pr"><div>58%</div><div>69%</div><div>71%</div><div>45%</div><div>43%</div><div>44%</div><div>38%</div><div>44%</div></div></div>
+        <div class="dl-pct"><p>% da fiscalização</p><div class="dl-pr dl-f"><div>13%</div><div>38%</div><div>42%</div><div>22%</div><div>20%</div><div>18%</div><div>17%</div><div>13%</div></div></div>
       </div>
+      <p class="legenda">Em 2025, a SFC respondeu por <strong>38%</strong> do gasto da Agência com viagens e a fiscalização por <strong>17%</strong>.
+      O PAF presencial equivale a <strong>36%</strong> da média de fiscalização de 2022-2025 (R$ 603 mil) e a <strong>9%</strong> do gasto total de 2025.
+      O real inclui o que o PAF não programa: extraordinárias, denúncias e eventos sazonais.</p>
     </div>
   </div>
-  <p class="fonte px-16 pb-1">Relatório Técnico nº 4/2026/CGGR/SRG · Processo nº 50300.009940/2026-03. Fonte: NT nº 27/2026/GPF/SFC, itens 2 e 3.</p>
+  <p class="fonte px-16 pb-1">Estimativa: painel IPR-PAF, rodada de deslocamento de 28/09/2026, e minuta da NT de Metodologia do PAF 2027 (rodada de validação de 29/09/2026), item 10. Gasto real: viagens realizadas da ANTAQ no Portal da
+  Transparência (publicação de 20/09/2026), valores nominais; SFC = servidores da planilha de controle da SFC e fiscais revisados; fiscalização = viagem da SFC com motivo fiscal.</p>
 
 
   <div class="px-16 pb-4 flex justify-between items-center border-t border-gray-100 pt-3 mx-8">
     <p class="text-gray-400 text-sm">PAF 2027 — Apresentação ao Diretor-Geral · SFC · GRAT, GPF e GCOR · ANTAQ</p>
-    <p class="text-gray-300 text-sm font-mono">8 / 17</p>
+    <p class="text-gray-300 text-sm font-mono">8 / 19</p>
   </div>
 </div>
 <script src="zoom.js"></script>

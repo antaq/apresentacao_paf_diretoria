@@ -19,7 +19,7 @@ from pathlib import Path
 
 DST = Path(__file__).resolve().parent
 TOTAL = 17
-RODAPE = "PAF 2027 — Apresentação ao Diretor-Geral · SFC/GPF/ANTAQ"
+RODAPE = "PAF 2027 — Apresentação ao Diretor-Geral · SFC · GRAT, GPF e GCOR · ANTAQ"
 # Fator global de texto. Cada slide declara o `base` em que foi fechado; este
 # fator multiplica todos eles de uma vez. Em 0.90 o texto do corpo encolhe 10%,
 # e a folga que sobra vira respiro vertical entre os cards (row-gap, abaixo).
@@ -159,7 +159,7 @@ HEAD = """<!DOCTYPE html>
       <div class="ml-auto flex items-center gap-3">
         {tag}
         <img src="assets/logo-antaq-azul.png" alt="ANTAQ" style="height:32px;">
-        <p class="font-montserrat font-bold text-gray-400 text-sm tracking-widest">SFC · GPF</p>
+        <p class="font-montserrat font-bold text-gray-400 tracking-wider" style="font-size:12px; line-height:1.35;">SFC<br/>GRAT · GPF · GCOR</p>
       </div>
     </div>
   </div>
@@ -341,7 +341,7 @@ slide(
     9,
     "Temáticas — metodologia",
     f"Metodologia · {NT}, item 4",
-    "Das 99 demandas às Ordens de Serviço",
+    "Da demanda à Ordem de Serviço",
     f"""
   <div class="flex-1 px-16 pb-2 flex flex-col gap-4">
     <div class="grid grid-cols-4 gap-4">
@@ -519,8 +519,11 @@ slide(
         <p class="sub-sec">blocos entre parênteses</p>
       </div>
       {_rows26}
-      <p class="legenda mt-1"><strong>Preço em contêineres</strong> é a de maior alcance. A temática de <strong>TPB</strong> alcança só
-      em parte o maior bloco da consulta: apura a tonelagem para inscrição no REB, não afretamento e outorgas.</p>
+      <div class="card mt-1">
+        <div class="ico" style="background:#DBEAFE;"><i class="fas fa-magnifying-glass-chart text-accent text-2xl"></i></div>
+        <div><p class="card-d" style="margin-top:0 !important;"><strong>Preço em contêineres</strong> é a de maior alcance. A temática de <strong>TPB</strong> alcança só
+        em parte o maior bloco da consulta: apura a tonelagem para inscrição no REB, não afretamento e outorgas.</p></div>
+      </div>
     </div>
 
     <div class="col-span-5 flex flex-col justify-center gap-3">
@@ -533,7 +536,10 @@ slide(
       <div class="sit" style="border-left-color:{C_NOV}; background:#FFFBEB;"><span class="sit-n" style="color:{C_NOV};">9</span><span class="sit-d">dependem de <strong>novo ciclo</strong> de fiscalização — 7 delas em contêineres</span></div>
       <div class="sit" style="border-left-color:{C_ART};"><span class="sit-n" style="color:{C_ART};">4</span><span class="sit-d">dependem de <strong>articulação</strong> com as áreas de afretamento e outorgas</span></div>
       <div class="sit" style="border-left-color:{C_FORA};"><span class="sit-n" style="color:{C_FORA};">6</span><span class="sit-d"><strong>sem método</strong> de aferição ou fora da verificação de conformidade</span></div>
-      <p class="legenda">É essa distribuição que sustenta manter quatro temáticas com escopo ajustado e substituir as três demais.</p>
+      <div class="card card-amber">
+        <div class="ico" style="background:#FDE68A;"><i class="fas fa-scale-balanced text-yellow-700 text-2xl"></i></div>
+        <div><p class="card-d" style="margin-top:0 !important;">É essa distribuição que sustenta <strong>manter quatro temáticas</strong> com escopo ajustado e <strong>substituir as três</strong> demais.</p></div>
+      </div>
     </div>
   </div>
   <p class="fonte px-16 pb-1">APs: Autoridades Portuárias · REB: Registro Especial Brasileiro. Numeração das contribuições conforme o Relatório Técnico nº 4/2026/CGGR/SRG. Fonte: {NT}, Quadros 1 e 2.</p>
@@ -545,7 +551,7 @@ slide(
 .sit-d strong { color:#003366; }
 """,
     tag=TAG_TEMA,
-    base=1.57,
+    base=1.46,
 )
 
 # ---------------------------------------------------------------------------
@@ -854,7 +860,7 @@ slide(
           <div class="grid grid-cols-3 gap-3 mt-1">
             <div class="kpi"><b>2.466</b><span>outorgas avaliadas</span></div>
             <div class="kpi"><b>&asymp;669</b><span>no PAF 2027</span></div>
-            <div class="kpi"><b>45,9 mil</b><span>horas · 83% do envelope</span></div>
+            <div class="kpi"><b>45,9 mil</b><span>horas · 83% da capacidade</span></div>
           </div>
           <p class="frente-f"><i class="fas fa-file-lines"></i> Minuta da NT de Metodologia do PAF 2027 · IPR 2.0 (NT 11, 12, 19 e 20/2026)</p>
         </div>
@@ -885,7 +891,7 @@ slide(
         <div class="marco feito"><b>29/09</b><span>Rodada de validação do IPR e equalização aprovada</span></div>
         <div class="marco feito"><b>30/09</b><span>Data de referência do ciclo 2027 (corte cadastral)</span></div>
         <div class="marco hoje"><b>02/10 · hoje</b><span>Encerra a consulta técnica às Unidades Regionais</span></div>
-        <div class="marco"><b>Outubro</b><span>Extração oficial, consolidação e escolha das 3 temáticas</span></div>
+        <div class="marco"><b>Outubro</b><span>Extração oficial com o sorteio do Grupo A, consolidação e escolha das 3 temáticas</span></div>
         <div class="marco"><b>Até 31/10</b><span>Proposta do PAF 2027 submetida à Diretoria Colegiada</span></div>
       </div>
     </div>
@@ -924,6 +930,40 @@ slide(
 # BLOCO 1 — FISCALIZAÇÕES DO GRUPO DE RISCO (IPR 2.0)
 # ===========================================================================
 
+# Colunas das faixas: um matiz por grupo (verde A, azul B, vermelho C), com o tom
+# escurecendo dentro do grupo conforme a intensidade da ação. Rótulo direto em cada coluna.
+_FAIXAS = [
+    ("A1", 272, "monitoramento", "#4ADE80"), ("A2", 159, "monitoramento", "#16A34A"),
+    ("B1", 906, "documental", "#60A5FA"), ("B2", 502, "à distância", "#1D4ED8"),
+    ("C1", 286, "programada", "#F87171"), ("C2", 194, "sem aviso", "#EF4444"),
+    ("C3", 77, "intensiva", "#B91C1C"), ("C4", 30, "intervenção", "#7F1D1D"),
+]
+
+
+def _colunas_faixa():
+    vmax = 1000
+    grade = "".join(
+        f'<div class="cc-grid" style="bottom:{100 * g / vmax:.1f}%;"></div>' for g in (250, 500, 750)
+    )
+    cols = "".join(
+        f'<div class="cc-col" title="{f}: {v} outorgas">'
+        f'<div class="cc-b" style="height:{100 * v / vmax:.2f}%;background:{cor};"></div>'
+        f'<div class="cc-v" style="bottom:calc({100 * v / vmax:.2f}% + 8px);">{v:,}</div></div>'.replace(",", ".")
+        for f, v, _, cor in _FAIXAS
+    )
+    eixo = "".join(f"<div><b>{f}</b><span>{sol}</span></div>" for f, _, sol, _ in _FAIXAS)
+    return f"""
+      <div class="cc">
+        <div class="cc-plot">{grade}{cols}</div>
+        <div class="cc-x">{eixo}</div>
+        <div class="cc-g">
+          <div style="grid-column:span 2; border-color:#16A34A;"><strong>Grupo A</strong> · menor risco<br/>monitoramento e <strong>sorteio auditável</strong> · 431</div>
+          <div style="grid-column:span 2; border-color:#1D4ED8;"><strong>Grupo B</strong> · intermediário<br/>ação <strong>remota</strong> · 1.408</div>
+          <div style="grid-column:span 4; border-color:#B91C1C;"><strong>Grupo C</strong> · maior risco<br/>ação <strong>presencial</strong>, até intervenção técnica com possível cautelar · 587</div>
+        </div>
+      </div>"""
+
+
 # ---------------------------------------------------------------------------
 # 03 — Do risco à solução fiscal
 # ---------------------------------------------------------------------------
@@ -956,27 +996,18 @@ slide(
       </div>
       <div class="card card-amber">
         <div class="ico" style="background:#FDE68A;"><i class="fas fa-user-check text-yellow-700 text-2xl"></i></div>
-        <div><p class="card-t">O IPR ordena; quem decide é gente</p>
-        <p class="card-d">Toda exceção fica registrada com autor e fundamento.</p></div>
+        <div><p class="card-t">O índice prioriza; a chefia decide</p>
+        <p class="card-d">O IPR indica a ordem, sem substituir o juízo técnico: toda inclusão ou exclusão fora da regra
+        fica registrada, com autor e fundamento.</p></div>
       </div>
     </div>
 
-    <div class="col-span-7 flex flex-col gap-2">
-      <p class="titulo-sec">A faixa define a solução fiscal <span class="text-gray-400">· outorgas ativas, ciclo 2027</span></p>
-      <table class="tbl">
-        <thead><tr><th>Grupo</th><th>Faixa</th><th>Solução fiscal</th><th class="num">Outorgas</th></tr></thead>
-        <tbody>
-          <tr class="gA"><td rowspan="2"><span class="pill pill-a">A</span> menor risco</td><td><strong>A1</strong></td><td rowspan="2">Monitoramento, com fiscalização por <strong>sorteio auditável</strong></td><td class="num">272</td></tr>
-          <tr class="gA"><td><strong>A2</strong></td><td class="num">159</td></tr>
-          <tr class="gB"><td rowspan="2"><span class="pill pill-b">B</span> intermediário</td><td><strong>B1</strong></td><td>Ação remota documental</td><td class="num">906</td></tr>
-          <tr class="gB"><td><strong>B2</strong></td><td>Ação remota com ação à distância</td><td class="num">502</td></tr>
-          <tr class="gC"><td rowspan="4"><span class="pill pill-c">C</span> maior risco</td><td><strong>C1</strong></td><td>Ação presencial programada</td><td class="num">286</td></tr>
-          <tr class="gC"><td><strong>C2</strong></td><td>Ação presencial sem aviso prévio</td><td class="num">194</td></tr>
-          <tr class="gC"><td><strong>C3</strong></td><td>Ação presencial intensiva</td><td class="num">77</td></tr>
-          <tr class="gC"><td><strong>C4</strong></td><td>Intervenção técnica, com possível medida cautelar</td><td class="num">30</td></tr>
-          <tr><td colspan="3"><strong>Total de outorgas ativas</strong> (2.466 do universo, menos 40 com CNPJ baixado ou suspenso)</td><td class="num"><strong>2.426</strong></td></tr>
-        </tbody>
-      </table>
+    <div class="col-span-7 flex flex-col gap-3">
+      <div>
+        <p class="titulo-sec">Outorgas por faixa e a solução fiscal de cada uma</p>
+        <p class="sub-sec">2.426 outorgas ativas no ciclo 2027 (2.466 do universo, menos 40 com CNPJ baixado ou suspenso)</p>
+      </div>
+      {_colunas_faixa()}
       <p class="legenda">A correspondência faixa &rarr; solução fiscal é parametrizada e versionada, não fixada em programa.
       A navegação marítima é documental em qualquer faixa (61 outorgas do Grupo C).</p>
     </div>
@@ -984,13 +1015,22 @@ slide(
   <p class="fonte px-16 pb-1">Fonte: {NTM}, Quadro 2.</p>
 """,
     extra_css="""
-table.tbl tr.gA td { background:#F0FDF4; }
-table.tbl tr.gB td { background:#EFF6FF; }
-table.tbl tr.gC td { background:#FEF2F2; }
-table.tbl td { padding:8px 14px; }
+.cc { display:flex; flex-direction:column; flex:1; }
+.cc-plot { position:relative; flex:1; min-height:calc(240px * var(--tz)); display:grid; grid-template-columns:repeat(8,1fr); column-gap:16px; align-items:stretch; border-bottom:2px solid #94A3B8; padding:0 6px; }
+.cc-grid { position:absolute; left:0; right:0; border-top:1px dashed #E2E8F0; }
+.cc-col { position:relative; z-index:1; }
+.cc-v { position:absolute; left:-8px; right:-8px; text-align:center; font-family:'Montserrat',sans-serif; font-weight:900; color:#0F172A; font-size:calc(22px * var(--tz)); line-height:1; }
+.cc-b { position:absolute; left:0; right:0; bottom:0; border-radius:6px 6px 0 0; }
+.cc-x { display:grid; grid-template-columns:repeat(8,1fr); column-gap:16px; padding:8px 6px 0; }
+.cc-x div { text-align:center; line-height:1.2; }
+.cc-x b { display:block; font-family:'Montserrat',sans-serif; font-weight:900; color:#003366; font-size:calc(19px * var(--tz)); }
+.cc-x span { color:#64748B; font-size:calc(13.5px * var(--tz)); }
+.cc-g { display:grid; grid-template-columns:repeat(8,1fr); column-gap:16px; padding:10px 6px 0; }
+.cc-g div { border-top:4px solid; padding-top:6px; text-align:center; color:#475569; font-size:calc(15px * var(--tz)); line-height:1.3; }
+.cc-g strong { color:#003366; font-family:'Montserrat',sans-serif; }
 """,
     tag=TAG_RISCO,
-    base=1.59,
+    base=1.45,
 )
 
 # ---------------------------------------------------------------------------
@@ -1114,8 +1154,8 @@ slide(
       </div>
       <div class="card card-amber">
         <div class="ico" style="background:#FDE68A;"><i class="fas fa-hourglass-half text-yellow-700 text-2xl"></i></div>
-        <div><p class="card-t">O sorteio roda depois da Diretoria</p>
-        <p class="card-d">O plano usa o valor esperado (&asymp;30). A lista nominal sai após a deliberação; a diferença é absorvida pela folga.</p></div>
+        <div><p class="card-t">O sorteio roda na extração oficial</p>
+        <p class="card-d">Junto com os demais dados do PAF: a Diretoria recebe o plano já com a lista nominal do Grupo A. Os &asymp;30 de hoje são o valor esperado.</p></div>
       </div>
     </div>
   </div>
@@ -1160,12 +1200,12 @@ slide(
   <div class="flex-1 px-16 pb-2 grid grid-cols-12 gap-6">
     <div class="col-span-7 flex flex-col gap-3">
       <div class="formula" style="text-align:center; line-height:1.6;">
-        ocupação = horas que o plano exige &divide; envelope do PAF<br/>
-        <span style="color:#94A3B8; font-size:calc(16px * var(--tz));">envelope = 35% das horas líquidas do PGD (Hefesto), igual para toda unidade · inclui os 20 do CNU</span>
+        ocupação = horas que o plano exige &divide; horas disponíveis para o PAF<br/>
+        <span style="color:#94A3B8; font-size:calc(16px * var(--tz));">horas disponíveis = 35% das horas líquidas de cada fiscal no PGD (Hefesto), igual para toda unidade · inclui os 20 do CNU</span>
       </div>
       <div class="destaque">
         <p class="font-montserrat font-bold" style="font-size:calc(22px * var(--tz));">Cabe na Agência, mas não cabe onde a carga está.</p>
-        <p class="text-blue-100 text-lg mt-1"><strong>45.880 h</strong> contra um envelope de <strong>55.560 h</strong>: 83% no agregado nacional.
+        <p class="text-blue-100 text-lg mt-1">O plano exige <strong>45.880 h</strong> das <strong>55.560 h</strong> disponíveis: 83% no agregado nacional.
         Pela jurisdição, porém, quatro unidades passam do limite.</p>
       </div>
       <div>
@@ -1220,56 +1260,109 @@ slide(
 .oc-val { font-family:'Montserrat',sans-serif; font-size:calc(20px * var(--tz)); color:#003366; }
 """,
     tag=TAG_RISCO,
-    base=1.39,
+    base=1.36,
 )
 
 # ---------------------------------------------------------------------------
-# 07 — Calendário, custo e governança
+# 07 — Deslocamento: quanto custa ir a campo
 # ---------------------------------------------------------------------------
+# Gasto real com viagens de fiscalização da SFC (classe estrita, valores nominais),
+# painel IPR-PAF, ipr.viagem_anual_sfc. 2026 é parcial (a fonte publica em ciclos).
+_FISC = [(2019, 262), (2020, 194), (2021, 421), (2022, 594), (2023, 797),
+         (2024, 585), (2025, 435), (2026, 125)]
+_PAF_MIL = 218.5
+
+
+def _colunas_desloc():
+    vmax = 900
+    grade = "".join(
+        f'<div class="cc-grid" style="bottom:{100 * g / vmax:.1f}%;"></div>' for g in (200, 400, 600, 800)
+    )
+    cols = "".join(
+        f'<div class="cc-col" title="{a}: R$ {v} mil">'
+        f'<div class="cc-b" style="height:{100 * v / vmax:.2f}%;background:{"#9DB8D9" if a == 2026 else "#0066CC"};"></div>'
+        f'<div class="cc-v" style="bottom:12px;color:{"#003366" if a == 2026 else "#fff"};">{v}</div></div>'
+        for a, v in _FISC
+    )
+    linha = f'<div class="dl-paf" style="bottom:{100 * _PAF_MIL / vmax:.2f}%;"></div>'
+    eixo = "".join(
+        f"<div><b>{a}</b>{'<span>parcial</span>' if a == 2026 else ''}</div>" for a, _ in _FISC
+    )
+    return f"""
+      <div class="cc">
+        <div class="leg-row" style="margin-bottom:10px;">
+          <span><i class="sw" style="background:#0066CC;"></i>gasto real no ano</span>
+          <span><i class="sw" style="background:#9DB8D9;"></i>2026 até a última publicação</span>
+          <span><i class="sw" style="background:none; border-top:3px dashed #B45309; height:0; width:28px; border-radius:0;"></i><strong style="color:#92400E;">PAF 2027 estimado: R$ 218,5 mil</strong></span>
+        </div>
+        <div class="cc-plot">{grade}{cols}{linha}</div>
+        <div class="cc-x">{eixo}</div>
+      </div>"""
+
+
 slide(
     7,
-    "Grupo de risco — calendário, custo e governança",
-    "Agenda, deslocamento e cadeia de elaboração",
-    "Executável, reproduzível e auditável",
+    "Grupo de risco — custo de deslocamento",
+    "Deslocamento · protocolo IPR-DESLOCA-V1",
+    "Quanto custa ir a campo",
     f"""
-  <div class="flex-1 px-16 pb-2 flex flex-col gap-4">
-    <div class="grid grid-cols-4 gap-4">
-      <div class="stat-card"><p class="stat-num">1.551</p><p class="text-blue-200 text-base font-semibold mt-2">fiscalizações (outorga &times; fase)<br/>em 401 grupos</p></div>
-      <div class="stat-card"><p class="stat-num">98</p><p class="text-blue-200 text-base font-semibold mt-2">grupos com mês único obrigatório<br/>(uma viagem por localidade)</p></div>
-      <div class="stat-card"><p class="stat-num">160</p><p class="text-blue-200 text-base font-semibold mt-2">missões presenciais,<br/>52 por viatura</p></div>
-      <div class="stat-card"><p class="stat-num">R$ 218,5 mil</p><p class="text-blue-200 text-base font-semibold mt-2">em diárias e passagens<br/>(estimativa)</p></div>
+  <div class="flex-1 px-16 pb-2 grid grid-cols-12 gap-6">
+    <div class="col-span-5 flex flex-col gap-3">
+      <p class="titulo-sec">Como o custo foi estimado</p>
+      <div class="passo"><b>501</b><span><strong>fiscalizações presenciais</strong>: o Grupo C sem a navegação marítima,
+        que é documental (481), mais as &asymp;20 esperadas do sorteio do Grupo A.</span></div>
+      <div class="passo"><b>160</b><span><strong>viagens</strong>: tudo o que uma unidade fiscaliza na mesma cidade vira uma só viagem.
+        <strong>52</strong> ficam a até 120 km e vão de viatura, sem passagem.</span></div>
+      <div class="passo"><b>108</b><span><strong>viagens pagas</strong>: dias e passagens pelo histórico real da ANTAQ no mesmo trajeto
+        (Portal da Transparência, 2019-2026, passagens corrigidas pelo IPCA), diária do Decreto 5.992/2006 e equipe de 2 fiscais.</span></div>
+      <div class="card card-amber">
+        <div class="ico" style="background:#FDE68A;"><i class="fas fa-circle-info text-yellow-700 text-2xl"></i></div>
+        <div><p class="card-t">A confiança do número fica à vista</p>
+        <p class="card-d">36 viagens têm histórico do próprio trajeto; 72 usam a média da UF ou a média nacional por distância.
+        Cada viagem guarda a origem da estimativa.</p></div>
+      </div>
     </div>
 
-    <div class="flex-1 grid grid-cols-2 gap-6">
-      <div class="flex flex-col gap-3">
-        <p class="titulo-sec">Uma cadeia única, em 16 passos, executada do painel</p>
-        <div class="passo"><b>1–3</b><span>Sincroniza decisões humanas, extrai o universo e confere o CNPJ na Receita</span></div>
-        <div class="passo"><b>4–8</b><span>Mede acesso e maturidade, recalcula o IPR e reaplica a retirada de CNPJ inativo</span></div>
-        <div class="passo"><b>9–12</b><span>Lê os planos de trabalho do PGD e calcula o balanço da força de trabalho</span></div>
-        <div class="passo"><b>13–16</b><span>Dimensiona o PAF, estima o deslocamento, propõe a equalização e o calendário</span></div>
+    <div class="col-span-7 flex flex-col gap-3">
+      <div class="grid grid-cols-3 gap-3">
+        <div class="stat-card"><p class="stat-num sn-m">R$ 218,5 mil</p><p class="text-blue-200 text-base font-semibold mt-2">custo estimado do PAF presencial<br/>(diárias 129,6 + passagens 68,4)</p></div>
+        <div class="stat-card"><p class="stat-num sn-m">R$ 436</p><p class="text-blue-200 text-base font-semibold mt-2">por fiscalização<br/>presencial</p></div>
+        <div class="stat-card"><p class="stat-num sn-m">50%</p><p class="text-blue-200 text-base font-semibold mt-2">do que a SFC gastou em viagens<br/>de fiscalização em 2025</p></div>
       </div>
-      <div class="flex flex-col gap-3">
-        <p class="titulo-sec">Quatro garantias</p>
-        <div class="card"><div class="ico" style="background:#DBEAFE;"><i class="fas fa-fingerprint text-accent text-2xl"></i></div>
-          <div><p class="card-t">Reprodutível</p><p class="card-d">Cada etapa registra o hash de dados e parâmetros: mesmas entradas, mesmo resultado.</p></div></div>
-        <div class="card"><div class="ico" style="background:#DBEAFE;"><i class="fas fa-table text-accent text-2xl"></i></div>
-          <div><p class="card-t">Regras em tabela, com vigência</p><p class="card-d">Pesos, faixas, custos, 35%, taxas de sorteio: mudar uma regra abre nova vigência.</p></div></div>
-        <div class="card"><div class="ico" style="background:#DBEAFE;"><i class="fas fa-hand-paper text-accent text-2xl"></i></div>
-          <div><p class="card-t">Conferências que interrompem</p><p class="card-d">Se duas etapas divergem nos números, a cadeia para em vez de publicar.</p></div></div>
-        <div class="card card-green"><div class="ico" style="background:#BBF7D0;"><i class="fas fa-user-check text-green-700 text-2xl"></i></div>
-          <div><p class="card-t">A decisão humana prevalece</p><p class="card-d">Aprovações e escolhas de mês ficam com autor e fundamento e sobrevivem a novas rodadas. A chefia escolhe o mês; a proposta nunca vira decisão por omissão.</p></div></div>
+      <div>
+        <p class="titulo-sec">Gasto real da SFC com viagens de fiscalização <span class="text-gray-400">· R$ mil</span></p>
+        <p class="sub-sec">diárias e passagens · só viagens de fiscalização, sem capacitação e administrativas</p>
       </div>
+      {_colunas_desloc()}
+      <p class="legenda">O gasto real inclui o que o PAF não programa: fiscalizações extraordinárias, denúncias e eventos sazonais.
+      Frente à média de 2022-2025 (R$ 603 mil), o PAF presencial equivale a <strong>36%</strong>; frente a todas as viagens
+      da Agência em 2025 (R$ 2,6 milhões), a <strong>8%</strong>.</p>
     </div>
   </div>
-  <p class="fonte px-16 pb-1">Protocolos IPR-AGENDA-V1 e IPR-DESLOCA-V1 (histórico de viagens 2019-2026, Portal da Transparência). Fonte: {NTM}, itens 9 e 10.</p>
+  <p class="fonte px-16 pb-1">Painel IPR-PAF, rodada de deslocamento de 28/09/2026. Viagens da ANTAQ no Portal da Transparência, valores nominais,
+  classificadas por pessoa e motivo (fiscalização, capacitação, administrativa). Fonte: {NTM}, item 10.</p>
 """,
     extra_css="""
-.passo { display:flex; align-items:center; gap:16px; background:#F8FAFC; border-radius:12px; padding:12px 18px; }
-.passo b { min-width:70px; font-family:'Montserrat',sans-serif; font-weight:900; color:#0066CC; font-size:calc(22px * var(--tz)); }
+.passo { display:flex; align-items:center; gap:18px; background:#F8FAFC; border-radius:12px; padding:12px 18px; }
+.passo b { min-width:84px; text-align:center; font-family:'Montserrat',sans-serif; font-weight:900; color:#0066CC; font-size:calc(30px * var(--tz)); }
 .passo span { color:#475569; font-size:calc(16px * var(--tz)); line-height:1.4; }
+.passo strong { color:#003366; }
+.cc { display:flex; flex-direction:column; flex:1; }
+.cc-plot { position:relative; flex:1; min-height:calc(200px * var(--tz)); display:grid; grid-template-columns:repeat(8,1fr); column-gap:18px; align-items:stretch; border-bottom:2px solid #94A3B8; padding:0 6px; }
+.cc-grid { position:absolute; left:0; right:0; border-top:1px dashed #E2E8F0; }
+.cc-col { position:relative; z-index:1; }
+.cc-v { position:absolute; left:-8px; right:-8px; text-align:center; font-family:'Montserrat',sans-serif; font-weight:700; color:#0F172A; font-size:calc(18px * var(--tz)); line-height:1; }
+.cc-b { position:absolute; left:0; right:0; bottom:0; border-radius:6px 6px 0 0; }
+.cc-x { display:grid; grid-template-columns:repeat(8,1fr); column-gap:18px; padding:8px 6px 0; }
+.cc-x div { text-align:center; line-height:1.15; }
+.cc-x b { display:block; font-family:'Montserrat',sans-serif; font-weight:700; color:#003366; font-size:calc(17px * var(--tz)); }
+.cc-x span { color:#64748B; font-size:calc(13px * var(--tz)); }
+.dl-paf { position:absolute; left:0; right:0; border-top:3px dashed #B45309; z-index:2; }
+.slide .stat-num.sn-m { font-size:calc(40px * var(--tz)); }
+.passo, .col-span-5 > .card { flex:1; }
 """,
     tag=TAG_RISCO,
-    base=1.28,
+    base=1.32,
 )
 
 
@@ -1288,7 +1381,7 @@ slide(
       <div class="enc-body">
         <p><b>a</b><span><strong>Aprovar a metodologia</strong> de composição, dimensionamento, equalização e agendamento para o ciclo 2027.</span></p>
         <p><b>b</b><span><strong>Aprovar o PAF 2027</strong> pela regra C inteiro + B até o limite + sorteio do A, com os números da extração oficial de 30/09/2026.</span></p>
-        <p><b>c</b><span><strong>Autorizar o sorteio do Grupo A</strong> (IPR-SORTEIO-V1), com as taxas vigentes e publicação do compromisso e do resultado.</span></p>
+        <p><b>c</b><span><strong>Aprovar o sorteio do Grupo A</strong> (IPR-SORTEIO-V1), executado na extração oficial com as taxas vigentes, com publicação do compromisso e do resultado.</span></p>
         <p><b>d</b><span><strong>Tomar ciência</strong> de que GREBL, GREMN e URESN estão no limite: ampliar o Grupo B depende de lotação.</span></p>
       </div>
     </div>

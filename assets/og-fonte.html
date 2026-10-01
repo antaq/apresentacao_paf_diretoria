@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<!--
+  Fonte do cartão de compartilhamento (Open Graph), 1200x630. Não é slide do deck:
+  serve para regerar assets/og-capa.jpg (mesmo molde de IA-Dia-a-Dia-SFC/Imagens/og-fonte.html).
+
+  Como regerar:
+    python3 -m http.server 8765        (na pasta do deck)
+    abrir http://localhost:8765/assets/og-fonte.html em janela de 1200x630
+    capturar em JPEG (qualidade ~92) como assets/og-capa.jpg e subir o ?v= no index.html
+-->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; }
+  body { width:1200px; height:630px; overflow:hidden; font-family:'Open Sans', sans-serif; }
+
+  .cartao {
+    position:relative; width:1200px; height:630px; overflow:hidden; color:#fff;
+    background: linear-gradient(135deg, #002244 0%, #003366 50%, #004488 100%);
+    display:flex; flex-direction:column; justify-content:center;
+    padding:0 72px 0 96px;
+  }
+
+  .textura { position:absolute; inset:0; z-index:0;
+    background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 16px 16px; }
+  .diagonal { position:absolute; top:0; right:0; width:46%; height:100%; z-index:1;
+    background-color: rgba(255,255,255,0.035);
+    clip-path: polygon(28% 0, 100% 0, 100% 100%, 0% 100%); }
+  .icone-fundo { position:absolute; bottom:-84px; right:-56px; z-index:1;
+    font-size:400px; line-height:0; opacity:.07; color:#fff; }
+  .marca-dagua { position:absolute; top:50%; right:56px; width:380px; z-index:1;
+    transform:translateY(-50%); opacity:.10; pointer-events:none;
+    filter:brightness(0) invert(1); }
+
+  .barra-ouro { position:absolute; left:0; top:0; width:14px; height:100%; background:#FFD700; z-index:5; }
+  .barra-azul { position:absolute; left:14px; top:0; width:5px; height:100%; background:#0066CC; z-index:5; }
+
+  .conteudo { position:relative; z-index:10; }
+
+  .topo { display:flex; align-items:center; gap:18px; margin-bottom:32px; }
+  .topo img { height:44px; width:auto; }
+  .topo .divisa { border-left:1px solid rgba(255,255,255,0.28); padding-left:18px; }
+  .topo .org { font-family:'Montserrat',sans-serif; font-weight:700; font-size:16px;
+    letter-spacing:.15em; text-transform:uppercase; color:#BFDBFE; line-height:1.25; }
+  .topo .un { font-family:'Montserrat',sans-serif; font-weight:600; font-size:14px;
+    letter-spacing:.11em; text-transform:uppercase; color:#93C5FD; opacity:.9; line-height:1.25; margin-top:3px; }
+
+  .rotulo { display:flex; align-items:center; gap:14px; margin-bottom:20px; }
+  .rotulo .traco { width:38px; height:3px; background:#FFD700; }
+  .rotulo p { font-family:'Montserrat',sans-serif; font-weight:700; font-size:17px;
+    letter-spacing:.26em; text-transform:uppercase; color:#BFDBFE; margin:0; }
+
+  h1 { font-family:'Montserrat',sans-serif; font-weight:900; color:#fff; margin:0;
+       letter-spacing:-1.5px; line-height:1.05; }
+  .destaque { color:#FFD700; }
+
+  .regua { width:96px; height:8px; background:#FFD700; margin:26px 0 24px 0; }
+
+  .sub { font-family:'Open Sans',sans-serif; font-size:24px; line-height:1.4; color:#DBEAFE;
+         max-width:780px; margin:0; }
+
+  .rodape { display:flex; align-items:center; gap:26px; flex-wrap:wrap; margin-top:34px; }
+  .pilula { display:inline-flex; align-items:center; gap:12px;
+    border:2px solid rgba(255,215,0,.5);
+    background:linear-gradient(90deg, rgba(255,215,0,.16), rgba(255,215,0,.04));
+    border-radius:999px; padding:11px 24px;
+    font-family:'Montserrat',sans-serif; font-weight:800; font-size:21px; color:#fff; }
+  .pilula i { color:#FFD700; font-size:19px; }
+  .autores { font-family:'Open Sans',sans-serif; font-size:20px; color:#BFDBFE; font-weight:600; }
+</style>
+</head>
+<body>
+<div class="cartao">
+  <div class="textura"></div>
+  <div class="diagonal"></div>
+  <img class="marca-dagua" src="logo-antaq-azul.png" alt=""/>
+  <div class="icone-fundo"><i class="fas fa-clipboard-check"></i></div>
+  <div class="barra-ouro"></div>
+  <div class="barra-azul"></div>
+
+  <div class="conteudo">
+    <div class="topo">
+      <img src="logo-antaq-branca.png" alt="ANTAQ"/>
+      <div class="divisa">
+        <p class="org">Agência Nacional de Transportes Aquaviários</p>
+        <p class="un">Superintendência de Fiscalização · SFC</p>
+      </div>
+    </div>
+
+    <div class="rotulo">
+      <div class="traco"></div>
+      <p>Apresentação ao Diretor-Geral</p>
+    </div>
+
+    <h1 style="font-size:64px;">Plano Anual de<br/><span class="destaque">Fiscalização 2027</span></h1>
+    <div class="regua"></div>
+    <p class="sub">Fiscalizações do grupo de risco e fiscalizações temáticas: a proposta que vai à Diretoria Colegiada até 31/10.</p>
+
+    <div class="rodape">
+      <span class="pilula"><i class="fas fa-calendar-day"></i><span>2 de outubro de 2026</span></span>
+      <span class="autores">Gerências GRAT, GPF e GCOR · SFC/ANTAQ</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

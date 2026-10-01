@@ -9,7 +9,7 @@
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-<style>:root { --tz-base: 1.188; }
+<style>:root { --tz-base: 1.134; }
 
 body { margin:0; padding:0; overflow:hidden; font-family:'Open Sans',sans-serif; }
 .slide { width:100vw; height:100vh; position:relative; display:flex; flex-direction:column; overflow:hidden; background:#ffffff; }
@@ -163,8 +163,19 @@ table.tbl th.num { text-align:right; }
 .cc { display:flex; flex-direction:column; flex:1; }
 .cc-plot { position:relative; flex:1; min-height:calc(200px * var(--tz)); display:grid; grid-template-columns:repeat(8,1fr); column-gap:18px; align-items:stretch; border-bottom:2px solid #94A3B8; padding:0 6px; }
 .cc-grid { position:absolute; left:0; right:0; border-top:1px dashed #E2E8F0; }
+.cc-grid span { position:absolute; left:-2px; top:-18px; color:#94A3B8; font-size:12px; }
 .cc-col { position:relative; z-index:1; }
-.cc-v { position:absolute; left:-8px; right:-8px; text-align:center; font-family:'Montserrat',sans-serif; font-weight:700; color:#0F172A; font-size:calc(18px * var(--tz)); line-height:1; }
+.cc-v { position:absolute; left:-8px; right:-8px; text-align:center; font-family:'Montserrat',sans-serif; font-weight:700; color:#0F172A; font-size:calc(16px * var(--tz)); line-height:1; }
+.dl-stack { display:flex; flex-direction:column; gap:2px; overflow:hidden; }
+.dl-stack div:last-child { flex:none; }
+.dl-pct { display:grid; grid-template-columns:repeat(8,1fr); column-gap:18px; padding:6px 6px 0; position:relative; }
+.dl-pct p { position:absolute; left:0; top:6px; margin:0; width:130px; color:#64748B; font-size:calc(13px * var(--tz)); line-height:1.2; }
+.s7 .cc-plot, .s7 .cc-x, .s7 .dl-pct { padding-left:136px; }
+.s7 .cc-grid, .s7 .dl-paf { left:130px; }
+.s7 .cc-grid span { left:-46px; top:-8px; }
+.dl-pr { display:contents; }
+.dl-pr div { text-align:center; font-family:'Montserrat',sans-serif; font-weight:700; color:#5B9BD5; font-size:calc(15px * var(--tz)); }
+.dl-pr.dl-f div { color:#003366; }
 .cc-b { position:absolute; left:0; right:0; bottom:0; border-radius:6px 6px 0 0; }
 .cc-x { display:grid; grid-template-columns:repeat(8,1fr); column-gap:18px; padding:8px 6px 0; }
 .cc-x div { text-align:center; line-height:1.15; }
@@ -220,26 +231,29 @@ table.tbl th.num { text-align:right; }
         <div class="stat-card"><p class="stat-num sn-m">50%</p><p class="text-blue-200 text-base font-semibold mt-2">do que a SFC gastou em viagens<br/>de fiscalização em 2025</p></div>
       </div>
       <div>
-        <p class="titulo-sec">Gasto real da SFC com viagens de fiscalização <span class="text-gray-400">· R$ mil</span></p>
-        <p class="sub-sec">diárias e passagens · só viagens de fiscalização, sem capacitação e administrativas</p>
+        <p class="titulo-sec">Quanto a ANTAQ gasta com viagens, e quanto disso é fiscalização <span class="text-gray-400">· R$ mil</span></p>
+        <p class="sub-sec">diárias, passagens e outros gastos das viagens realizadas · total da ANTAQ no topo de cada coluna</p>
       </div>
       
-      <div class="cc">
+      <div class="cc s7">
         <div class="leg-row" style="margin-bottom:10px;">
-          <span><i class="sw" style="background:#0066CC;"></i>gasto real no ano</span>
-          <span><i class="sw" style="background:#9DB8D9;"></i>2026 até a última publicação</span>
-          <span><i class="sw" style="background:none; border-top:3px dashed #B45309; height:0; width:28px; border-radius:0;"></i><strong style="color:#92400E;">PAF 2027 estimado: R$ 218,5 mil</strong></span>
+          <span><i class="sw" style="background:#003366;"></i>fiscalização (SFC)</span>
+          <span><i class="sw" style="background:#5B9BD5;"></i>demais viagens da SFC</span>
+          <span><i class="sw" style="background:#CBD5E1;"></i>demais áreas da ANTAQ</span>
+          <span><i class="sw" style="background:none; border-top:3px dashed #B45309; height:0; width:28px; border-radius:0;"></i><strong style="color:#92400E;">PAF 2027: R$ 218,5 mil</strong></span>
         </div>
-        <div class="cc-plot"><div class="cc-grid" style="bottom:22.2%;"></div><div class="cc-grid" style="bottom:44.4%;"></div><div class="cc-grid" style="bottom:66.7%;"></div><div class="cc-grid" style="bottom:88.9%;"></div><div class="cc-col" title="2019: R$ 262 mil"><div class="cc-b" style="height:29.11%;background:#0066CC;"></div><div class="cc-v" style="bottom:12px;color:#fff;">262</div></div><div class="cc-col" title="2020: R$ 194 mil"><div class="cc-b" style="height:21.56%;background:#0066CC;"></div><div class="cc-v" style="bottom:12px;color:#fff;">194</div></div><div class="cc-col" title="2021: R$ 421 mil"><div class="cc-b" style="height:46.78%;background:#0066CC;"></div><div class="cc-v" style="bottom:12px;color:#fff;">421</div></div><div class="cc-col" title="2022: R$ 594 mil"><div class="cc-b" style="height:66.00%;background:#0066CC;"></div><div class="cc-v" style="bottom:12px;color:#fff;">594</div></div><div class="cc-col" title="2023: R$ 797 mil"><div class="cc-b" style="height:88.56%;background:#0066CC;"></div><div class="cc-v" style="bottom:12px;color:#fff;">797</div></div><div class="cc-col" title="2024: R$ 585 mil"><div class="cc-b" style="height:65.00%;background:#0066CC;"></div><div class="cc-v" style="bottom:12px;color:#fff;">585</div></div><div class="cc-col" title="2025: R$ 435 mil"><div class="cc-b" style="height:48.33%;background:#0066CC;"></div><div class="cc-v" style="bottom:12px;color:#fff;">435</div></div><div class="cc-col" title="2026: R$ 125 mil"><div class="cc-b" style="height:13.89%;background:#9DB8D9;"></div><div class="cc-v" style="bottom:12px;color:#003366;">125</div></div><div class="dl-paf" style="bottom:24.28%;"></div></div>
+        <div class="cc-plot"><div class="cc-grid" style="bottom:22.7%;"><span>1 mi</span></div><div class="cc-grid" style="bottom:45.5%;"><span>2 mi</span></div><div class="cc-grid" style="bottom:68.2%;"><span>3 mi</span></div><div class="cc-grid" style="bottom:90.9%;"><span>4 mi</span></div><div class="cc-col" title="2019: ANTAQ R$ 2090 mil · SFC R$ 1205 mil · fiscalização R$ 262 mil"><div class="cc-b dl-stack" style="height:47.50%;"><div style="height:42.34%;background:#CBD5E1;"></div><div style="height:45.12%;background:#5B9BD5;"></div><div style="height:12.54%;background:#003366;"></div></div><div class="cc-v" style="bottom:calc(47.50% + 6px);">2.090</div></div><div class="cc-col" title="2020: ANTAQ R$ 504 mil · SFC R$ 346 mil · fiscalização R$ 194 mil"><div class="cc-b dl-stack" style="height:11.45%;"><div style="height:31.35%;background:#CBD5E1;"></div><div style="height:30.16%;background:#5B9BD5;"></div><div style="height:38.49%;background:#003366;"></div></div><div class="cc-v" style="bottom:calc(11.45% + 6px);">504</div></div><div class="cc-col" title="2021: ANTAQ R$ 1014 mil · SFC R$ 719 mil · fiscalização R$ 421 mil"><div class="cc-b dl-stack" style="height:23.05%;"><div style="height:29.09%;background:#CBD5E1;"></div><div style="height:29.39%;background:#5B9BD5;"></div><div style="height:41.52%;background:#003366;"></div></div><div class="cc-v" style="bottom:calc(23.05% + 6px);">1.014</div></div><div class="cc-col" title="2022: ANTAQ R$ 2737 mil · SFC R$ 1245 mil · fiscalização R$ 594 mil"><div class="cc-b dl-stack" style="height:62.20%;"><div style="height:54.51%;background:#CBD5E1;"></div><div style="height:23.79%;background:#5B9BD5;"></div><div style="height:21.70%;background:#003366;"></div></div><div class="cc-v" style="bottom:calc(62.20% + 6px);">2.737</div></div><div class="cc-col" title="2023: ANTAQ R$ 4033 mil · SFC R$ 1735 mil · fiscalização R$ 797 mil"><div class="cc-b dl-stack" style="height:91.66%;"><div style="height:56.98%;background:#CBD5E1;"></div><div style="height:23.26%;background:#5B9BD5;"></div><div style="height:19.76%;background:#003366;"></div></div><div class="cc-v" style="bottom:calc(91.66% + 6px);">4.033</div></div><div class="cc-col" title="2024: ANTAQ R$ 3241 mil · SFC R$ 1424 mil · fiscalização R$ 585 mil"><div class="cc-b dl-stack" style="height:73.66%;"><div style="height:56.06%;background:#CBD5E1;"></div><div style="height:25.89%;background:#5B9BD5;"></div><div style="height:18.05%;background:#003366;"></div></div><div class="cc-v" style="bottom:calc(73.66% + 6px);">3.241</div></div><div class="cc-col" title="2025: ANTAQ R$ 2568 mil · SFC R$ 980 mil · fiscalização R$ 435 mil"><div class="cc-b dl-stack" style="height:58.36%;"><div style="height:61.84%;background:#CBD5E1;"></div><div style="height:21.22%;background:#5B9BD5;"></div><div style="height:16.94%;background:#003366;"></div></div><div class="cc-v" style="bottom:calc(58.36% + 6px);">2.568</div></div><div class="cc-col" title="2026: ANTAQ R$ 1186 mil · SFC R$ 521 mil · fiscalização R$ 160 mil"><div class="cc-b dl-stack" style="height:26.95%;opacity:0.55;"><div style="height:56.07%;background:#CBD5E1;"></div><div style="height:30.44%;background:#5B9BD5;"></div><div style="height:13.49%;background:#003366;"></div></div><div class="cc-v" style="bottom:calc(26.95% + 6px);">1.186</div></div><div class="dl-paf" style="bottom:4.97%;"></div></div>
         <div class="cc-x"><div><b>2019</b></div><div><b>2020</b></div><div><b>2021</b></div><div><b>2022</b></div><div><b>2023</b></div><div><b>2024</b></div><div><b>2025</b></div><div><b>2026</b><span>parcial</span></div></div>
+        <div class="dl-pct"><p>% da SFC</p><div class="dl-pr"><div>58%</div><div>69%</div><div>71%</div><div>45%</div><div>43%</div><div>44%</div><div>38%</div><div>44%</div></div></div>
+        <div class="dl-pct"><p>% da fiscalização</p><div class="dl-pr dl-f"><div>13%</div><div>38%</div><div>42%</div><div>22%</div><div>20%</div><div>18%</div><div>17%</div><div>13%</div></div></div>
       </div>
-      <p class="legenda">O gasto real inclui o que o PAF não programa: fiscalizações extraordinárias, denúncias e eventos sazonais.
-      Frente à média de 2022-2025 (R$ 603 mil), o PAF presencial equivale a <strong>36%</strong>; frente a todas as viagens
-      da Agência em 2025 (R$ 2,6 milhões), a <strong>8%</strong>.</p>
+      <p class="legenda">Em 2025, a SFC respondeu por <strong>38%</strong> do gasto da Agência com viagens e a fiscalização por <strong>17%</strong>.
+      O PAF presencial equivale a <strong>36%</strong> da média de fiscalização de 2022-2025 (R$ 603 mil) e a <strong>9%</strong> do gasto total de 2025.
+      O real inclui o que o PAF não programa: extraordinárias, denúncias e eventos sazonais.</p>
     </div>
   </div>
-  <p class="fonte px-16 pb-1">Painel IPR-PAF, rodada de deslocamento de 28/09/2026. Viagens da ANTAQ no Portal da Transparência, valores nominais,
-  classificadas por pessoa e motivo (fiscalização, capacitação, administrativa). Fonte: minuta da NT de Metodologia do PAF 2027 (rodada de validação de 29/09/2026), item 10.</p>
+  <p class="fonte px-16 pb-1">Estimativa: painel IPR-PAF, rodada de deslocamento de 28/09/2026, e minuta da NT de Metodologia do PAF 2027 (rodada de validação de 29/09/2026), item 10. Gasto real: viagens realizadas da ANTAQ no Portal da
+  Transparência (publicação de 20/09/2026), valores nominais; SFC = servidores da planilha de controle da SFC e fiscais revisados; fiscalização = viagem da SFC com motivo fiscal.</p>
 
 
   <div class="px-16 pb-4 flex justify-between items-center border-t border-gray-100 pt-3 mx-8">

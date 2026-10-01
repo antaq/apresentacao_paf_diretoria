@@ -1266,37 +1266,54 @@ slide(
 # ---------------------------------------------------------------------------
 # 07 — Deslocamento: quanto custa ir a campo
 # ---------------------------------------------------------------------------
-# Gasto real com viagens de fiscalização da SFC (classe estrita, valores nominais),
-# painel IPR-PAF, ipr.viagem_anual_sfc. 2026 é parcial (a fonte publica em ciclos).
-_FISC = [(2019, 262), (2020, 194), (2021, 421), (2022, 594), (2023, 797),
-         (2024, 585), (2025, 435), (2026, 125)]
+# Gasto real com viagens da ANTAQ (Portal da Transparência, publicação de 20/09/2026,
+# viagens realizadas, diárias + passagens + outros gastos, valores nominais, R$ mil),
+# classificadas com a régua do painel IPR-PAF (etl/transform/viagens_sfc.py): pessoa da
+# SFC = planilha de controle da SFC ou grupo C revisado; fiscalização = pessoa da SFC
+# com motivo fiscal. 2026 é parcial.
+# (ano, ANTAQ, SFC, fiscalização da SFC)
+_VIAG = [(2019, 2090, 1205, 262), (2020, 504, 346, 194), (2021, 1014, 719, 421),
+         (2022, 2737, 1245, 594), (2023, 4033, 1735, 797), (2024, 3241, 1424, 585),
+         (2025, 2568, 980, 435), (2026, 1186, 521, 160)]
 _PAF_MIL = 218.5
+C_FISC, C_SFC, C_RESTO = "#003366", "#5B9BD5", "#CBD5E1"
 
 
 def _colunas_desloc():
-    vmax = 900
+    vmax = 4400
     grade = "".join(
-        f'<div class="cc-grid" style="bottom:{100 * g / vmax:.1f}%;"></div>' for g in (200, 400, 600, 800)
+        f'<div class="cc-grid" style="bottom:{100 * g / vmax:.1f}%;"><span>{g // 1000} mi</span></div>'
+        for g in (1000, 2000, 3000, 4000)
     )
-    cols = "".join(
-        f'<div class="cc-col" title="{a}: R$ {v} mil">'
-        f'<div class="cc-b" style="height:{100 * v / vmax:.2f}%;background:{"#9DB8D9" if a == 2026 else "#0066CC"};"></div>'
-        f'<div class="cc-v" style="bottom:12px;color:{"#003366" if a == 2026 else "#fff"};">{v}</div></div>'
-        for a, v in _FISC
-    )
+    cols = []
+    for a, tot, sfc_, fis in _VIAG:
+        op = "opacity:0.55;" if a == 2026 else ""
+        segs = [(fis, C_FISC), (sfc_ - fis, C_SFC), (tot - sfc_, C_RESTO)]
+        pilha = "".join(
+            f'<div style="height:{100 * v / tot:.2f}%;background:{c};"></div>' for v, c in reversed(segs)
+        )
+        cols.append(
+            f'<div class="cc-col" title="{a}: ANTAQ R$ {tot} mil · SFC R$ {sfc_} mil · fiscalização R$ {fis} mil">'
+            f'<div class="cc-b dl-stack" style="height:{100 * tot / vmax:.2f}%;{op}">{pilha}</div>'
+            f'<div class="cc-v" style="bottom:calc({100 * tot / vmax:.2f}% + 6px);">{tot:,}</div></div>'.replace(",", ".")
+        )
     linha = f'<div class="dl-paf" style="bottom:{100 * _PAF_MIL / vmax:.2f}%;"></div>'
     eixo = "".join(
-        f"<div><b>{a}</b>{'<span>parcial</span>' if a == 2026 else ''}</div>" for a, _ in _FISC
+        f"<div><b>{a}</b>{'<span>parcial</span>' if a == 2026 else ''}</div>" for a, *_ in _VIAG
     )
+    pct = lambda f: "".join(f"<div>{f(t, s_, x)}%</div>" for _, t, s_, x in _VIAG)
     return f"""
-      <div class="cc">
+      <div class="cc s7">
         <div class="leg-row" style="margin-bottom:10px;">
-          <span><i class="sw" style="background:#0066CC;"></i>gasto real no ano</span>
-          <span><i class="sw" style="background:#9DB8D9;"></i>2026 até a última publicação</span>
-          <span><i class="sw" style="background:none; border-top:3px dashed #B45309; height:0; width:28px; border-radius:0;"></i><strong style="color:#92400E;">PAF 2027 estimado: R$ 218,5 mil</strong></span>
+          <span><i class="sw" style="background:{C_FISC};"></i>fiscalização (SFC)</span>
+          <span><i class="sw" style="background:{C_SFC};"></i>demais viagens da SFC</span>
+          <span><i class="sw" style="background:{C_RESTO};"></i>demais áreas da ANTAQ</span>
+          <span><i class="sw" style="background:none; border-top:3px dashed #B45309; height:0; width:28px; border-radius:0;"></i><strong style="color:#92400E;">PAF 2027: R$ 218,5 mil</strong></span>
         </div>
-        <div class="cc-plot">{grade}{cols}{linha}</div>
+        <div class="cc-plot">{grade}{"".join(cols)}{linha}</div>
         <div class="cc-x">{eixo}</div>
+        <div class="dl-pct"><p>% da SFC</p><div class="dl-pr">{pct(lambda t, s_, x: round(100 * s_ / t))}</div></div>
+        <div class="dl-pct"><p>% da fiscalização</p><div class="dl-pr dl-f">{pct(lambda t, s_, x: round(100 * x / t))}</div></div>
       </div>"""
 
 
@@ -1330,17 +1347,17 @@ slide(
         <div class="stat-card"><p class="stat-num sn-m">50%</p><p class="text-blue-200 text-base font-semibold mt-2">do que a SFC gastou em viagens<br/>de fiscalização em 2025</p></div>
       </div>
       <div>
-        <p class="titulo-sec">Gasto real da SFC com viagens de fiscalização <span class="text-gray-400">· R$ mil</span></p>
-        <p class="sub-sec">diárias e passagens · só viagens de fiscalização, sem capacitação e administrativas</p>
+        <p class="titulo-sec">Quanto a ANTAQ gasta com viagens, e quanto disso é fiscalização <span class="text-gray-400">· R$ mil</span></p>
+        <p class="sub-sec">diárias, passagens e outros gastos das viagens realizadas · total da ANTAQ no topo de cada coluna</p>
       </div>
       {_colunas_desloc()}
-      <p class="legenda">O gasto real inclui o que o PAF não programa: fiscalizações extraordinárias, denúncias e eventos sazonais.
-      Frente à média de 2022-2025 (R$ 603 mil), o PAF presencial equivale a <strong>36%</strong>; frente a todas as viagens
-      da Agência em 2025 (R$ 2,6 milhões), a <strong>8%</strong>.</p>
+      <p class="legenda">Em 2025, a SFC respondeu por <strong>38%</strong> do gasto da Agência com viagens e a fiscalização por <strong>17%</strong>.
+      O PAF presencial equivale a <strong>36%</strong> da média de fiscalização de 2022-2025 (R$ 603 mil) e a <strong>9%</strong> do gasto total de 2025.
+      O real inclui o que o PAF não programa: extraordinárias, denúncias e eventos sazonais.</p>
     </div>
   </div>
-  <p class="fonte px-16 pb-1">Painel IPR-PAF, rodada de deslocamento de 28/09/2026. Viagens da ANTAQ no Portal da Transparência, valores nominais,
-  classificadas por pessoa e motivo (fiscalização, capacitação, administrativa). Fonte: {NTM}, item 10.</p>
+  <p class="fonte px-16 pb-1">Estimativa: painel IPR-PAF, rodada de deslocamento de 28/09/2026, e {NTM}, item 10. Gasto real: viagens realizadas da ANTAQ no Portal da
+  Transparência (publicação de 20/09/2026), valores nominais; SFC = servidores da planilha de controle da SFC e fiscais revisados; fiscalização = viagem da SFC com motivo fiscal.</p>
 """,
     extra_css="""
 .passo { display:flex; align-items:center; gap:18px; background:#F8FAFC; border-radius:12px; padding:12px 18px; }
@@ -1350,8 +1367,19 @@ slide(
 .cc { display:flex; flex-direction:column; flex:1; }
 .cc-plot { position:relative; flex:1; min-height:calc(200px * var(--tz)); display:grid; grid-template-columns:repeat(8,1fr); column-gap:18px; align-items:stretch; border-bottom:2px solid #94A3B8; padding:0 6px; }
 .cc-grid { position:absolute; left:0; right:0; border-top:1px dashed #E2E8F0; }
+.cc-grid span { position:absolute; left:-2px; top:-18px; color:#94A3B8; font-size:12px; }
 .cc-col { position:relative; z-index:1; }
-.cc-v { position:absolute; left:-8px; right:-8px; text-align:center; font-family:'Montserrat',sans-serif; font-weight:700; color:#0F172A; font-size:calc(18px * var(--tz)); line-height:1; }
+.cc-v { position:absolute; left:-8px; right:-8px; text-align:center; font-family:'Montserrat',sans-serif; font-weight:700; color:#0F172A; font-size:calc(16px * var(--tz)); line-height:1; }
+.dl-stack { display:flex; flex-direction:column; gap:2px; overflow:hidden; }
+.dl-stack div:last-child { flex:none; }
+.dl-pct { display:grid; grid-template-columns:repeat(8,1fr); column-gap:18px; padding:6px 6px 0; position:relative; }
+.dl-pct p { position:absolute; left:0; top:6px; margin:0; width:130px; color:#64748B; font-size:calc(13px * var(--tz)); line-height:1.2; }
+.s7 .cc-plot, .s7 .cc-x, .s7 .dl-pct { padding-left:136px; }
+.s7 .cc-grid, .s7 .dl-paf { left:130px; }
+.s7 .cc-grid span { left:-46px; top:-8px; }
+.dl-pr { display:contents; }
+.dl-pr div { text-align:center; font-family:'Montserrat',sans-serif; font-weight:700; color:#5B9BD5; font-size:calc(15px * var(--tz)); }
+.dl-pr.dl-f div { color:#003366; }
 .cc-b { position:absolute; left:0; right:0; bottom:0; border-radius:6px 6px 0 0; }
 .cc-x { display:grid; grid-template-columns:repeat(8,1fr); column-gap:18px; padding:8px 6px 0; }
 .cc-x div { text-align:center; line-height:1.15; }
@@ -1362,7 +1390,7 @@ slide(
 .passo, .col-span-5 > .card { flex:1; }
 """,
     tag=TAG_RISCO,
-    base=1.32,
+    base=1.26,
 )
 
 

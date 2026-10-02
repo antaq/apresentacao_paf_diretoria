@@ -1207,7 +1207,7 @@ slide(
     <div class="col-span-7 flex flex-col gap-3">
       <div class="formula" style="text-align:center; line-height:1.6;">
         ocupação = horas que o plano exige &divide; horas disponíveis para o PAF<br/>
-        <span style="color:#94A3B8; font-size:calc(16px * var(--tz));">horas disponíveis = 35% das horas líquidas de cada fiscal no PGD (Hefesto), igual para toda unidade · inclui os 20 do CNU</span>
+        <span style="color:#94A3B8; font-size:calc(16px * var(--tz));">horas disponíveis = 35% de todas as horas do plano de trabalho no PGD, igual para toda unidade · inclui os 20 do CNU</span>
       </div>
       <div class="destaque">
         <p class="font-montserrat font-bold" style="font-size:calc(22px * var(--tz));">Cabe na Agência, mas não cabe onde a carga está.</p>
@@ -1241,6 +1241,12 @@ slide(
         <p class="card-d">56 travessias sob jurisdição de Santana: a <strong>URESL</strong> faz a vistoria e a <strong>GREST</strong> as fases de
         escritório (NT 2/2024 — só a Fase 2 exige ir ao local).</p></div>
       </div>
+      <div class="card card-green">
+        <div class="ico" style="background:#BBF7D0;"><i class="fas fa-magnifying-glass-chart text-green-700 text-2xl"></i></div>
+        <div><p class="card-t">Por que 35% das horas</p>
+        <p class="card-d">É o que as unidades de fato dedicaram ao PAF. Auditado nos planos de trabalho já executados no
+        <strong>Hefesto</strong> (jan/2025 a jul/2026): a média nacional foi <strong>35,7%</strong>.</p></div>
+      </div>
       <div class="card">
         <div class="ico" style="background:#DBEAFE;"><i class="fas fa-landmark text-accent text-2xl"></i></div>
         <div><p class="card-t">A jurisdição não muda</p>
@@ -1254,7 +1260,7 @@ slide(
       </div>
     </div>
   </div>
-  <p class="fonte px-16 pb-1">Protocolos IPR-DIMENSIONA-V1 e IPR-EQUALIZA-V1. Fonte: {NTM}, itens 6 a 8 e Quadros 5 e 6.</p>
+  <p class="fonte px-16 pb-1">Protocolos IPR-DIMENSIONA-V1 e IPR-EQUALIZA-V1. Régua de 35%: painel IPR-PAF (decisão da GPF de 25/08/2026), média medida nos planos de trabalho do PGD. Fonte: {NTM}, itens 6 a 8 e Quadros 5 e 6.</p>
 """,
     extra_css="""
 .oc-row { display:grid; grid-template-columns:230px 1fr 170px; align-items:center; gap:14px; }
@@ -1266,7 +1272,7 @@ slide(
 .oc-val { font-family:'Montserrat',sans-serif; font-size:calc(20px * var(--tz)); color:#003366; }
 """,
     tag=TAG_RISCO,
-    base=1.36,
+    base=1.28,
 )
 
 # ---------------------------------------------------------------------------

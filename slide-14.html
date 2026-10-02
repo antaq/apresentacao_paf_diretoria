@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Temáticas — leitura por temática</title>
+<title>Temáticas — proposta para o PAF 2027</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-<style>:root { --tz-base: 1.449; }
+<style>:root { --tz-base: 1.251; }
 
 body { margin:0; padding:0; overflow:hidden; font-family:'Open Sans',sans-serif; }
 .slide { width:100vw; height:100vh; position:relative; display:flex; flex-direction:column; overflow:hidden; background:#ffffff; }
@@ -157,12 +157,15 @@ table.tbl th.num { text-align:right; }
    para que títulos longos não quebrem linha quando o corpo cresce. */
 .slide p.text-5xl { font-size:54px !important; line-height:1.1 !important; }
 
-.tema { background:#fff; border:1px solid #E2E8F0; border-radius:16px; padding:14px 20px; display:flex; flex-direction:column; gap:8px; }
-.tema .bar-row { grid-template-columns: 0 1fr; gap:0; }
-.tema .bar-trk { height:26px; }
-.tema p { margin:0; color:#475569; font-size:calc(15px * var(--tz)); line-height:1.45; }
-.tema p.tema-t { font-family:'Montserrat',sans-serif; font-weight:700; color:#003366; font-size:calc(19px * var(--tz)); }
-.tema-t i { color:#0066CC; margin-right:6px; }
+.prop { display:flex; gap:16px; align-items:flex-start; background:#F0FDF4; border:1px solid #BBF7D0; border-radius:14px; padding:12px 18px; }
+.prop p { margin:0; }
+.prop-n {
+  min-width:44px; height:44px; border-radius:12px; background:#15803D; color:#fff; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Montserrat',sans-serif; font-weight:900; font-size:calc(18px * var(--tz));
+}
+.conta { background:#F8FAFC; border-radius:14px; padding:12px 20px; }
+.conta p { margin:0; color:#334155; font-size:calc(17px * var(--tz)); }
 </style>
 </head>
 <body>
@@ -174,8 +177,8 @@ table.tbl th.num { text-align:right; }
     <div class="flex items-center gap-3">
       <div style="width:5px;height:44px;" class="bg-accent"></div>
       <div>
-        <p class="font-montserrat font-bold text-gray-400 text-lg uppercase tracking-widest">Resultados · NT nº 27/2026/GPF/SFC, itens 5.8 a 5.12</p>
-        <p class="text-5xl font-montserrat font-bold text-brand uppercase tracking-tight">O que está coberto e o que falta</p>
+        <p class="font-montserrat font-bold text-gray-400 text-lg uppercase tracking-widest">Proposta PAF 2027 · NT nº 27/2026/GPF/SFC, itens 6.1 a 6.3</p>
+        <p class="text-5xl font-montserrat font-bold text-brand uppercase tracking-tight">Manter quatro, substituir três</p>
       </div>
       <div class="ml-auto flex items-center gap-3">
         <span class="bloco-tag bt-tema"><i class="fas fa-layer-group"></i> Bloco 2 · Temáticas</span>
@@ -186,51 +189,64 @@ table.tbl th.num { text-align:right; }
   </div>
 
 
-  <div class="flex-1 px-16 pb-2 flex flex-col gap-3">
-    <div class="leg-row">
-      <span><i class="sw" style="background:#15803D;"></i>Atendida</span>
-      <span><i class="sw" style="background:#0066CC;"></i>Conversível</span>
-      <span><i class="sw" style="background:#D97706;"></i>Novo ciclo</span>
-      <span><i class="sw" style="background:#7C3AED;"></i>Articulação</span>
-      <span><i class="sw" style="background:#64748B;"></i>Sem método / fora</span>
+  <div class="flex-1 px-16 pb-2 flex flex-col gap-4">
+    <div class="flex-1 grid grid-cols-12 gap-6">
+      <div class="col-span-7 flex flex-col gap-3">
+        <p class="titulo-sec"><i class="fas fa-circle-check" style="color:#15803D;"></i> Manter, com escopo ajustado</p>
+        <div class="prop">
+          <span class="prop-n">I</span>
+          <div><p class="card-t">Diagnóstico do desempenho das APs</p>
+          <p class="card-d">6 blocos, 17 demandas. Absorve 2 matérias de novo ciclo e 3 conversíveis; avalia APs ainda não fiscalizadas e retoma as avaliações mais antigas.</p></div>
+        </div>
+        <div class="prop">
+          <span class="prop-n">II</span>
+          <div><p class="card-t">Estrutura de fiscalização das APs</p>
+          <p class="card-d">Instituições restantes; articulação com o GT do tema 2.8 da Agenda Regulatória para as matérias sem método.</p></div>
+        </div>
+        <div class="prop">
+          <span class="prop-n">III</span>
+          <div><p class="card-t">Diagnóstico dos Convênios de Delegação</p>
+          <p class="card-d">Convênios restantes; mantida pela articulação com a fiscalização em curso do <strong>TCU</strong>, não pelo volume de demandas.</p></div>
+        </div>
+        <div class="prop" style="border-color:#FDE68A; background:#FFFBEB;">
+          <span class="prop-n" style="background:#D97706;">IV</span>
+          <div><p class="card-t">Serviços em terminais de contêineres <span class="pill pill-gold">novo nome</span></p>
+          <p class="card-d">Hoje &ldquo;Preço em terminais de contêineres&rdquo;: maior alcance do conjunto (36 demandas) e 7 das 9 matérias de novo ciclo.</p></div>
+        </div>
+      </div>
+
+      <div class="col-span-5 flex flex-col gap-3">
+        <p class="titulo-sec"><i class="fas fa-magnifying-glass" style="color:#B45309;"></i> Avaliar</p>
+        <div class="card card-amber">
+          <div><p class="card-t">Transporte misto · Atraso e omissão de navios de contêineres</p>
+          <p class="card-d">O universo de regulados permite concluir já neste ciclo, sem repetição no curto prazo.</p></div>
+        </div>
+        <p class="titulo-sec"><i class="fas fa-arrow-right-arrow-left" style="color:#B91C1C;"></i> Substituir</p>
+        <div class="card card-red">
+          <div><p class="card-t">Contabilização de TPB no REB</p>
+          <p class="card-d">Eliminar ou suceder por tema de afretamento (outorgas e critérios), com o mesmo universo de regulados e o acervo já constituído.</p></div>
+        </div>
+        <div class="destaque">
+          <p class="font-montserrat font-bold" style="font-size:calc(19px * var(--tz));">Por que &ldquo;Serviços&rdquo; e não &ldquo;Preço&rdquo;</p>
+          <p class="text-blue-100 text-base mt-1">6 das 7 matérias pendentes tratam das <strong>condições de prestação</strong>:
+          qualidade, tempestividade, rastreabilidade, continuidade e isonomia. O preço passa a ser uma dimensão —
+          a cobrança e a transparência tarifária continuam integralmente apuradas, e afasta-se a leitura restritiva do escopo pelos regulados.</p>
+        </div>
+      </div>
     </div>
-    <div class="flex-1 grid grid-cols-2 gap-4">
-      <div class="tema">
-        <p class="tema-t"><i class="fas fa-chart-line"></i> Diagnóstico do desempenho das APs</p>
-        <div style="--rot:0px;"><div class="bar-row"><div class="bar-rot"></div><div class="bar-trk"><div class="seg" style="width:37.50%;background:#15803D;color:#fff;" title="3">3</div><div class="seg" style="width:37.50%;background:#0066CC;color:#fff;" title="3">3</div><div class="seg" style="width:25.00%;background:#D97706;color:#fff;" title="2">2</div></div></div></div>
-        <p><b style="color:#15803D;">Atendidas (3):</b> produtividade de terminais de contêineres; pátios de triagem; integração multimodal.</p>
-        <p><b style="color:#0066CC;">Conversíveis (3):</b> indicadores de produtividade, de serviço adequado e de qualidade — dados já coletados.</p>
-        <p><b style="color:#D97706;">Novo ciclo (2):</b> participação dos usuários na revisão tarifária; Cartilha de Direitos dos Usuários.</p>
-      </div>
-      <div class="tema">
-        <p class="tema-t"><i class="fas fa-building-shield"></i> Estrutura de fiscalização das APs</p>
-        <div style="--rot:0px;"><div class="bar-row"><div class="bar-rot"></div><div class="bar-trk"><div class="seg" style="width:50.00%;background:#15803D;color:#fff;" title="2">2</div><div class="seg" style="width:50.00%;background:#64748B;color:#fff;" title="2">2</div></div></div></div>
-        <p><b style="color:#15803D;">Em análise (2):</b> fiscalização em portos concedidos; envio tempestivo de informações.</p>
-        <p><b style="color:#64748B;">Sem método (2):</b> canal de acesso concedido; desempenho técnico da AP.
-        Proposta: articular com o GT do <strong>tema 2.8 da Agenda Regulatória</strong>.</p>
-      </div>
-      <div class="tema">
-        <p class="tema-t"><i class="fas fa-box"></i> Preço em terminais de contêineres</p>
-        <div style="--rot:0px;"><div class="bar-row"><div class="bar-rot"></div><div class="bar-trk"><div class="seg" style="width:31.25%;background:#15803D;color:#fff;" title="5">5</div><div class="seg" style="width:43.75%;background:#D97706;color:#fff;" title="7">7</div><div class="seg" style="width:25.00%;background:#64748B;color:#fff;" title="4">4</div></div></div></div>
-        <p><b style="color:#15803D;">Atendidas (5):</b> escaneamento; transparência de taxas; conceito de agente; matriz de risco da armazenagem; Res. ANTAQ nº 109/2023.</p>
-        <p><b style="color:#D97706;">Novo ciclo (7):</b> caução por sobre-estadia; qualidade; informação de cobranças; retenção de carga; recusa de embarque; rastreabilidade; liberação documental.</p>
-        <p><b style="color:#64748B;">Fora (4):</b> abusividade de preços e de sobre-estadia e sua natureza jurídica (juízo de mérito); oferta de contêineres (agente não alcançado).</p>
-      </div>
-      <div class="tema">
-        <p class="tema-t"><i class="fas fa-ship"></i> Contabilização de TPB no REB</p>
-        <div style="--rot:0px;"><div class="bar-row"><div class="bar-rot"></div><div class="bar-trk"><div class="seg" style="width:20.00%;background:#15803D;color:#fff;" title="1">1</div><div class="seg" style="width:80.00%;background:#7C3AED;color:#fff;" title="4">4</div></div></div></div>
-        <p><b style="color:#15803D;">Atendida (1):</b> contabilização do TPB para inscrição no REB.</p>
-        <p><b style="color:#7C3AED;">Articulação (4):</b> afretamento por tempo; consulta ao mercado; outorgas na navegação; fim de cobertura de bandeira.
-        Dependem de método construído com a <strong>GRAT, a GAF e a GOA</strong>.</p>
-      </div>
+
+    <div class="flex items-center gap-4 conta">
+      <i class="fas fa-scale-balanced text-accent text-2xl"></i>
+      <p><strong>Quantidade mantida em 7 temáticas</strong>, pela capacidade operacional da equipe e a complexidade dos temas:
+      <span class="pill pill-a">4 mantidas</span> + <span class="pill pill-gold">3 vagas</span> a preencher na próxima etapa.</p>
     </div>
   </div>
-  <p class="fonte px-16 pb-1">GRAT: Gerência de Recursos e de Apoio Técnico (SFC) · GAF e GOA: Gerências de Afretamento e de Outorgas de Autorização (SOG). Fonte: NT nº 27/2026/GPF/SFC, itens 5.8 a 5.12.</p>
+  <p class="fonte px-16 pb-1">Reperfilamento: Lei nº 12.815/2013, art. 3º, II; Lei nº 10.233/2001, art. 20, II, &ldquo;a&rdquo;. Fonte: NT nº 27/2026/GPF/SFC, itens 6.1, 6.2 e 6.3.</p>
 
 
   <div class="px-16 pb-4 flex justify-between items-center border-t border-gray-100 pt-3 mx-8">
     <p class="text-gray-400 text-sm">PAF 2027 — Apresentação ao Diretor-Geral · SFC · GRAT, GPF e GCOR · ANTAQ</p>
-    <p class="text-gray-300 text-sm font-mono">14 / 20</p>
+    <p class="text-gray-300 text-sm font-mono">14 / 19</p>
   </div>
 </div>
 <script src="zoom.js"></script>

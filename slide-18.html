@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Fiscalizações operacionais no PAF 2027</title>
+<title>Síntese e encaminhamentos</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-<style>:root { --tz-base: 1.35; }
+<style>:root { --tz-base: 1.449; }
 
 body { margin:0; padding:0; overflow:hidden; font-family:'Open Sans',sans-serif; }
 .slide { width:100vw; height:100vh; position:relative; display:flex; flex-direction:column; overflow:hidden; background:#ffffff; }
@@ -157,20 +157,17 @@ table.tbl th.num { text-align:right; }
    para que títulos longos não quebrem linha quando o corpo cresce. */
 .slide p.text-5xl { font-size:54px !important; line-height:1.1 !important; }
 
-.op-col { justify-content:space-evenly; gap:18px; }
-.op-lead { margin:0; color:#475569; font-size:calc(20px * var(--tz)); line-height:1.4; }
-.op-lead strong { color:#003366; }
-.op-linha { display:grid; grid-template-columns:repeat(4, 1fr); gap:36px; margin-top:12px; }
-.op-etapa, .op-perg { position:relative; background:#F1F5F8; border-radius:16px; padding:18px 22px; }
-.op-etapa p, .op-perg p { margin:0; }
-.op-num { font-family:'Montserrat',sans-serif; font-weight:900; color:#E2A03F; font-size:calc(30px * var(--tz)); line-height:1; }
-.op-t { font-family:'Montserrat',sans-serif; font-weight:700; color:#21295C; font-size:calc(21px * var(--tz)); margin-top:8px !important; }
-.op-d { color:#56616F; font-size:calc(16px * var(--tz)); line-height:1.45; margin-top:4px !important; }
-.op-seta { position:absolute; right:-27px; top:50%; transform:translateY(-50%); color:#E2A03F; font-size:20px; }
-.op-perg { display:flex; align-items:center; gap:16px; }
-.op-perg p { font-family:'Montserrat',sans-serif; font-weight:700; color:#21295C; font-size:calc(18px * var(--tz)); line-height:1.3; }
-.op-base { gap:24px; }
-.op-base .destaque p { font-size:calc(17px * var(--tz)); line-height:1.45; }
+.enc { border:1px solid #E2E8F0; border-radius:18px; overflow:hidden; display:flex; flex-direction:column; }
+.enc-top { color:#fff; padding:14px 22px; font-family:'Montserrat',sans-serif; font-weight:900; font-size:calc(22px * var(--tz)); display:flex; gap:12px; align-items:center; }
+.enc-body { flex:1; padding:14px 22px; display:flex; flex-direction:column; justify-content:space-evenly; gap:8px; }
+.enc-body p { margin:0; display:flex; gap:14px; align-items:flex-start; }
+.enc-body b {
+  min-width:32px; height:32px; border-radius:50%; background:#F1F5F9; color:#003366;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  font-family:'Montserrat',sans-serif; font-weight:900; font-size:calc(15px * var(--tz));
+}
+.enc-body span { color:#475569; font-size:calc(17px * var(--tz)); line-height:1.45; }
+.enc-body strong { color:#003366; }
 </style>
 </head>
 <body>
@@ -182,11 +179,11 @@ table.tbl th.num { text-align:right; }
     <div class="flex items-center gap-3">
       <div style="width:5px;height:44px;" class="bg-accent"></div>
       <div>
-        <p class="font-montserrat font-bold text-gray-400 text-lg uppercase tracking-widest">Proposta PAF 2027 · Fiscalizações operacionais</p>
-        <p class="text-5xl font-montserrat font-bold text-brand uppercase tracking-tight">Fiscalizações operacionais</p>
+        <p class="font-montserrat font-bold text-gray-400 text-lg uppercase tracking-widest">Síntese</p>
+        <p class="text-5xl font-montserrat font-bold text-brand uppercase tracking-tight">O que vai à Diretoria Colegiada</p>
       </div>
       <div class="ml-auto flex items-center gap-3">
-        <span class="bloco-tag bt-oper"><i class="fas fa-screwdriver-wrench"></i> Operacionais</span>
+        <span class="bloco-tag bt-geral"><i class="fas fa-compass"></i> Visão geral</span>
         <img src="assets/logo-antaq-azul.png" alt="ANTAQ" style="height:32px;">
         <p class="font-montserrat font-bold text-gray-400 tracking-wider" style="font-size:12px; line-height:1.35;">SFC<br/>GRAT · GPF · GCOR</p>
       </div>
@@ -194,49 +191,40 @@ table.tbl th.num { text-align:right; }
   </div>
 
 
-  <div class="flex-1 px-16 pb-2 flex flex-col op-col">
-    <p class="op-lead">A fiscalização organizada para <strong>resolver problemas regulatórios conhecidos</strong>:
-    dirigida a um problema do setor, e não a um agente específico.</p>
-
-    <div>
-      <p class="titulo-sec"><i class="fas fa-compass-drafting text-accent"></i> Planejar <span class="sub-sec">· nesta ordem</span></p>
-      <div class="op-linha">
-        <div class="op-etapa"><span class="op-num">01</span><p class="op-t">Problema</p><p class="op-d">O que prejudica o usuário ou o serviço, e por que persiste.</p><i class="fas fa-chevron-right op-seta"></i></div>
-        <div class="op-etapa"><span class="op-num">02</span><p class="op-t">Evidência</p><p class="op-d">O que precisa ser medido em campo, e o dado que a Agência já recebe e não usa.</p><i class="fas fa-chevron-right op-seta"></i></div>
-        <div class="op-etapa"><span class="op-num">03</span><p class="op-t">Instrumento</p><p class="op-d">O que resolve com as ferramentas de hoje e o que falta criar: norma, dado, sistema, articulação com outros órgãos.</p><i class="fas fa-chevron-right op-seta"></i></div>
-        <div class="op-etapa"><span class="op-num">04</span><p class="op-t">Abordagem diferenciada</p><p class="op-d">Precisa do apoio da SFC, da aprovação da Diretoria ou de outras áreas da ANTAQ?</p></div>
+  <div class="flex-1 px-16 pb-2 grid grid-cols-2 gap-6">
+    <div class="enc">
+      <div class="enc-top" style="background:linear-gradient(135deg,#7F1D1D,#B91C1C);"><i class="fas fa-gauge-high"></i> Grupo de risco</div>
+      <div class="enc-body">
+        <p><b>a</b><span><strong>Aprovar a metodologia</strong> de composição, dimensionamento, equalização e agendamento para o ciclo 2027.</span></p>
+        <p><b>b</b><span><strong>Aprovar o PAF 2027</strong> pela regra C inteiro + B até o limite + sorteio do A, com os números da extração oficial de 30/09/2026.</span></p>
+        <p><b>c</b><span><strong>Aprovar o sorteio do Grupo A</strong> (IPR-SORTEIO-V1), executado na extração oficial com as taxas vigentes, com publicação do compromisso e do resultado.</span></p>
+        <p><b>d</b><span><strong>Tomar ciência</strong> de que GREBL, GREMN e URESN estão no limite: ampliar o Grupo B depende de lotação.</span></p>
       </div>
     </div>
-
-    <div>
-      <p class="titulo-sec"><i class="fas fa-chart-line text-accent"></i> Medir os resultados <span class="sub-sec">· no ciclo seguinte</span></p>
-      <div class="op-linha">
-        <div class="op-perg"><span class="op-num">01</span><p>Resolvemos o problema?</p></div>
-        <div class="op-perg"><span class="op-num">02</span><p>Houve avanço ou melhoria em relação ao problema original?</p></div>
-        <div class="op-perg"><span class="op-num">03</span><p>Precisamos de uma nova abordagem?</p></div>
-        <div class="op-perg"><span class="op-num">04</span><p>A fiscalização sozinha consegue resolver?</p></div>
-      </div>
-    </div>
-
-    <div class="grid grid-cols-12 op-base">
-      <div class="col-span-7 destaque flex items-center gap-5">
-        <i class="fas fa-arrow-right-arrow-left text-3xl" style="color:#FFD700;"></i>
-        <p style="margin:0;"><strong>A ordem importa.</strong> Hoje o caminho costuma ser o inverso: o instrumento vem dado
-        de antemão e o problema só aparece no relatório. Assim, a fiscalização passa a gerar <strong style="color:#FFD700;">evidência
-        de campo para aperfeiçoar a norma</strong>.</p>
-      </div>
-      <div class="col-span-5 card card-green">
-        <div class="ico" style="background:#BBF7D0;"><i class="fas fa-map-location-dot text-green-700 text-2xl"></i></div>
-        <div><p class="card-t">A escala decorre do problema</p>
-        <p class="card-d">Operação coordenada quando o problema é comum a várias regiões; localizada quando é de uma só.</p></div>
+    <div class="enc">
+      <div class="enc-top" style="background:linear-gradient(135deg,#003366,#0066CC);"><i class="fas fa-layer-group"></i> Fiscalizações temáticas</div>
+      <div class="enc-body">
+        <p><b>1</b><span><strong>Dispensar a Tomada de Subsídios</strong> neste ciclo e institucionalizar a consulta externa nos próximos, com a SRG.</span></p>
+        <p><b>2</b><span><strong>Manter quatro temáticas</strong> com escopo ajustado e renomear a de contêineres para <strong>Serviços em terminais de contêineres</strong>.</span></p>
+        <p><b>3</b><span><strong>Substituir três</strong> e aprovar o recorte inicial de APs (5) e convênios (12).</span></p>
+        <p><b>4</b><span><strong>Encaminhar</strong> duas matérias ao GEF Investimentos e articular com o GT do tema 2.8, MAPA, ANVISA e a área do IDA.</span></p>
+        <p><b>5</b><span><strong>Escolher as três temáticas complementares</strong> após a consulta às URs, que se encerra hoje.</span></p>
       </div>
     </div>
   </div>
+  <div class="px-16 pb-2">
+    <div class="destaque flex items-center gap-6">
+      <i class="fas fa-flag-checkered text-3xl" style="color:#FFD700;"></i>
+      <p class="text-lg" style="margin:0;"><strong>Rito:</strong> elaboração pela GPF (RI, art. 80, III, &ldquo;a&rdquo;), consolidação e submissão pela SFC (art. 76, VIII)
+      e aprovação pela Diretoria Colegiada (art. 11, X) — <strong style="color:#FFD700;">até 31/10/2026</strong>.</p>
+    </div>
+  </div>
+  <p class="fonte px-16 pb-1">Fonte: minuta da NT de Metodologia do PAF 2027 (rodada de validação de 29/09/2026), item 12; NT nº 27/2026/GPF/SFC, item 8.2.</p>
 
 
   <div class="px-16 pb-4 flex justify-between items-center border-t border-gray-100 pt-3 mx-8">
     <p class="text-gray-400 text-sm">PAF 2027 — Apresentação ao Diretor-Geral · SFC · GRAT, GPF e GCOR · ANTAQ</p>
-    <p class="text-gray-300 text-sm font-mono">18 / 20</p>
+    <p class="text-gray-300 text-sm font-mono">18 / 19</p>
   </div>
 </div>
 <script src="zoom.js"></script>

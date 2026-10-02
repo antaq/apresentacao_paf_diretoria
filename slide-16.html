@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Temáticas — recorte inicial</title>
+<title>Temáticas — candidatos às três vagas</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-<style>:root { --tz-base: 1.449; }
+<style>:root { --tz-base: 1.152; }
 
 body { margin:0; padding:0; overflow:hidden; font-family:'Open Sans',sans-serif; }
 .slide { width:100vw; height:100vh; position:relative; display:flex; flex-direction:column; overflow:hidden; background:#ffffff; }
@@ -157,13 +157,15 @@ table.tbl th.num { text-align:right; }
    para que títulos longos não quebrem linha quando o corpo cresce. */
 .slide p.text-5xl { font-size:54px !important; line-height:1.1 !important; }
 
-.painel { background:#fff; border:1px solid #E2E8F0; border-radius:16px; padding:16px 22px; display:flex; flex-direction:column; gap:8px; }
-.painel p { margin:0; }
-.ano-row { display:grid; grid-template-columns:110px 1fr; align-items:center; gap:12px; padding:5px 0; border-bottom:1px solid #F1F5F9; }
-.ano { font-family:'Montserrat',sans-serif; font-weight:900; color:#003366; font-size:calc(17px * var(--tz)); line-height:1.15; }
-.chips { display:flex; flex-wrap:wrap; gap:6px; }
-.chip { display:inline-block; padding:4px 12px; border-radius:8px; background:#F1F5F9; color:#475569; font-size:calc(14.5px * var(--tz)); font-weight:600; }
-.chip-on { background:#003366; color:#FFD700; }
+.cand { display:flex; align-items:center; gap:14px; background:#F8FAFC; border-radius:10px; padding:6px 14px;
+  color:#334155; font-size:calc(17px * var(--tz)); line-height:1.3; }
+.cand span { min-width:40px; font-family:'Montserrat',sans-serif; font-weight:900; color:#003366; font-size:calc(15px * var(--tz)); }
+.cand-c { background:#FFFBEB; border:1px solid #FDE68A; }
+.consulta { background:#F8FAFC; border-radius:14px; padding:12px 16px; }
+.consulta p { margin:0; }
+.mt { background:#fff; border:1px solid #E2E8F0; border-radius:10px; padding:8px 10px; display:flex; flex-direction:column; gap:2px; }
+.mt b { font-family:'Montserrat',sans-serif; font-weight:900; color:#003366; font-size:calc(26px * var(--tz)); line-height:1; }
+.mt span { color:#64748B; font-size:calc(14.5px * var(--tz)); line-height:1.3; }
 </style>
 </head>
 <body>
@@ -175,8 +177,8 @@ table.tbl th.num { text-align:right; }
     <div class="flex items-center gap-3">
       <div style="width:5px;height:44px;" class="bg-accent"></div>
       <div>
-        <p class="font-montserrat font-bold text-gray-400 text-lg uppercase tracking-widest">Proposta PAF 2027 · NT nº 27/2026/GPF/SFC, itens 6.1.2 a 6.1.5</p>
-        <p class="text-5xl font-montserrat font-bold text-brand uppercase tracking-tight">Quem será avaliado no novo ciclo</p>
+        <p class="font-montserrat font-bold text-gray-400 text-lg uppercase tracking-widest">Proposta PAF 2027 · NT nº 27/2026/GPF/SFC, itens 5.13 a 6.5 e 7</p>
+        <p class="text-5xl font-montserrat font-bold text-brand uppercase tracking-tight">Candidatos às três vagas</p>
       </div>
       <div class="ml-auto flex items-center gap-3">
         <span class="bloco-tag bt-tema"><i class="fas fa-layer-group"></i> Bloco 2 · Temáticas</span>
@@ -187,44 +189,55 @@ table.tbl th.num { text-align:right; }
   </div>
 
 
-  <div class="flex-1 px-16 pb-2 flex flex-col gap-3">
-    <p class="sub-sec" style="font-size:calc(17px * var(--tz));">Critérios: <strong>antiguidade</strong> da última avaliação e <strong>desconcentração</strong> —
-    evitar duas ações sobre a mesma Unidade Regional e a mesma localidade no mesmo exercício.
-    <span class="chip chip-on" style="margin-left:8px;">em destaque: recorte inicial 2027</span></p>
-    <div class="flex-1 grid grid-cols-2 gap-6">
-      <div class="painel">
-        <p class="titulo-sec">Autoridades Portuárias <span class="text-gray-400">· 20 acompanhadas</span></p>
-        <p class="sub-sec mb-2">diagnóstico do desempenho, por ano da última avaliação</p>
-        <div class="ano-row"><span class="ano">2026</span><div class="chips"><span class="chip">APPA</span><span class="chip">VPORTS</span><span class="chip">SCPAR Imbituba</span><span class="chip">SOPH</span><span class="chip">CDSA</span></div></div>
-<div class="ano-row"><span class="ano">2025</span><div class="chips"><span class="chip">Portos RIO</span><span class="chip">CODERN</span><span class="chip">CDC</span><span class="chip">SNPH</span><span class="chip">Porto de Recife</span></div></div>
-<div class="ano-row"><span class="ano">2024</span><div class="chips"><span class="chip">CODEBA</span><span class="chip">CDP</span><span class="chip">EMAP</span></div></div>
-<div class="ano-row"><span class="ano">2023</span><div class="chips"><span class="chip">APS</span><span class="chip chip-on">Portos RS</span><span class="chip chip-on">SUAPE</span></div></div>
-<div class="ano-row"><span class="ano">2022</span><div class="chips"><span class="chip chip-on">Docas PB</span><span class="chip">SCPAR São Francisco do Sul</span></div></div>
-<div class="ano-row"><span class="ano">Nunca</span><div class="chips"><span class="chip chip-on">SCPAR Laguna</span><span class="chip chip-on">CDSS</span></div></div>
-        <div class="card card-amber mt-3">
-          <div><p class="card-d"><strong>APS e SCPAR São Francisco do Sul</strong>, embora antigas, ficam fora do recorte inicial:
-          são das mesmas URs (GREST e GREFL) de CDSS e SCPAR Laguna, prioritárias por nunca terem sido avaliadas.</p></div>
-        </div>
-      </div>
-      <div class="painel">
-        <p class="titulo-sec">Convênios de Delegação <span class="text-gray-400">· 19 acompanhados</span></p>
-        <p class="sub-sec mb-2">15 nunca foram avaliados</p>
-        <div class="ano-row"><span class="ano" style="font-size:calc(14px * var(--tz));">Avaliados<br/>em 2026</span><div class="chips"><span class="chip">São Francisco do Sul</span><span class="chip">São Sebastião</span><span class="chip">Pelotas</span><span class="chip">Porto Alegre</span></div></div>
-        <div class="ano-row"><span class="ano" style="font-size:calc(14px * var(--tz));">Recorte<br/>2027 (12)</span><div class="chips"><span class="chip chip-on">Imbituba</span><span class="chip chip-on">Itaqui</span><span class="chip chip-on">Recife</span><span class="chip chip-on">Antonina</span><span class="chip chip-on">Paranaguá</span><span class="chip chip-on">Cachoeira do Sul</span><span class="chip chip-on">Rio Grande</span><span class="chip chip-on">Porto Velho</span><span class="chip chip-on">Itajaí</span><span class="chip chip-on">Macapá</span><span class="chip chip-on">Forno</span><span class="chip chip-on">Manaus</span></div></div>
-        <div class="ano-row"><span class="ano" style="font-size:calc(14px * var(--tz));">Etapa<br/>posterior (3)</span><div class="chips"><span class="chip">Suape</span><span class="chip">Laguna</span><span class="chip">Cabedelo</span></div></div>
-        <div class="card mt-3">
-          <div><p class="card-d"><strong>Suape, Laguna e Cabedelo</strong> aguardam porque suas localidades já estão no recorte
-          do diagnóstico de desempenho das APs em 2027.</p></div>
+  <div class="flex-1 px-16 pb-2 grid grid-cols-12 gap-6">
+    <div class="col-span-6 flex flex-col gap-3">
+      <p class="titulo-sec">Ancorados na Agenda Regulatória <span class="text-gray-400">· 37 demandas</span></p>
+      <table class="tbl">
+        <thead><tr><th>Tema</th><th class="num">Dem.</th><th>Agenda Regulatória</th><th>Estudos</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Agentes intermediários</strong> na cadeia de contêineres</td><td class="num">13</td><td>2.5 · não iniciado (2027)</td><td>P14 · a iniciar</td></tr>
+          <tr><td><strong>Navegação interior</strong> em estiagem severa</td><td class="num">4</td><td>sem tema relacionado</td><td>P6 (indireto) · concluído</td></tr>
+          <tr><td><strong>Pátios de triagem</strong> e acessos ao porto organizado</td><td class="num">2</td><td>3.5 · não iniciado (2026)</td><td>P1 · em andamento</td></tr>
+          <tr style="background:#FFFBEB;"><td><strong>Apoio marítimo</strong>: outorgas e afretamento</td><td class="num"><strong>18</strong></td><td>2.7 · fase inicial; 2.4 · não iniciado</td><td>P21, P17 e P27</td></tr>
+        </tbody>
+      </table>
+      <p class="legenda">Matéria regulatória em fase inicial ou estudo não concluído: a fiscalização gera <strong>evidência de campo</strong>
+      aproveitável, sem sobrepor trabalho avançado. Apoio marítimo é o maior bloco da consulta, hoje apurado só no TPB.</p>
+
+    </div>
+
+    <div class="col-span-6 flex flex-col gap-2">
+      <p class="titulo-sec">Reuniões de avaliação e Superintendências finalísticas</p>
+      <div class="cand cand-c"><span>I</span>Recepção de resíduos de embarcações e reporte de dados ambientais</div>
+      <div class="cand cand-c"><span>II</span>Inovação e cibersegurança das Autoridades Portuárias</div>
+      <div class="cand cand-c"><span>III</span>Reincidência e efetividade das penalidades na navegação interior</div>
+      <div class="cand"><span>IV</span>Transparência aos usuários, com expansão a TUPs e arrendamentos</div>
+      <div class="cand"><span>V</span>Transporte marítimo de animais vivos e planos de contingência</div>
+      <div class="cand"><span>VI</span>Retirada de resíduos de embarcações: efetividade e rastreabilidade</div>
+      <div class="cand"><span>VII</span>Produtividade de arrendamentos</div>
+      <div class="cand"><span>VIII</span>Manutenção de infraestruturas terrestres nos portos organizados</div>
+      <div class="cand"><span>IX</span>Equipamentos e forma de embarque e desembarque de granel sólido</div>
+      <p class="legenda mt-1"><span class="pill pill-gold">I a III</span> alcançam blocos <strong>sem cobertura</strong> em qualquer instrumento (complementaridade).
+      I e VI incidem sobre o mesmo objeto: apreciar em conjunto, para temática única ou delimitação expressa.</p>
+
+      <div class="consulta">
+        <p class="card-t"><i class="fas fa-building-columns text-accent"></i> 10 matérias das Superintendências finalísticas</p>
+        <div class="grid grid-cols-5 gap-2 mt-2">
+          <div class="mt"><b>2</b><span>execução imediata — viraram os temas IV e VI ao lado</span></div>
+          <div class="mt"><b>1</b><span>já contemplada na fiscalização de contêineres</span></div>
+          <div class="mt"><b>2</b><span>para o GEF Investimentos</span></div>
+          <div class="mt"><b>2</b><span>condicionadas a MAPA/ANVISA ou método conjunto</span></div>
+          <div class="mt"><b>3</b><span>dependem de método — sem descarte</span></div>
         </div>
       </div>
     </div>
   </div>
-  <p class="fonte px-16 pb-1">Fundamento: Regimento Interno, art. 4º, XXXVII, e art. 84, II, &ldquo;a&rdquo;. Fonte: NT nº 27/2026/GPF/SFC, itens 6.1.1, I, e 6.1.2 a 6.1.5; Quadros 4 e 5.</p>
+  <p class="fonte px-16 pb-1">GEF: Grupo Especializado de Fiscalização. Fonte: NT nº 27/2026/GPF/SFC, itens 5.13 a 5.17, 6.3 a 6.5 e Quadros 3 e 6.</p>
 
 
   <div class="px-16 pb-4 flex justify-between items-center border-t border-gray-100 pt-3 mx-8">
     <p class="text-gray-400 text-sm">PAF 2027 — Apresentação ao Diretor-Geral · SFC · GRAT, GPF e GCOR · ANTAQ</p>
-    <p class="text-gray-300 text-sm font-mono">16 / 20</p>
+    <p class="text-gray-300 text-sm font-mono">16 / 19</p>
   </div>
 </div>
 <script src="zoom.js"></script>

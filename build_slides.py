@@ -18,7 +18,7 @@ Para regerar: python3 build_slides.py
 from pathlib import Path
 
 DST = Path(__file__).resolve().parent
-TOTAL = 20
+TOTAL = 19
 RODAPE = "PAF 2027 — Apresentação ao Diretor-Geral · SFC · GRAT, GPF e GCOR · ANTAQ"
 # Fator global de texto. Cada slide declara o `base` em que foi fechado; este
 # fator multiplica todos eles de uma vez. Em 0.90 o texto do corpo encolhe 10%,
@@ -554,73 +554,6 @@ slide(
 """,
     tag=TAG_TEMA,
     base=1.46,
-)
-
-# ---------------------------------------------------------------------------
-# 12 — Leitura por temática
-# ---------------------------------------------------------------------------
-def _mini(atd, cnv, nov, art, fora):
-    tot = atd + cnv + nov + art + fora
-    return barra("", [(atd, C_ATD, "#fff"), (cnv, C_CNV, "#fff"), (nov, C_NOV, "#fff"),
-                      (art, C_ART, "#fff"), (fora, C_FORA, "#fff")], tot)
-
-slide(
-    12,
-    "Temáticas — leitura por temática",
-    f"Resultados · {NT}, itens 5.8 a 5.12",
-    "O que está coberto e o que falta",
-    f"""
-  <div class="flex-1 px-16 pb-2 flex flex-col gap-3">
-    <div class="leg-row">
-      <span><i class="sw" style="background:{C_ATD};"></i>Atendida</span>
-      <span><i class="sw" style="background:{C_CNV};"></i>Conversível</span>
-      <span><i class="sw" style="background:{C_NOV};"></i>Novo ciclo</span>
-      <span><i class="sw" style="background:{C_ART};"></i>Articulação</span>
-      <span><i class="sw" style="background:{C_FORA};"></i>Sem método / fora</span>
-    </div>
-    <div class="flex-1 grid grid-cols-2 gap-4">
-      <div class="tema">
-        <p class="tema-t"><i class="fas fa-chart-line"></i> Diagnóstico do desempenho das APs</p>
-        <div style="--rot:0px;">{_mini(3, 3, 2, 0, 0)}</div>
-        <p><b style="color:{C_ATD};">Atendidas (3):</b> produtividade de terminais de contêineres; pátios de triagem; integração multimodal.</p>
-        <p><b style="color:{C_CNV};">Conversíveis (3):</b> indicadores de produtividade, de serviço adequado e de qualidade — dados já coletados.</p>
-        <p><b style="color:{C_NOV};">Novo ciclo (2):</b> participação dos usuários na revisão tarifária; Cartilha de Direitos dos Usuários.</p>
-      </div>
-      <div class="tema">
-        <p class="tema-t"><i class="fas fa-building-shield"></i> Estrutura de fiscalização das APs</p>
-        <div style="--rot:0px;">{_mini(2, 0, 0, 0, 2)}</div>
-        <p><b style="color:{C_ATD};">Em análise (2):</b> fiscalização em portos concedidos; envio tempestivo de informações.</p>
-        <p><b style="color:{C_FORA};">Sem método (2):</b> canal de acesso concedido; desempenho técnico da AP.
-        Proposta: articular com o GT do <strong>tema 2.8 da Agenda Regulatória</strong>.</p>
-      </div>
-      <div class="tema">
-        <p class="tema-t"><i class="fas fa-box"></i> Preço em terminais de contêineres</p>
-        <div style="--rot:0px;">{_mini(5, 0, 7, 0, 4)}</div>
-        <p><b style="color:{C_ATD};">Atendidas (5):</b> escaneamento; transparência de taxas; conceito de agente; matriz de risco da armazenagem; Res. ANTAQ nº 109/2023.</p>
-        <p><b style="color:{C_NOV};">Novo ciclo (7):</b> caução por sobre-estadia; qualidade; informação de cobranças; retenção de carga; recusa de embarque; rastreabilidade; liberação documental.</p>
-        <p><b style="color:{C_FORA};">Fora (4):</b> abusividade de preços e de sobre-estadia e sua natureza jurídica (juízo de mérito); oferta de contêineres (agente não alcançado).</p>
-      </div>
-      <div class="tema">
-        <p class="tema-t"><i class="fas fa-ship"></i> Contabilização de TPB no REB</p>
-        <div style="--rot:0px;">{_mini(1, 0, 0, 4, 0)}</div>
-        <p><b style="color:{C_ATD};">Atendida (1):</b> contabilização do TPB para inscrição no REB.</p>
-        <p><b style="color:{C_ART};">Articulação (4):</b> afretamento por tempo; consulta ao mercado; outorgas na navegação; fim de cobertura de bandeira.
-        Dependem de método construído com a <strong>GRAT, a GAF e a GOA</strong>.</p>
-      </div>
-    </div>
-  </div>
-  <p class="fonte px-16 pb-1">GRAT: Gerência de Recursos e de Apoio Técnico (SFC) · GAF e GOA: Gerências de Afretamento e de Outorgas de Autorização (SOG). Fonte: {NT}, itens 5.8 a 5.12.</p>
-""",
-    extra_css="""
-.tema { background:#fff; border:1px solid #E2E8F0; border-radius:16px; padding:14px 20px; display:flex; flex-direction:column; gap:8px; }
-.tema .bar-row { grid-template-columns: 0 1fr; gap:0; }
-.tema .bar-trk { height:26px; }
-.tema p { margin:0; color:#475569; font-size:calc(15px * var(--tz)); line-height:1.45; }
-.tema p.tema-t { font-family:'Montserrat',sans-serif; font-weight:700; color:#003366; font-size:calc(19px * var(--tz)); }
-.tema-t i { color:#0066CC; margin-right:6px; }
-""",
-    tag=TAG_TEMA,
-    base=1.61,
 )
 
 # ---------------------------------------------------------------------------
@@ -1543,12 +1476,13 @@ slide(
     base=1.61,
 )
 
-SLIDES.append(dict(n=20, raw=True))
+SLIDES.append(dict(n=19, raw=True))
 
 # Os slides acima levam o número em que foram escritos; a posição final no deck abre
-# espaço para as duas divisórias de bloco (3 e 9); as operacionais (17) entram antes da
-# síntese (16). A capa (1) e o encerramento (20) são escritos à mão.
-POSICAO = {2: 2, **{n: n + 1 for n in range(3, 8)}, **{n: n + 2 for n in range(8, 16)}, 17: 18, 16: 19}
+# espaço para as duas divisórias de bloco (3 e 9); o 12 saiu do deck, e as operacionais
+# (17) entram antes da síntese (16). A capa (1) e o encerramento (19) são escritos à mão.
+POSICAO = {2: 2, **{n: n + 1 for n in range(3, 8)}, **{n: n + 2 for n in range(8, 12)},
+           **{n: n + 1 for n in range(13, 16)}, 17: 17, 16: 18}
 for s in SLIDES:
     if not s.get("raw"):
         s["n"] = POSICAO[s["n"]]

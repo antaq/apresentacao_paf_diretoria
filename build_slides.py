@@ -18,7 +18,7 @@ Para regerar: python3 build_slides.py
 from pathlib import Path
 
 DST = Path(__file__).resolve().parent
-TOTAL = 19
+TOTAL = 18
 RODAPE = "PAF 2027 — Apresentação ao Diretor-Geral · SFC · GRAT, GPF e GCOR · ANTAQ"
 # Fator global de texto. Cada slide declara o `base` em que foi fechado; este
 # fator multiplica todos eles de uma vez. Em 0.90 o texto do corpo encolhe 10%,
@@ -633,74 +633,6 @@ slide(
     tag=TAG_TEMA,
     base=1.39,
 )
-
-# ---------------------------------------------------------------------------
-# 14 — Recorte inicial: APs e convênios
-# ---------------------------------------------------------------------------
-def _chips(nomes, sel=()):
-    return "".join(f'<span class="chip{" chip-on" if n in sel else ""}">{n}</span>' for n in nomes)
-
-_sel_ap = ("Portos RS", "SUAPE", "Docas PB", "SCPAR Laguna", "CDSS")
-_aps = [
-    ("2026", ["APPA", "VPORTS", "SCPAR Imbituba", "SOPH", "CDSA"]),
-    ("2025", ["Portos RIO", "CODERN", "CDC", "SNPH", "Porto de Recife"]),
-    ("2024", ["CODEBA", "CDP", "EMAP"]),
-    ("2023", ["APS", "Portos RS", "SUAPE"]),
-    ("2022", ["Docas PB", "SCPAR São Francisco do Sul"]),
-    ("Nunca", ["SCPAR Laguna", "CDSS"]),
-]
-_linhas_ap = "\n".join(
-    f'<div class="ano-row"><span class="ano">{a}</span><div class="chips">{_chips(ns, _sel_ap)}</div></div>'
-    for a, ns in _aps
-)
-slide(
-    14,
-    "Temáticas — recorte inicial",
-    f"Proposta PAF 2027 · {NT}, itens 6.1.2 a 6.1.5",
-    "Quem será avaliado no novo ciclo",
-    f"""
-  <div class="flex-1 px-16 pb-2 flex flex-col gap-3">
-    <p class="sub-sec" style="font-size:calc(17px * var(--tz));">Critérios: <strong>antiguidade</strong> da última avaliação e <strong>desconcentração</strong> —
-    evitar duas ações sobre a mesma Unidade Regional e a mesma localidade no mesmo exercício.
-    <span class="chip chip-on" style="margin-left:8px;">em destaque: recorte inicial 2027</span></p>
-    <div class="flex-1 grid grid-cols-2 gap-6">
-      <div class="painel">
-        <p class="titulo-sec">Autoridades Portuárias <span class="text-gray-400">· 20 acompanhadas</span></p>
-        <p class="sub-sec mb-2">diagnóstico do desempenho, por ano da última avaliação</p>
-        {_linhas_ap}
-        <div class="card card-amber mt-3">
-          <div><p class="card-d"><strong>APS e SCPAR São Francisco do Sul</strong>, embora antigas, ficam fora do recorte inicial:
-          são das mesmas URs (GREST e GREFL) de CDSS e SCPAR Laguna, prioritárias por nunca terem sido avaliadas.</p></div>
-        </div>
-      </div>
-      <div class="painel">
-        <p class="titulo-sec">Convênios de Delegação <span class="text-gray-400">· 19 acompanhados</span></p>
-        <p class="sub-sec mb-2">15 nunca foram avaliados</p>
-        <div class="ano-row"><span class="ano" style="font-size:calc(14px * var(--tz));">Avaliados<br/>em 2026</span><div class="chips">{_chips(["São Francisco do Sul", "São Sebastião", "Pelotas", "Porto Alegre"])}</div></div>
-        <div class="ano-row"><span class="ano" style="font-size:calc(14px * var(--tz));">Recorte<br/>2027 (12)</span><div class="chips">{_chips(["Imbituba", "Itaqui", "Recife", "Antonina", "Paranaguá", "Cachoeira do Sul", "Rio Grande", "Porto Velho", "Itajaí", "Macapá", "Forno", "Manaus"], ("Imbituba", "Itaqui", "Recife", "Antonina", "Paranaguá", "Cachoeira do Sul", "Rio Grande", "Porto Velho", "Itajaí", "Macapá", "Forno", "Manaus"))}</div></div>
-        <div class="ano-row"><span class="ano" style="font-size:calc(14px * var(--tz));">Etapa<br/>posterior (3)</span><div class="chips">{_chips(["Suape", "Laguna", "Cabedelo"])}</div></div>
-        <div class="card mt-3">
-          <div><p class="card-d"><strong>Suape, Laguna e Cabedelo</strong> aguardam porque suas localidades já estão no recorte
-          do diagnóstico de desempenho das APs em 2027.</p></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <p class="fonte px-16 pb-1">Fundamento: Regimento Interno, art. 4º, XXXVII, e art. 84, II, &ldquo;a&rdquo;. Fonte: {NT}, itens 6.1.1, I, e 6.1.2 a 6.1.5; Quadros 4 e 5.</p>
-""",
-    extra_css="""
-.painel { background:#fff; border:1px solid #E2E8F0; border-radius:16px; padding:16px 22px; display:flex; flex-direction:column; gap:8px; }
-.painel p { margin:0; }
-.ano-row { display:grid; grid-template-columns:110px 1fr; align-items:center; gap:12px; padding:5px 0; border-bottom:1px solid #F1F5F9; }
-.ano { font-family:'Montserrat',sans-serif; font-weight:900; color:#003366; font-size:calc(17px * var(--tz)); line-height:1.15; }
-.chips { display:flex; flex-wrap:wrap; gap:6px; }
-.chip { display:inline-block; padding:4px 12px; border-radius:8px; background:#F1F5F9; color:#475569; font-size:calc(14.5px * var(--tz)); font-weight:600; }
-.chip-on { background:#003366; color:#FFD700; }
-""",
-    tag=TAG_TEMA,
-    base=1.61,
-)
-
 # ---------------------------------------------------------------------------
 # 15 — Três vagas: candidatos e consulta às URs
 # ---------------------------------------------------------------------------
@@ -1476,13 +1408,14 @@ slide(
     base=1.61,
 )
 
-SLIDES.append(dict(n=19, raw=True))
+SLIDES.append(dict(n=18, raw=True))
 
 # Os slides acima levam o número em que foram escritos; a posição final no deck abre
-# espaço para as duas divisórias de bloco (3 e 9); o 12 saiu do deck, e as operacionais
-# (17) entram antes da síntese (16). A capa (1) e o encerramento (19) são escritos à mão.
+# espaço para as duas divisórias de bloco (3 e 9); o 12 e o 14 saíram do deck, e as
+# operacionais (17) entram antes da síntese (16). A capa (1) e o encerramento (18) são
+# escritos à mão.
 POSICAO = {2: 2, **{n: n + 1 for n in range(3, 8)}, **{n: n + 2 for n in range(8, 12)},
-           **{n: n + 1 for n in range(13, 16)}, 17: 17, 16: 18}
+           13: 14, 15: 15, 17: 16, 16: 17}
 for s in SLIDES:
     if not s.get("raw"):
         s["n"] = POSICAO[s["n"]]
@@ -1612,8 +1545,7 @@ divisor(
     "Regulatória às sete temáticas de 2027.",
     "fa-layer-group",
     [("fa-inbox", "99 demandas externas"), ("fa-check-double", "O que já está coberto"),
-     ("fa-arrows-rotate", "Manter quatro, substituir três"), ("fa-building-columns", "APs e convênios"),
-     ("fa-list-ol", "Candidatos às três vagas")],
+     ("fa-arrows-rotate", "Manter quatro, substituir três"), ("fa-list-ol", "Candidatos às três vagas")],
     "Nota Técnica nº 27/2026/GPF/SFC · SEI 3024667",
 )
 

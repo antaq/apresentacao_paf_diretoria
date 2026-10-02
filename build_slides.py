@@ -1061,26 +1061,31 @@ slide(
     <div class="flex-1 grid grid-cols-5 gap-3">
       <div class="ind">
         <div class="ind-h"><span class="ind-s">ICF</span><span class="ind-p">peso 3</span></div>
+        <p class="ind-n">Indicador de Cobertura Fiscalizatória</p>
         <p class="ind-t">Há quanto tempo ninguém olha</p>
         <p>Nota sobe com o tempo desde a última fiscalização; nunca visitada leva a máxima. Fiscalizou, a nota zera e a outorga dá lugar a outra.</p>
       </div>
       <div class="ind">
         <div class="ind-h"><span class="ind-s">IVO</span><span class="ind-p">peso 2</span></div>
+        <p class="ind-n">Indicador de Volume Operacional</p>
         <p class="ind-t">O porte da operação</p>
         <p>Volume comparado com pares da mesma categoria. Só pesa quando ninguém está olhando: IVO efetivo = IVO &times; ICF.</p>
       </div>
       <div class="ind">
         <div class="ind-h"><span class="ind-s">ICD</span><span class="ind-p">peso 1</span></div>
+        <p class="ind-n">Índice de Custo-Distância</p>
         <p class="ind-t">Custo de chegar lá</p>
         <p>Desde setembro, mede a <strong>via real</strong> usada nas viagens da Agência (viatura, barco ou avião), não a linha reta.</p>
       </div>
       <div class="ind">
         <div class="ind-h"><span class="ind-s">IMA</span><span class="ind-p">peso 1</span></div>
+        <p class="ind-n">Índice de Maturidade Empresarial</p>
         <p class="ind-t">Quem opera</p>
         <p>Idade do CNPJ e porte: empresa jovem e pequena tende a ter menos estrutura de conformidade. Priorização, não punição.</p>
       </div>
       <div class="ind" style="border-top-color:#D97706;">
         <div class="ind-h"><span class="ind-s" style="color:#B45309;">F_IRA</span><span class="ind-p">piso</span></div>
+        <p class="ind-n">Piso pelo Indicador de Risco da Atividade</p>
         <p class="ind-t">O risco da atividade</p>
         <p>Atividade perigosa tem nota mínima: uma travessia nunca fiscalizada <strong>jamais cai em A1</strong>.</p>
       </div>
@@ -1094,15 +1099,16 @@ slide(
   <p class="fonte px-16 pb-1">Números do universo do ciclo 2027 (2.466 outorgas), painel IPR-PAF em 01/10/2026. Fonte: NT 11/2026 e 12/2026, revisadas pelas NT 19/2026 e 20/2026; {NTM}, item 2.</p>
 """,
     extra_css="""
-.ind { background:#F8FAFC; border-top:5px solid #0066CC; border-radius:12px; padding:18px 18px; display:flex; flex-direction:column; justify-content:center; gap:10px; }
+.ind { background:#F8FAFC; border-top:5px solid #0066CC; border-radius:12px; padding:18px 18px; display:flex; flex-direction:column; justify-content:flex-start; gap:10px; }
 .ind p { margin:0; color:#475569; font-size:calc(17.5px * var(--tz)); line-height:1.45; }
 .ind p.ind-t { font-family:'Montserrat',sans-serif; font-weight:700; color:#003366; font-size:calc(20px * var(--tz)); }
 .ind-h { display:flex; justify-content:space-between; align-items:baseline; }
 .ind-s { font-family:'Montserrat',sans-serif; font-weight:900; color:#0066CC; font-size:calc(32px * var(--tz)); }
 .ind-p { color:#94A3B8; font-size:calc(13px * var(--tz)); font-weight:600; text-transform:uppercase; letter-spacing:0.06em; }
+.ind p.ind-n { color:#94A3B8; font-size:calc(13px * var(--tz)); font-weight:600; text-transform:uppercase; letter-spacing:0.06em; line-height:1.3; margin-top:-6px; }
 """,
     tag=TAG_RISCO,
-    base=1.5,
+    base=1.46,
 )
 
 # ---------------------------------------------------------------------------

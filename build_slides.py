@@ -18,7 +18,7 @@ Para regerar: python3 build_slides.py
 from pathlib import Path
 
 DST = Path(__file__).resolve().parent
-TOTAL = 19
+TOTAL = 20
 RODAPE = "PAF 2027 — Apresentação ao Diretor-Geral · SFC · GRAT, GPF e GCOR · ANTAQ"
 # Fator global de texto. Cada slide declara o `base` em que foi fechado; este
 # fator multiplica todos eles de uma vez. Em 0.90 o texto do corpo encolhe 10%,
@@ -198,6 +198,7 @@ BASE_CSS += """
 .bt-risco { background:#FEE2E2; color:#991B1B; }
 .bt-tema  { background:#DBEAFE; color:#1E3A8A; }
 .bt-geral { background:#FEF3C7; color:#92400E; }
+.bt-oper  { background:#DCFCE7; color:#166534; }
 .fonte { color:#94A3B8; font-size:calc(13px * var(--tz)); line-height:1.4; }
 .titulo-sec { font-family:'Montserrat',sans-serif; font-weight:700; color:#003366; font-size:calc(21px * var(--tz)); }
 .sub-sec { color:#64748B; font-size:calc(15px * var(--tz)); }
@@ -235,6 +236,7 @@ BASE_CSS += """
 TAG_GERAL = '<span class="bloco-tag bt-geral"><i class="fas fa-compass"></i> Visão geral</span>'
 TAG_RISCO = '<span class="bloco-tag bt-risco"><i class="fas fa-gauge-high"></i> Bloco 1 · Grupo de risco</span>'
 TAG_TEMA = '<span class="bloco-tag bt-tema"><i class="fas fa-layer-group"></i> Bloco 2 · Temáticas</span>'
+TAG_OPER = '<span class="bloco-tag bt-oper"><i class="fas fa-screwdriver-wrench"></i> Operacionais</span>'
 NT = "NT nº 27/2026/GPF/SFC"
 
 # Escala de alcance: ordinal, então rampa sequencial de um azul só (mais escuro =
@@ -833,6 +835,84 @@ slide(
 """,
     tag=TAG_TEMA,
     base=1.28,
+)
+
+# ===========================================================================
+# 17 — FISCALIZAÇÕES OPERACIONAIS (adaptado de operacionais-paf2027-dg.pptx)
+# ===========================================================================
+def _etapa(num, titulo, texto, ultimo=False):
+    seta = "" if ultimo else '<i class="fas fa-chevron-right op-seta"></i>'
+    return (f'<div class="op-etapa"><span class="op-num">{num}</span>'
+            f'<p class="op-t">{titulo}</p><p class="op-d">{texto}</p>{seta}</div>')
+
+
+def _pergunta(num, texto):
+    return f'<div class="op-perg"><span class="op-num">{num}</span><p>{texto}</p></div>'
+
+
+slide(
+    17,
+    "Fiscalizações operacionais no PAF 2027",
+    "Proposta PAF 2027 · Fiscalizações operacionais",
+    "Fiscalizações operacionais",
+    f"""
+  <div class="flex-1 px-16 pb-2 flex flex-col op-col">
+    <p class="op-lead">A fiscalização organizada para <strong>resolver problemas regulatórios conhecidos</strong>:
+    dirigida a um problema do setor, e não a um agente específico.</p>
+
+    <div>
+      <p class="titulo-sec"><i class="fas fa-compass-drafting text-accent"></i> Planejar <span class="sub-sec">· nesta ordem</span></p>
+      <div class="op-linha">
+        {_etapa("01", "Problema", "O que prejudica o usuário ou o serviço, e por que persiste.")}
+        {_etapa("02", "Evidência", "O que precisa ser medido em campo, e o dado que a Agência já recebe e não usa.")}
+        {_etapa("03", "Instrumento", "O que resolve com as ferramentas de hoje e o que falta criar: norma, dado, sistema, articulação com outros órgãos.")}
+        {_etapa("04", "Abordagem diferenciada", "Precisa do apoio da SFC, da aprovação da Diretoria ou de outras áreas da ANTAQ?", ultimo=True)}
+      </div>
+    </div>
+
+    <div>
+      <p class="titulo-sec"><i class="fas fa-chart-line text-accent"></i> Medir os resultados <span class="sub-sec">· no ciclo seguinte</span></p>
+      <div class="op-linha">
+        {_pergunta("01", "Resolvemos o problema?")}
+        {_pergunta("02", "Houve avanço ou melhoria em relação ao problema original?")}
+        {_pergunta("03", "Precisamos de uma nova abordagem?")}
+        {_pergunta("04", "A fiscalização sozinha consegue resolver?")}
+      </div>
+    </div>
+
+    <div class="grid grid-cols-12 op-base">
+      <div class="col-span-7 destaque flex items-center gap-5">
+        <i class="fas fa-arrow-right-arrow-left text-3xl" style="color:#FFD700;"></i>
+        <p style="margin:0;"><strong>A ordem importa.</strong> Hoje o caminho costuma ser o inverso: o instrumento vem dado
+        de antemão e o problema só aparece no relatório. Assim, a fiscalização passa a gerar <strong style="color:#FFD700;">evidência
+        de campo para aperfeiçoar a norma</strong>.</p>
+      </div>
+      <div class="col-span-5 card card-green">
+        <div class="ico" style="background:#BBF7D0;"><i class="fas fa-map-location-dot text-green-700 text-2xl"></i></div>
+        <div><p class="card-t">A escala decorre do problema</p>
+        <p class="card-d">Operação coordenada quando o problema é comum a várias regiões; localizada quando é de uma só.</p></div>
+      </div>
+    </div>
+  </div>
+""",
+    extra_css="""
+.op-col { justify-content:space-evenly; gap:18px; }
+.op-lead { margin:0; color:#475569; font-size:calc(20px * var(--tz)); line-height:1.4; }
+.op-lead strong { color:#003366; }
+.op-linha { display:grid; grid-template-columns:repeat(4, 1fr); gap:36px; margin-top:12px; }
+.op-etapa, .op-perg { position:relative; background:#F1F5F8; border-radius:16px; padding:18px 22px; }
+.op-etapa p, .op-perg p { margin:0; }
+.op-num { font-family:'Montserrat',sans-serif; font-weight:900; color:#E2A03F; font-size:calc(30px * var(--tz)); line-height:1; }
+.op-t { font-family:'Montserrat',sans-serif; font-weight:700; color:#21295C; font-size:calc(21px * var(--tz)); margin-top:8px !important; }
+.op-d { color:#56616F; font-size:calc(16px * var(--tz)); line-height:1.45; margin-top:4px !important; }
+.op-seta { position:absolute; right:-27px; top:50%; transform:translateY(-50%); color:#E2A03F; font-size:20px; }
+.op-perg { display:flex; align-items:center; gap:16px; }
+.op-perg p { font-family:'Montserrat',sans-serif; font-weight:700; color:#21295C; font-size:calc(18px * var(--tz)); line-height:1.3; }
+.op-base { gap:24px; }
+.op-base .destaque p { font-size:calc(17px * var(--tz)); line-height:1.45; }
+""",
+    tag=TAG_OPER,
+    base=1.5,
 )
 
 
@@ -1463,12 +1543,12 @@ slide(
     base=1.61,
 )
 
-SLIDES.append(dict(n=17, raw=True))
+SLIDES.append(dict(n=20, raw=True))
 
 # Os slides acima levam o número em que foram escritos; a posição final no deck abre
-# espaço para as duas divisórias de bloco (3 e 9). A capa (1) e o encerramento (19) são
-# escritos à mão.
-POSICAO = {2: 2, **{n: n + 1 for n in range(3, 8)}, **{n: n + 2 for n in range(8, 17)}}
+# espaço para as duas divisórias de bloco (3 e 9); as operacionais (17) entram antes da
+# síntese (16). A capa (1) e o encerramento (20) são escritos à mão.
+POSICAO = {2: 2, **{n: n + 1 for n in range(3, 8)}, **{n: n + 2 for n in range(8, 16)}, 17: 18, 16: 19}
 for s in SLIDES:
     if not s.get("raw"):
         s["n"] = POSICAO[s["n"]]

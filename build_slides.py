@@ -657,11 +657,12 @@ slide(
       </div>
 
       <div class="col-span-5 flex flex-col gap-3">
-        <p class="titulo-sec"><i class="fas fa-arrow-right-arrow-left" style="color:#B91C1C;"></i> Substituir</p>
-        <div class="card card-red">
+        <p class="titulo-sec"><i class="fas fa-magnifying-glass" style="color:#B45309;"></i> Avaliar</p>
+        <div class="card card-amber">
           <div><p class="card-t">Transporte misto · Atraso e omissão de navios de contêineres</p>
           <p class="card-d">O universo de regulados permite concluir já neste ciclo, sem repetição no curto prazo.</p></div>
         </div>
+        <p class="titulo-sec"><i class="fas fa-arrow-right-arrow-left" style="color:#B91C1C;"></i> Substituir</p>
         <div class="card card-red">
           <div><p class="card-t">Contabilização de TPB no REB</p>
           <p class="card-d">Eliminar ou suceder por tema de afretamento (outorgas e critérios), com o mesmo universo de regulados e o acervo já constituído.</p></div>
@@ -695,7 +696,7 @@ slide(
 .conta p { margin:0; color:#334155; font-size:calc(17px * var(--tz)); }
 """,
     tag=TAG_TEMA,
-    base=1.49,
+    base=1.39,
 )
 
 # ---------------------------------------------------------------------------
